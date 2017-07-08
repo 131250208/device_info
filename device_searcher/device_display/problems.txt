@@ -1,0 +1,20 @@
+1. 设备类型表不同英文翻译会产生相同简写，导致冲突（翻译中存在,和:等符号，如何处理）
+   类型
+2. 型号表中设备类型一和二的表示问题（id和简写）
+3. 品牌表中存在需要人工校对的内容，包括校对英文名字，删除无效中文品牌，修正中文品牌，规范显示格式（首字母大小写等）
+4. 部分中文设备类型二的英文翻译太长，无法存储到设备类型表中。
+5. 如何处理抓取的设备类型二中文信息（存在无效信息，如何剔除）（可人工校对）
+
+abcd, fadjf
+
+# Todo 添加更新位置索引
+# Todo 针对视频监控系统，只获取大的设备类型
+# Todo 设备类型表中设备类型一改成category,设备类型二改成type,产品表中的remark改为description，添加brand_link
+# Todo 抓取部分记录型号链接
+# Todo model表中加model_link和description
+# Todo 代码添加到git上
+python call graph 生成函数调用关系图
+robots.txt遵守
+指纹库管理
+django日志管理（使用django的日志输出管理）
+sys.setdefaultencoding()

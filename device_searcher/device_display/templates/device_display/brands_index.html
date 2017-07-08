@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>brands_index</title>
+</head>
+<body>
+    <table border="0" cellpadding="10" class="result_list">
+            <colgroup>
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+            </colgroup>
+            <tr>
+                <th>英文名称</th>
+                <th>中文名称</th>
+                <th>国家</th>
+                <th>描述</th>
+                <th>产品类型</th>
+                <th>厂商网站</th>
+            </tr>
+            {% for brand in brands %}
+            <tr>
+                <td>{{ brand.en_name }}</td>
+                <td>{{ brand.cn_name }}</td>
+                <td>{{ brand.country }}</td>
+                <td>{{ brand.description }}</td>
+                <td>{{ brand.product_type }}</td>
+                <td>{{ brand.brand_link }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

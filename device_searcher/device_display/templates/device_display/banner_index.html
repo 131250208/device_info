@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指纹列表</title>
+</head>
+<body>
+    <table border="0" cellpadding="10" class="result_list">
+            <colgroup>
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+                <col style="background-color:#E8E7E3">
+                <col style="background-color:#F2F2F2">
+            </colgroup>
+            <tr>
+                <th>设备类型一</th>
+                <th>设备类型二</th>
+                <th>品牌</th>
+                <th>型号</th>
+                <th>Server</th>
+                <th>www_authenticate</th>
+                <th>title</th>
+                <th>其他信息</th>
+                <th>协议</th>
+                <th>匹配方式</th>
+                <th>准确度</th>
+
+            </tr>
+            {% for banner in banners %}
+            <tr>
+                <td>{{ banner.device_category }}</td>
+                <td>{{ banner.device_type }}</td>
+                <td>{{ banner.brand }}</td>
+                <td>{{ banner.model }}</td>
+                <td>{{ banner.server }}</td>
+                <td>{{ banner.www_authenticate }}</td>
+                <td>{{ banner.title }}</td>
+                <td>{{ banner.others }}</td>
+                <td>{{ banner.protocol }}</td>
+                <td>{{ banner.match_type }}</td>
+                <td>{{ banner.accuracy }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style type="text/css">
+        #search_input{
+            width:537px;
+            height:20px;
+            line-height: 40px;
+            border: 1;
+            font: 16px arial;
+            vertical-align: top;
+            padding: 10px 9px 10px 7px;
+            line-height: 20px;
+            text-rendering: auto;
+            color: initial;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            display: inline-block;
+            text-align: start;
+        }
+        #search_button{
+            width:104px;
+            height:35px;
+            line-height: 35px;
+            border:0px solid;
+            font: 16px arial;
+            align-items: flex-start;
+            text-align: center;
+            background-color: #F6F6F6;
+            font-weight: normal;
+            box-sizing: border-box;
+            white-space: pre;
+            text-rendering: auto;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+        }
+        #search_form {
+            height: 100%;
+            text-align: center;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .top {
+            height: 150px;
+            margin-left: 100px;
+        }
+        .main {
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center
+        }
+        .left {
+            width: 200px;
+            height: 600px;
+            float: left;
+        }
+        .right {
+            width: 600px;
+            height: 600px;
+            float: right;
+        }
+        .foot {
+            width: 800px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        #search_img {
+            background-size:500px 228px;
+            height:114px;
+            width:250px
+        }
+        #update_button{
+            width:104px;
+            height:35px;
+            line-height: 35px;
+            border:0px solid;
+            font: 16px arial;
+            align-items: flex-start;
+            text-align: center;
+            background-color: #F6F6F6;
+            font-weight: normal;
+            box-sizing: border-box;
+            white-space: pre;
+            text-rendering: auto;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+        }
+        .search_type {
+            width:104px;
+            height:35px;
+            line-height: 35px;
+            border:0px solid;
+            font: 16px arial;
+            background-color: #F6F6F6;
+            font-weight: normal;
+            box-sizing: border-box;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+{% load staticfiles %}
+<div class="top">
+    <!--<a href="{% url 'display:brands_index' %}">品牌</a>-->
+    <!--<a href="{% url 'display:device_type_index' %}">类型</a>-->
+</div>
+<div class="main">
+    <img src="{% static 'img/logo.png' %}" id="search_img">
+    <br/>
+    <form action="{% url 'display:search_action' %}" method="post" id="search_form">
+        {% csrf_token %}
+        <input type="text" name="search_text" id="search_input"/>
+        <br/><br/>
+        <span>
+            <input type="submit" value="探索一下" id="search_button"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--<input type="button" value="Update" id="update_button"/>-->
+            <select name="type_list" class="search_type">
+                  <option value="brand">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;品牌</option>
+                  <option value="device_type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型</option>
+                  <option value="model">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型号</option>
+            </select>
+        </span>
+    </form>
+</div>
+<div class="foot"></div>
+</body>
+</html>

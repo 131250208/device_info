@@ -1,0 +1,10 @@
+{
+  "not_dealt_info_dir": "/root/device_info/device_searcher/device_display/not_dealt_info",
+  "unknown_brands_file": "unknown_brands.txt",
+  "unknown_device_type_file": "unknown_device_type.txt",
+  "unknown_model_file": "unknown_model.txt",
+  "not_matched_model_file": "not_matched_model.txt",
+  "dealt_info_dir": "/root/device_info/device_searcher/device_display/dealt_info",
+  "dealt_record_file": "dealt_record.txt",
+  "scrapy_result_dir": "/root/device_info/device_info_crawl/device_info_crawl/json_result"
+}

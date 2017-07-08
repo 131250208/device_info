@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42831df9-44d4-490e-8ec0-bb0b4019a029" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/problems.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/static/config/scrapy_config.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/static/img/zoomeye.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/templates/device_display/banner_index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/util/start_spider.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_display/util/start_update.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/device_display/migrations/0001_initial.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/device_display/util/update_info_config.json" afterPath="$PROJECT_DIR$/device_display/static/config/update_info_config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/admin.py" afterPath="$PROJECT_DIR$/device_display/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/function.todo" afterPath="$PROJECT_DIR$/device_display/function.todo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/models.py" afterPath="$PROJECT_DIR$/device_display/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/templates/device_display/brands_index.html" afterPath="$PROJECT_DIR$/device_display/templates/device_display/brands_index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/templates/device_display/device_type_index.html" afterPath="$PROJECT_DIR$/device_display/templates/device_display/device_type_index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/templates/device_display/index.html" afterPath="$PROJECT_DIR$/device_display/templates/device_display/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/templates/device_display/manage.html" afterPath="$PROJECT_DIR$/device_display/templates/device_display/manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/templates/device_display/search_result.html" afterPath="$PROJECT_DIR$/device_display/templates/device_display/search_result.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/urls.py" afterPath="$PROJECT_DIR$/device_display/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/util/general_util.py" afterPath="$PROJECT_DIR$/device_display/util/general_util.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/util/update_info_util.py" afterPath="$PROJECT_DIR$/device_display/util/update_info_util.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_display/views.py" afterPath="$PROJECT_DIR$/device_display/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/settings.py" afterPath="$PROJECT_DIR$/device_searcher/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_model_result.txt" afterPath="$PROJECT_DIR$/test_model_result.txt" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_display/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="78" column="35" lean-forward="false" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+              <folding>
+                <element signature="e#24#63#0" expanded="true" />
+                <element signature="e#402#453#0" expanded="false" />
+                <element signature="e#487#605#0" expanded="false" />
+                <element signature="e#644#790#0" expanded="false" />
+                <element signature="e#824#946#0" expanded="false" />
+                <element signature="e#981#3089#0" expanded="false" />
+                <element signature="e#4366#4418#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update_info_util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_display/util/update_info_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#54#0" expanded="true" />
+                <element signature="e#1783#1872#0" expanded="false" />
+                <element signature="e#1929#2152#0" expanded="false" />
+                <element signature="e#2208#3726#0" expanded="false" />
+                <element signature="e#3770#4862#0" expanded="false" />
+                <element signature="e#7564#8434#0" expanded="false" />
+                <element signature="e#8482#8549#0" expanded="false" />
+                <element signature="e#8589#11939#0" expanded="false" />
+                <element signature="e#11994#13399#0" expanded="false" />
+                <element signature="e#13471#16801#0" expanded="false" />
+                <element signature="e#16845#18374#0" expanded="false" />
+                <element signature="e#18429#18875#0" expanded="false" />
+                <element signature="e#18953#19434#0" expanded="false" />
+                <element signature="e#19469#19707#0" expanded="false" />
+                <element signature="e#19796#20629#0" expanded="false" />
+                <element signature="e#20679#20853#0" expanded="false" />
+                <element signature="e#20891#21128#0" expanded="false" />
+                <element signature="e#21166#21335#0" expanded="false" />
+                <element signature="e#21420#22447#0" expanded="false" />
+                <element signature="e#22532#22581#0" expanded="false" />
+                <element signature="e#22630#24174#0" expanded="false" />
+                <element signature="e#24223#27990#0" expanded="false" />
+                <element signature="e#24299#24377#0" expanded="false" />
+                <element signature="e#25196#26894#0" expanded="false" />
+                <element signature="e#27319#27670#0" expanded="false" />
+                <element signature="e#28040#28353#0" expanded="false" />
+                <element signature="e#28443#30626#0" expanded="false" />
+                <element signature="e#30683#31675#0" expanded="false" />
+                <element signature="e#31797#32330#0" expanded="false" />
+                <element signature="e#32384#32456#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start_spider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_display/util/start_spider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="e#25#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start_update.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/device_display/util/start_update.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+              <folding>
+                <element signature="e#24#156#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/manage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="94" column="11" lean-forward="false" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Brand is not matched</find>
+      <find>device_type</find>
+      <find>second</find>
+      <find>first</find>
+      <find>.</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/device_display/templates/index.html" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/all_brnads.html" />
+        <option value="$PROJECT_DIR$/device_display/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/device_searcher/urls.py" />
+        <option value="$PROJECT_DIR$/device_display/update_info_util.py" />
+        <option value="$PROJECT_DIR$/device_display/__init__.py" />
+        <option value="$PROJECT_DIR$/device_display/update_info.py" />
+        <option value="$USER_HOME$/showtable.py" />
+        <option value="$USER_HOME$/unittest.py" />
+        <option value="$PROJECT_DIR$/device_display/util/update_info_config.json" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/index_list.html" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/index.html" />
+        <option value="$PROJECT_DIR$/crawl_info/scrapy.cfg" />
+        <option value="$PROJECT_DIR$/crawl_info/crawl_info/spiders/it168_brand_spider.py" />
+        <option value="$PROJECT_DIR$/device_display/admin.py" />
+        <option value="$PROJECT_DIR$/device_display/urls.py" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/banner_index.html" />
+        <option value="$PROJECT_DIR$/device_display/util/general_util.py" />
+        <option value="$PROJECT_DIR$/device_display/function.todo" />
+        <option value="$PROJECT_DIR$/device_display/problems.txt" />
+        <option value="$PROJECT_DIR$/device_searcher/settings.py" />
+        <option value="$PROJECT_DIR$/device_display/models.py" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/brands_index.html" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/device_type_index.html" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/search_result.html" />
+        <option value="$PROJECT_DIR$/device_display/static/config/scrapy_config.json" />
+        <option value="$PROJECT_DIR$/device_display/templates/device_display/manage.html" />
+        <option value="$PROJECT_DIR$/device_display/views.py" />
+        <option value="$PROJECT_DIR$/device_display/util/start_spider.py" />
+        <option value="$PROJECT_DIR$/device_display/static/config/update_info_config.json" />
+        <option value="$PROJECT_DIR$/device_display/util/update_info_util.py" />
+        <option value="$PROJECT_DIR$/device_display/util/start_update.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="27" />
+    <option name="width" value="1366" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_display" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_display" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_display" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_searcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device_display" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../device_info_crawl" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="last.edited.regexp" value="WP TDMx-2000F(4外线 16分机)" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/device_display/util" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/device_display/static/img" />
+      <recent name="$PROJECT_DIR$/device_display/templates/device_display/img" />
+      <recent name="$PROJECT_DIR$/device_display/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/device_display/static/config" />
+      <recent name="$PROJECT_DIR$/device_display/static" />
+      <recent name="$PROJECT_DIR$/device_display" />
+      <recent name="$PROJECT_DIR$/static/device_display" />
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.update_info">
+    <configuration default="false" name="update_info" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/device_display" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="device_searcher" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/device_display/update_info.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="device_searcher" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="device_searcher" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="device_searcher" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="device_searcher" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.update_info" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.update_info" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42831df9-44d4-490e-8ec0-bb0b4019a029" name="Default" comment="" />
+      <created>1498771412425</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1498771412425</updated>
+    </task>
+    <task id="LOCAL-00001" summary="初步完成版本，尚未进行完整测试。">
+      <created>1499010194755</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1499010194755</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22644377" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.96006656" sideWeight="0.506079" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6888519" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.95840263" sideWeight="0.49392098" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20820668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24967742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="初步完成版本，尚未进行完整测试。" />
+    <option name="LAST_COMMIT_MESSAGE" value="初步完成版本，尚未进行完整测试。" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="11" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/device_display/templates/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/util/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/update_info.py" />
+    <entry file="file://$USER_HOME$/showtable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="81" column="35" lean-forward="false" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="51" lean-forward="false" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/static/img/zoomeye.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="65" lean-forward="true" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/index_list.html" />
+    <entry file="file://$PROJECT_DIR$/test_model_result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="68" lean-forward="false" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update_info_database/util/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/update_info_database/update_info.py" />
+    <entry file="file://$PROJECT_DIR$/update_info_database/test_01.log" />
+    <entry file="file://$PROJECT_DIR$/update_info_database/test_model_result.txt" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/test.sh" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/scrapy.cfg" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/spiders/it168_brand_spider.py" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/middlewares.py" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/pipelines.py" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/spiders/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/items.py" />
+    <entry file="file://$PROJECT_DIR$/crawl_info/crawl_info/spiders/zol_brand_spider.py" />
+    <entry file="file://$PROJECT_DIR$/device_display/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/banner_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/not_dealt_info/unknown_model.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/not_dealt_info/not_matched_model.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/util/general_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#34#0" expanded="false" />
+            <element signature="e#139#229#0" expanded="false" />
+            <element signature="e#276#316#0" expanded="false" />
+            <element signature="e#613#1224#0" expanded="false" />
+            <element signature="e#1258#1317#0" expanded="false" />
+            <element signature="e#1354#1452#0" expanded="false" />
+            <element signature="e#1495#2297#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/function.todo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://[upnp] TABLE - upnp.iie_brand" />
+    <entry file="db://[upnp] TABLE - upnp.iie_device_type" />
+    <entry file="db://[upnp] TABLE - upnp.iie_brand_model" />
+    <entry file="file://$PROJECT_DIR$/device_display/migrations/0002_banner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/problems.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/brands_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://[device_info] TABLE - device_info.iie_brand">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="0" readonly="false">
+          <columns>
+            <column name="id" position="0" visible="true" />
+            <column name="en_name" position="1" visible="true" />
+            <column name="cn_name" position="2" visible="true" />
+            <column name="country" position="3" visible="true" />
+            <column name="description" position="4" visible="true" />
+            <column name="product_type" position="5" visible="true" />
+            <column name="brand_link" position="6" visible="true" />
+          </columns>
+          <sorting>
+            <column name="country" index="1" direction="ASCENDING" />
+          </sorting>
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/device_type_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/search_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="207" column="38" lean-forward="false" selection-start-line="207" selection-start-column="38" selection-end-line="207" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#span#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2918#2924#0" expanded="true" />
+            <element signature="e#2924#2930#0" expanded="true" />
+            <element signature="e#2930#2936#0" expanded="true" />
+            <element signature="e#2936#2942#0" expanded="true" />
+            <element signature="e#2942#2948#0" expanded="true" />
+            <element signature="e#3006#3012#0" expanded="true" />
+            <element signature="e#3012#3018#0" expanded="true" />
+            <element signature="e#3018#3024#0" expanded="true" />
+            <element signature="e#3024#3030#0" expanded="true" />
+            <element signature="e#3030#3036#0" expanded="true" />
+            <element signature="e#3088#3094#0" expanded="true" />
+            <element signature="e#3094#3100#0" expanded="true" />
+            <element signature="e#3100#3106#0" expanded="true" />
+            <element signature="e#3106#3112#0" expanded="true" />
+            <element signature="e#3112#3118#0" expanded="true" />
+            <element signature="e#3372#3378#0" expanded="true" />
+            <element signature="e#3378#3384#0" expanded="true" />
+            <element signature="e#3384#3390#0" expanded="true" />
+            <element signature="e#3390#3396#0" expanded="true" />
+            <element signature="e#3396#3402#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#0;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#1;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#2;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#3;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#4;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#5;n#colgroup#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#0;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#1;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#2;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#3;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#4;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#5;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#6;n#colgroup#0;n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#0;n#colgroup#0;n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#1;n#colgroup#0;n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#2;n#colgroup#0;n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#3;n#colgroup#0;n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#col#4;n#colgroup#0;n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-824">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="117" column="9" lean-forward="true" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
+          <folding>
+            <element signature="e#3771#3777#0" expanded="false" />
+            <element signature="e#3777#3783#0" expanded="false" />
+            <element signature="e#3783#3789#0" expanded="false" />
+            <element signature="e#3789#3795#0" expanded="false" />
+            <element signature="e#3795#3801#0" expanded="false" />
+            <element signature="e#3801#3807#0" expanded="false" />
+            <element signature="e#3807#3813#0" expanded="false" />
+            <element signature="e#3813#3819#0" expanded="false" />
+            <element signature="e#3819#3825#0" expanded="false" />
+            <element signature="e#3825#3831#0" expanded="false" />
+            <element signature="e#3844#3850#0" expanded="false" />
+            <element signature="e#3850#3856#0" expanded="false" />
+            <element signature="e#3856#3862#0" expanded="false" />
+            <element signature="e#3862#3868#0" expanded="false" />
+            <element signature="e#3868#3874#0" expanded="false" />
+            <element signature="e#4049#4055#0" expanded="false" />
+            <element signature="e#4055#4061#0" expanded="false" />
+            <element signature="e#4061#4067#0" expanded="false" />
+            <element signature="e#4067#4073#0" expanded="false" />
+            <element signature="e#4073#4079#0" expanded="false" />
+            <element signature="e#4137#4143#0" expanded="false" />
+            <element signature="e#4143#4149#0" expanded="false" />
+            <element signature="e#4149#4155#0" expanded="false" />
+            <element signature="e#4155#4161#0" expanded="false" />
+            <element signature="e#4161#4167#0" expanded="false" />
+            <element signature="e#4219#4225#0" expanded="false" />
+            <element signature="e#4225#4231#0" expanded="false" />
+            <element signature="e#4231#4237#0" expanded="false" />
+            <element signature="e#4237#4243#0" expanded="false" />
+            <element signature="e#4243#4249#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/templates/device_display/manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="94" column="11" lean-forward="false" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="78" column="35" lean-forward="false" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#402#453#0" expanded="false" />
+            <element signature="e#487#605#0" expanded="false" />
+            <element signature="e#644#790#0" expanded="false" />
+            <element signature="e#824#946#0" expanded="false" />
+            <element signature="e#981#3089#0" expanded="false" />
+            <element signature="e#4366#4418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/static/config/scrapy_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="58" lean-forward="true" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/static/config/update_info_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/util/update_info_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#54#0" expanded="true" />
+            <element signature="e#1783#1872#0" expanded="false" />
+            <element signature="e#1929#2152#0" expanded="false" />
+            <element signature="e#2208#3726#0" expanded="false" />
+            <element signature="e#3770#4862#0" expanded="false" />
+            <element signature="e#7564#8434#0" expanded="false" />
+            <element signature="e#8482#8549#0" expanded="false" />
+            <element signature="e#8589#11939#0" expanded="false" />
+            <element signature="e#11994#13399#0" expanded="false" />
+            <element signature="e#13471#16801#0" expanded="false" />
+            <element signature="e#16845#18374#0" expanded="false" />
+            <element signature="e#18429#18875#0" expanded="false" />
+            <element signature="e#18953#19434#0" expanded="false" />
+            <element signature="e#19469#19707#0" expanded="false" />
+            <element signature="e#19796#20629#0" expanded="false" />
+            <element signature="e#20679#20853#0" expanded="false" />
+            <element signature="e#20891#21128#0" expanded="false" />
+            <element signature="e#21166#21335#0" expanded="false" />
+            <element signature="e#21420#22447#0" expanded="false" />
+            <element signature="e#22532#22581#0" expanded="false" />
+            <element signature="e#22630#24174#0" expanded="false" />
+            <element signature="e#24223#27990#0" expanded="false" />
+            <element signature="e#24299#24377#0" expanded="false" />
+            <element signature="e#25196#26894#0" expanded="false" />
+            <element signature="e#27319#27670#0" expanded="false" />
+            <element signature="e#28040#28353#0" expanded="false" />
+            <element signature="e#28443#30626#0" expanded="false" />
+            <element signature="e#30683#31675#0" expanded="false" />
+            <element signature="e#31797#32330#0" expanded="false" />
+            <element signature="e#32384#32456#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/util/start_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_display/util/start_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding>
+            <element signature="e#24#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
