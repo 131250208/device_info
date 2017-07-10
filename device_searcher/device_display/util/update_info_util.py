@@ -480,7 +480,7 @@ def check_result(brand_normalized, device_type_normalized, model_normalized):
             brand_en = brand_normalized.en_name
             model_brand = model_normalized.brand
             model_category = model_normalized.category
-            model_type = model_normalized.device_type
+            model_type = model_normalized.type
             if brand_en == model_brand and device_type == model_type and device_category == model_category:
                 return True
             else:
