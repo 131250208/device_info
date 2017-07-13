@@ -9,7 +9,7 @@
     sqls目录下为数据库建表文件及历史遗留数据
 ## 4. 框架
     爬虫模块使用scrapy，管理模块使用django，数据库使用mysql
-## 5. banben版本
+## 5. 版本
     python 2.7.6
     scrapy 1.4.0
     django 1.6.11
