@@ -12,5 +12,5 @@
 ## 5. 版本
     python 2.7.6
     scrapy 1.4.0
-    django 1.6.11
+    django 1.11.3
     mysql 5.6.33
