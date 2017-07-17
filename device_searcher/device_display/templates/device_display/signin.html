@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../others/icon/favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>物联网设备信息管理平台</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../framework/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +19,8 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../others/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,19 +34,19 @@
     <div class="container">
 
       <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">登录</h2>
 
-        <label for="inputEmail" class="sr-only">your account</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="your account" required autofocus>
-        <label for="inputPassword" class="sr-only">your password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="your password" required>
+        <label for="focusedInput" class="sr-only">账号</label>
+        <input type="text" id="focusedInput" class="form-control" placeholder="填写账号" name="account" required oninvalid="setCustomValidity('账号不能为空')" oninput="setCustomValidity('')" autofocus>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="填写密码" name="password" required oninvalid="setCustomValidity('密码不能为空')" oninput="setCustomValidity('')">
 
-        <div class="checkbox">
+        <div class="checkbox-info">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me" name="remember" > 15天内免登录
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
       </form>
 
     </div> <!-- /container -->

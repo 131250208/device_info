@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<!--@author wychengpublic-->
+{% extends "device_display/home.html" %}
+<style>
+    #search-group div.col-sm-7{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>
+{% block main_container %}
+<form role="form">
+    <div class="form-group row" id="search-group">
+        <div class="col-sm-7" style="padding-right: 0px">
+            <input type="text" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+        </div>
+        <div class="col-sm-1" style="padding: 0px">
+            <button type="submit" class="btn btn-lg btn-primary btn-block" >搜索</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

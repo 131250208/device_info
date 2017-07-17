@@ -25,4 +25,9 @@ urlpatterns = [
     url(r'^manage/$', views.manage, name='manage'),
     url(r'^update/$', views.update_action, name='update_action'),
     url(r'^scrapy/$', views.scrapy_action, name='scrapy_action'),
+
+    url(r'^home/$' , views.home, name='home'),
+    url(r'^search_page/$', views.getPage_search, name='getPage_search'),
+    url(r'^update_page/$', views.getPage_update, name='getPage_update'),
+    url(r'^statistics_page/$', views.getPage_statistic, name='getPage_statistic')
 ]
