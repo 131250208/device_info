@@ -14,8 +14,8 @@ from util.start_update import init_start_update_module, start_update
 import os
 
 # @author wycheng
-def home(request):
-    return render(request, 'device_display/home.html')
+def signin(request):
+    return render(request, 'device_display/signin.html')
 # @author wycheng
 def getPage_search(request):
     return render(request, 'device_display/search.html')
@@ -25,6 +25,15 @@ def getPage_update(request):
 # @author wycheng
 def getPage_statistic(request):
     return render(request, 'device_display/statistics.html')
+# @author wycheng
+def getResult_search(request):
+    res_content = {}
+    return render(request, 'device_display/search_result.html', res_content)
+def getResult_super_search(request):
+    res_content = {}
+    return render(request, 'device_display/super_search_result.html', res_content)
+
+
 
 def index(request):
     return render(request, "device_display/index.html")

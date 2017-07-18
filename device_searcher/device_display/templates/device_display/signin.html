@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../others/icon/favicon.ico">
+    <link rel="icon" href="{% static 'display/others/icon/favicon.ico' %}">
 
     <title>物联网设备信息管理平台</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../framework/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../self_defined/css/signin.css" rel="stylesheet">
+    <link href="{% static 'display/self_defined/css/signin.css' %}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../others/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{% static 'display/others/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
 
     <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
@@ -32,27 +33,33 @@
   <body>
 
     <div class="container">
+        {% include "device_display/logo.html" %}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
+                <div id="div_signin">
+                    <form class="form-signin">
+                        <h2 class="form-signin-heading">登录</h2>
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">登录</h2>
+                        <label for="focusedInput" class="sr-only">账号</label>
+                        <input type="text" id="focusedInput" class="form-control" placeholder="填写账号" name="account" required oninvalid="setCustomValidity('账号不能为空')" oninput="setCustomValidity('')" autofocus>
+                        <label for="inputPassword" class="sr-only">密码</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="填写密码" name="password" required oninvalid="setCustomValidity('密码不能为空')" oninput="setCustomValidity('')">
 
-        <label for="focusedInput" class="sr-only">账号</label>
-        <input type="text" id="focusedInput" class="form-control" placeholder="填写账号" name="account" required oninvalid="setCustomValidity('账号不能为空')" oninput="setCustomValidity('')" autofocus>
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="填写密码" name="password" required oninvalid="setCustomValidity('密码不能为空')" oninput="setCustomValidity('')">
-
-        <div class="checkbox-info">
-          <label>
-            <input type="checkbox" value="remember-me" name="remember" > 15天内免登录
-          </label>
+                        <div class="checkbox-info">
+                            <label>
+                                <input type="checkbox" value="remember-me" name="remember" > 15天内免登录
+                            </label>
+                        </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-bottom: 10px">登录</button>
+                    </form>
+                    <button class="btn btn-lg btn-default btn-block">游客浏览</button>
+                </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-      </form>
-
     </div> <!-- /container -->
 
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../others/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{% static 'display/others/js/ie10-viewport-bug-workaround.js' %}"></script>
   </body>
 </html>

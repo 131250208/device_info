@@ -21,13 +21,15 @@ urlpatterns = [
     url(r'^brands_index/$', views.brands_index, name='brands_index'),
     url(r'^device_type_index/$', views.device_type_index, name='device_type_index'),
     url(r'^banner_index/$', views.banner_index, name='banner_index'),
-    url(r'^search_result/$', views.search_action, name='search_action'),
     url(r'^manage/$', views.manage, name='manage'),
     url(r'^update/$', views.update_action, name='update_action'),
     url(r'^scrapy/$', views.scrapy_action, name='scrapy_action'),
 
-    url(r'^home/$' , views.home, name='home'),
+    url(r'^signin/$' , views.signin, name='signin'),
     url(r'^search_page/$', views.getPage_search, name='getPage_search'),
     url(r'^update_page/$', views.getPage_update, name='getPage_update'),
-    url(r'^statistics_page/$', views.getPage_statistic, name='getPage_statistic')
+    url(r'^statistics_page/$', views.getPage_statistic, name='getPage_statistic'),
+
+    url(r'^search_result/$', views.getResult_search, name='getResult_search'),
+    url(r'^super_search_result/$', views.getResult_super_search, name='getResult_super_search')
 ]

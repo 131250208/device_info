@@ -1,0 +1,50 @@
+#search-group {
+    margin: 0px auto 10px;
+}
+
+#div_input{
+    padding: 0px 0px;
+}
+#div_input input{
+    height: 36px;
+    background-color: transparent;
+    color: #fff;
+}
+
+#div_btn button {
+    height: 36px;
+    font-size: 15px;
+}
+
+#result_info {
+    margin: 10px auto;
+    color: #8c8c8c;
+}
+
+#results_container {
+    min-height: 500px;
+    max-height: none;
+}
+#results_container button{
+    color: #fff;
+    background-color: transparent;
+    border: 0px;
+    font-size: 15px;
+}
+#results_container .chk_all{
+    color: #fff;
+    font-size: 15px;
+}
+#results_container .chk_all input{
+    margin-right: 10px;
+}
+.nav-tabs a {
+    color: #fff;
+}
+.nav-tabs a:hover {
+    color: #555;
+}
+
+.group_gray {
+    background-color: #5e5e5e;
+}

@@ -1,20 +1,23 @@
 <!--@author wychengpublic-->
 {% extends "device_display/home.html" %}
-<style>
-    #search-group div.col-sm-7{
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-</style>
+
+{% load staticfiles %}
+
+{% block css %}
+    <link href="{% static 'display/self_defined/css/search.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block main_container %}
-<form role="form">
-    <div class="form-group row" id="search-group">
-        <div class="col-sm-7" style="padding-right: 0px">
-            <input type="text" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+    {% include "device_display/logo.html" %}
+    <form role="form" action="{% url 'display:getResult_search' %}">
+
+        <div class="form-group row" id="search-group">
+            <div class="col-sm-5 col-sm-offset-3" id="div_input" >
+                <input type="text" style="" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+            </div>
+            <div class="col-sm-1" id="div_btn" >
+                <button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>
+            </div>
         </div>
-        <div class="col-sm-1" style="padding: 0px">
-            <button type="submit" class="btn btn-lg btn-primary btn-block" >搜索</button>
-        </div>
-    </div>
-</form>
+    </form>
 {% endblock %}

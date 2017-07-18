@@ -1,0 +1,24 @@
+<!--@author wychengpublic-->
+{% extends "device_display/home.html" %}
+
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'display/self_defined/css/search_result.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main_container %}
+<form role="form">
+
+</form>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#" data-toggle="tab">类型</a></li>
+    <li><a href="#" data-toggle="tab">品牌</a></li>
+    <li><a href="#" data-toggle="tab">型号</a></li>
+    <li><a href="#" data-toggle="tab">指纹</a></li>
+</ul>
+
+{% include "device_display/result.html" %}
+
+{% endblock %}

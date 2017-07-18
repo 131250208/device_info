@@ -1,220 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>search_result</title>
-    <style type="text/css">
-        .top {
-            height: 50px;
-            background-color: #FFFFFF
-        }
-        .main {
-            margin-left: 90px;
-        }
-        .result_list {
+<!--@author wychengpublic-->
+{% extends "device_display/home.html" %}
 
-        }
-        #search_input{
-            width:450px;
-            height:20px;
-            line-height: 40px;
-            border: 1;
-            font: 16px arial;
-            vertical-align: top;
-            padding: 10px 9px 10px 7px;
-            line-height: 20px;
-            text-rendering: auto;
-            color: initial;
-            letter-spacing: normal;
-            word-spacing: normal;
-            text-transform: none;
-            text-indent: 0px;
-            display: inline-block;
-            text-align: start;
-        }
-        #search_button{
-            width:104px;
-            height:44px;
-            line-height: 44px;
-            border:0px solid;
-            font: 16px arial;
-            align-items: flex-start;
-            text-align: center;
-            background-color: #F6F6F6;
-            font-weight: normal;
-            white-space: pre;
-            text-rendering: auto;
-            letter-spacing: normal;
-            word-spacing: normal;
-            text-transform: none;
-            text-indent: 0px;
-            text-shadow: none;
-            display: inline-block;
-        }
-        #search_form {
-            display: inline-block;
-        }
-        .back_home {
-            width: 90px;
-            height: 40px;
-            display: inline-block;
-        }
-        span {
-            float: left;
-            display: inline-block;
-            height: 44px;
-        }
-        .search_type {
-            width:104px;
-            height:44px;
-            line-height: 44px;
-            border:0px solid;
-            font: 16px arial;
-            text-align: center;
-            background-color: #F6F6F6;
-            font-weight: normal;
-            white-space: pre;
-            text-rendering: auto;
-            letter-spacing: normal;
-            word-spacing: normal;
-            text-transform: none;
-            text-indent: 0px;
-            text-shadow: none;
-            display: inline-block;
-        }
-    </style>
-</head>
-<body>
-    {% load staticfiles %}
-    <br/>
-    <div class="top">
-        <form action="{% url 'display:search_action' %}" method="post" id="search_form">
-            {% csrf_token %}
-            <span>
-                <a href="{% url 'display:index' %}" style="display:inline-block">
-                    <img src="{% static 'img/logo.png' %}" class="back_home">
-                </a>
-            </span>
-            <span>
-                <input type="text" name="search_text" id="search_input"/>
-            </span>
-            <span>
-                <select name="type_list" class="search_type">
-                  <option value="brand">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;品牌</option>
-                  <option value="device_type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型</option>
-                  <option value="model">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型号</option>
-                </select>
-            </span>
-            <span>
-                <input type="submit" value="Search" id="search_button"/>
-            </span>
-        </form>
+{% load staticfiles %}
+
+{% block css %}
+    <link href="{% static 'display/self_defined/css/search_result.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main_container %}
+<form role="form">
+    <div class="form-group row" id="search-group">
+        <div class="col-sm-5" id="div_input" >
+            <input type="text" style="" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+        </div>
+        <div class="col-sm-1" id="div_btn" >
+            <button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>
+        </div>
     </div>
-    <div class="main">
-        <h4>关键词：{{ search_text }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;范围：{{ search_type }}</h4>
-        <div style="font-size: 16px">查询结果如下：({{ records_num }}条记录)</div>
-        <br/>
-        <!--<h3>相关品牌</h3>-->
-        {% if brands %}
-        <table border="0" cellpadding="10" class="result_list" id="brand_table">
-            <colgroup>
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-            </colgroup>
-            <tr>
-                <th>英文名称</th>
-                <th>中文名称</th>
-                <th>国家</th>
-                <th>描述</th>
-                <th>产品类型</th>
-                <th>厂商网站</th>
-            </tr>
-            {% for brand in brands %}
-            <tr>
-                <td>{{ brand.en_name }}</td>
-                <td>{{ brand.cn_name }}</td>
-                <td>{{ brand.country }}</td>
-                <td>{{ brand.description }}</td>
-                <td>{{ brand.product_type }}</td>
-                <td>
-                    {% if brand.brand_link %}
-                    <a href="http://{{ brand.brand_link }}" target="_blank">{{ brand.brand_link }}</a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
-        <!--<h3>相关类型</h3>-->
-        {% if device_types %}
-        <table border="0" cellpadding="10" class="result_list" id="device_type_table">
-            <colgroup>
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-            </colgroup>
-            <tr>
-                <th>设备类型一</th>
-                <th>设备类型一英文名称</th>
-                <th>设备类型一中文名称</th>
-                <th>设备类型二</th>
-                <th>设备类型二英文名称</th>
-                <th>设备类型二中文名称</th>
-                <th>描述</th>
-            </tr>
-            {% for device_type in device_types %}
-            <tr>
-                <td>{{ device_type.category }}</td>
-                <td>{{ device_type.category_en_name }}</td>
-                <td>{{ device_type.category_cn_name }}</td>
-                <td>{{ device_type.type }}</td>
-                <td>{{ device_type.type_en_name }}</td>
-                <td>{{ device_type.type_cn_name }}</td>
-                <td>{{ device_type.description }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
-        <!--<h3>相关型号</h3>-->
-        {% if brand_models %}
-        <table border="0" cellpadding="10" class="result_list" id="model_table">
-            <colgroup>
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-                <col style="background-color:#F2F2F2">
-                <col style="background-color:#E8E7E3">
-            </colgroup>
-            <tr>
-                <th>品牌</th>
-                <th>型号</th>
-                <th>设备类型一</th>
-                <th>设备类型二</th>
-                <th>详情</th>
-            </tr>
-            {% for brand_model in brand_models %}
-            <tr>
-                <td>{{ brand_model.brand }}</td>
-                <td>{{ brand_model.model }}</td>
-                <td>{{ brand_model.category }}</td>
-                <td>{{ brand_model.type }}</td>
-                <td>
-                    {% if brand_model.model_link %}
-                        <a href="{{ brand_model.model_link }}" target="_blank">{{ brand_model.model_link }}</a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
-    </div>
-</body>
-</html>
+</form>
+<ul class="nav nav-tabs">
+    <li class="active" data-toggle="tab"><a href="#">全部</a></li>
+    <li><a href="#" data-toggle="tab">类型</a></li>
+    <li><a href="#" data-toggle="tab">品牌</a></li>
+    <li><a href="#" data-toggle="tab">型号</a></li>
+    <li><a href="#" data-toggle="tab">指纹</a></li>
+</ul>
+
+{% include "device_display/result.html" %}
+
+{% endblock %}
