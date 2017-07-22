@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from device_display import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^display/', include('device_display.urls', namespace='display')),
+    url(r'^accounts/login/$', views.signin, name='signin')# login
 ]

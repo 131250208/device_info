@@ -8,16 +8,29 @@
 {% endblock %}
 
 {% block main_container %}
-<form role="form">
 
-</form>
+<div class="panel-group" id="category_pane">
+    <ul class="nav nav-tabs" >
+        <li class="active" data-toggle="tab"><a href="#collapseOne" data-toggle="collapse" data-parent="#category_pane">类型</a></li>
+        <li data-toggle="tab"><a href="#collapse2" data-toggle="collapse" data-parent="#category_pane">品牌</a></li>
+        <li data-toggle="tab"><a href="#" data-toggle="collapse" data-parent="#category_pane">型号</a></li>
+        <li data-toggle="tab"><a href="#" data-toggle="collapse" data-parent="#category_pane">指纹</a></li>
+    </ul>
+    <div id="collapseOne" class="panel-collapse collapse fade">
+        <div class="panel-body">
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+            vice lomo.
+        </div>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse fade">
+        <div class="panel-body">
+            sdfsdfdsdf
+        </div>
+    </div>
+</div>
 
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#" data-toggle="tab">类型</a></li>
-    <li><a href="#" data-toggle="tab">品牌</a></li>
-    <li><a href="#" data-toggle="tab">型号</a></li>
-    <li><a href="#" data-toggle="tab">指纹</a></li>
-</ul>
+
 
 {% include "device_display/result.html" %}
 

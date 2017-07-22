@@ -3,15 +3,29 @@
 {% extends "device_display/home.html" %}
 {% load staticfiles %}
 {% block css %}
-    <link href="{% static 'display/self_defined/css/search_result.css' %}" rel="stylesheet">
+    <link href="{% static 'display/self_defined/css/update.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main_container %}
     {% include "device_display/logo.html" %}
     <ul class="nav nav-tabs">
-        <li class="active" data-toggle="tab"><a href="#">网站爬取</a></li>
-        <li><a href="#" data-toggle="tab">文件上传</a></li>
-        <li><a href="#" data-toggle="tab">未更新</a></li>
-        <li><a href="#" data-toggle="tab">更新记录</a></li>
+        <li class="active"><a href="#panel_crawl" data-toggle="tab">网站爬取</a></li>
+        <li><a href="#panel_upload" data-toggle="tab">文件上传</a></li>
+        <li><a href="#panel_wf_upd" data-toggle="tab">未更新</a></li>
+        <li><a href="#panel_upd_rcd" data-toggle="tab">更新记录</a></li>
     </ul>
+    <div class="tab-content" >
+        <div class="tab-pane in fade active" id="panel_crawl">
+            {% include "device_display/update_crawl.html" %}
+        </div>
+        <div class="tab-pane active fade" id="panel_upload">
+            {% include "device_display/update_upload.html" %}
+        </div>
+        <div class="tab-pane active fade" id="panel_wf_upd">
+            {% include "device_display/update_wf_upd.html" %}
+        </div>
+        <div class="tab-pane active fade" id="panel_upd_rcd">
+            {% include "device_display/update_upd_rcd.html" %}
+        </div>
+    </div>
 {% endblock %}

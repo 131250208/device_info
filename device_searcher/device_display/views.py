@@ -1,40 +1,101 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from util.general_util import *
 from . import models
-
+from django.contrib import auth
 from util.start_spider import init_scrapy_module, start_spiders
 from util.start_update import init_start_update_module, start_update
+from django.contrib.auth.decorators import login_required
 
-import os
+# if not request.user.is_authenticated():
+#         return HttpResponseRedirect('/accounts/login/?next=%s' % request.path)
 
 # @author wycheng
-def signin(request):
+# 直接获取页面的函数
+def getPage_signin(request):
     return render(request, 'device_display/signin.html')
-# @author wycheng
+
+# search_page
 def getPage_search(request):
-    return render(request, 'device_display/search.html')
-# @author wycheng
-def getPage_update(request):
-    return render(request, 'device_display/update.html')
-# @author wycheng
+    if not request.user.is_authenticated():# no login
+        res_content = {'identity':'tourist'}
+    else:
+        res_content = {'identity': 'admin'}
+
+    return render(request, 'device_display/search.html',res_content)
+# statistics page
 def getPage_statistic(request):
-    return render(request, 'device_display/statistics.html')
-# @author wycheng
+    if not request.user.is_authenticated():# no login
+        res_content = {'identity':'tourist'}
+    else:
+        res_content = {'identity': 'admin'}
+    return render(request, 'device_display/statistics.html',res_content)
+# update_page
+def getPage_update(request):
+    if not request.user.is_authenticated():# no login
+        res_content = {'identity':'tourist'}
+    else:
+        res_content = {'identity': 'admin'}
+    return render(request, 'device_display/update.html',res_content)
+# search_result
 def getResult_search(request):
-    res_content = {}
+    if not request.user.is_authenticated():# no login
+        res_content = {'identity':'tourist'}
+    else:
+        res_content = {'identity': 'admin'}
     return render(request, 'device_display/search_result.html', res_content)
-def getResult_super_search(request):
-    res_content = {}
-    return render(request, 'device_display/super_search_result.html', res_content)
+
+# def getResult_super_search(request):
+#     res_content = {}
+#     return render(request, 'device_display/super_search_result.html', res_content)
+
+# wait for liumingdong
+# 后端接口
+# 临时注册接口
+def signup(request):
+    user = User.objects.create_user(username='wychengpublic',
+                                    password='wychengpublic')
+    user.save()
+
+    user = User.objects.get(username='wychengpublic')
+    if user.is_authenticated() and user.check_password("wychengpublic"):
+        res_content = {"info":"signup success! your account : wychengpublic ,your pswd : wychengpublic ."}
+    else:
+        res_content = {"info":"failure..."}
+
+    return render(request, 'device_display/signup_success.html',res_content)
+# 登录接口
+def signin(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    remember_me = request.POST.get('remember', '')
+
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        # Correct password, and the user is marked "active"
+        auth.login(request, user)
+
+        # Redirect to a success page.
+        response =  getPage_search(request)
+
+        # remember-me
+        if remember_me != "true":
+            request.session.set_expiry(1800)
+        return response
+    else:
+        # Show an error page
+        res_content = {'status_code': 'falure', 'text': u'账号密码错误...',
+                       "username_input" : username,"password_input" : password}
+        return render(request, 'device_display/signin.html', res_content)
 
 
 
+# ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")
 

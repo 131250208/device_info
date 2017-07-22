@@ -4,3 +4,49 @@
 .nav-tabs a:hover {
     color: #555;
 }
+.pane_edit {
+    background-color: #5e5e5e;
+}
+.pane_edit .source_text {
+    padding-right: 0px;
+}
+.pane_edit .source_text input{
+    background-color: transparent;
+    height: 28px;
+    margin: 5px 0px 5px 15px;
+}
+.pane_edit .source_drop {
+    padding: 5px 0px;
+}
+.pane_edit .source_drop button{
+    height: 28px;
+}
+.pane_edit .checkboxes {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+.pane_edit .checkboxes input{
+    margin: 8px 5px 5px 10px;
+}
+
+.pane_edit .icon_btns button{
+    color: #fff;
+    background-color: transparent;
+    border: 0px;
+    font-size: 15px;
+}
+
+.pane_edit .icon_btns button:hover{
+    color: deepskyblue;
+}
+
+
+.table-responsive {
+    margin-top: 15px;
+    background-color: #5e5e5e;
+    color: #ffffff;
+}
+.table-responsive tbody tr:nth-of-type(2n+1) {
+    color: #333333;
+}

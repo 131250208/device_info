@@ -1,0 +1,73 @@
+ <form role="form" class="pane_edit" >
+    <div class="row" >
+        <div class="col-sm-2 source_text" >
+            <input type="text" class="form-control"  disabled="disabled">
+        </div>
+        <div class="col-sm-1 source_drop" >
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" >
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>中关村在线</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3 checkboxes">
+            <input type="checkbox" > 类型
+            <input type="checkbox" > 品牌
+            <input type="checkbox" > 型号
+        </div>
+        <div class="col-sm-4 col-sm-offset-2 icon_btns" style="text-align: right">
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-plus"></span> 添加条件
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-minus"></span> 删除条件
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-cloud-download"></span> 爬取
+            </button>
+        </div>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" style="margin-right: 5px">全选
+                </th>
+                <th>序号</th>
+                <th>数据来源</th>
+                <th>目标分类</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>1</td>
+                <td>中关村在线</td>
+                <td>类型/型号</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>2</td>
+                <td>网站2</td>
+                <td>品牌</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>3</td>
+                <td>网站3</td>
+                <td>型号</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -12,9 +12,6 @@
 
     <title>物联网设备信息管理平台</title>
 
-    <!--&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
-    <!--<link href="{% static 'display/framework/css/bootstrap.min.css' %}" rel="stylesheet">-->
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -43,16 +40,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
           <a class="navbar-brand" href="{% url 'display:getPage_search' %}">God's Eye</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'display:getPage_search' %}">搜索</a></li>
-            <li ><a href="{% url 'display:getResult_super_search' %}" >高级搜索</a></li>
-            <li ><a href="{% url 'display:getPage_update' %}">数据更新</a></li>
-            <li ><a href="{% url 'display:getPage_statistic' %}">数据统计</a></li>
-            <li ><a href="#admin">管理员</a></li>
+                <li class="active"><a href="{% url 'display:getPage_search' %}">搜索</a></li>
+                <li ><a href="{% url 'display:getPage_statistic' %}">数据统计</a></li>
+              {% ifequal identity 'admin' %}
+                <li ><a href="{% url 'display:getPage_update' %}">更新审查</a></li>
+                <li ><a href="#admin">管理日志</a></li>
+              {% endifequal %}
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

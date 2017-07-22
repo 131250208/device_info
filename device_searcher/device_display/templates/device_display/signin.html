@@ -37,22 +37,23 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
                 <div id="div_signin">
-                    <form class="form-signin">
+                    <form class="form-signin" action="{% url 'display:signin' %}" method="post">
+                        {% csrf_token %}
                         <h2 class="form-signin-heading">登录</h2>
-
                         <label for="focusedInput" class="sr-only">账号</label>
-                        <input type="text" id="focusedInput" class="form-control" placeholder="填写账号" name="account" required oninvalid="setCustomValidity('账号不能为空')" oninput="setCustomValidity('')" autofocus>
+                        <input type="text" id="focusedInput" class="form-control" placeholder="填写账号" name="username"
+                               required pattern="[a-zA-Z_0-9]{5,32}"
+                               oninvalid="setCustomValidity('非法格式的账号，账号合法长度为5-32个字符（可包含英文字母大小写、阿拉伯数字、下划线），不能含中文。')" oninput="setCustomValidity('')" autofocus>
                         <label for="inputPassword" class="sr-only">密码</label>
                         <input type="password" id="inputPassword" class="form-control" placeholder="填写密码" name="password" required oninvalid="setCustomValidity('密码不能为空')" oninput="setCustomValidity('')">
 
                         <div class="checkbox-info">
                             <label>
-                                <input type="checkbox" value="remember-me" name="remember" > 15天内免登录
+                                <input type="checkbox" value="true" name="remember" > 两周内免登录
                             </label>
                         </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-bottom: 10px">登录</button>
                     </form>
-                    <button class="btn btn-lg btn-default btn-block">游客浏览</button>
                 </div>
             </div>
         </div>
