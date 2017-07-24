@@ -5,13 +5,16 @@
         <div class="col-sm-1 chk_all">
             <input type="checkbox">全选
         </div>
+
         <div class="col-sm-3 col-sm-offset-8" style="text-align: right">
+            {% ifequal identity 'admin' %}
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span> 修改
             </button>
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-trash"></span> 删除
             </button>
+            {% endifequal %}
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-download-alt"></span> 导出
             </button>

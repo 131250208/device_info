@@ -32,13 +32,14 @@ urlpatterns = [
     url(r'^search_page/', views.getPage_search, name='getPage_search'),
     url(r'^update_page/$', views.getPage_update, name='getPage_update'),
     url(r'^statistics_page/$', views.getPage_statistic, name='getPage_statistic'),
-
+    url(r'^managelog_page/$', views.getPage_managelog, name='getPage_managelog'),
     url(r'^search_result_page/$', views.getResult_search, name='getResult_search'),
     # url(r'^super_search_result_page/$', views.getResult_super_search, name='getResult_super_search'),
 
     # ----------------------------------------------------------------------------------------------
     # 接口
     url(r'^signup/', views.signup),# signup
-    url(r'^signin/', views.signin,name='signin')# login
+    url(r'^signin/', views.signin,name='signin'),# login
+    url(r'^logout/',views.logout,name='logout')# logout
 
 ]

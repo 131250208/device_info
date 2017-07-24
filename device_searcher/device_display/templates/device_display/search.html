@@ -4,41 +4,50 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link href="{% static 'display/self_defined/css/search.css' %}" rel="stylesheet">
+<link href="{% static 'display/self_defined/css/search.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main_container %}
-    {% include "device_display/logo.html" %}
-    <form role="form" action="{% url 'display:getResult_search' %}" class="search_form">
-        <div class="form-group row" id="search-group">
-            <div class="col-sm-5 col-sm-offset-3" id="div_input" >
-                <input type="text" name="search_text" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
-                <input type="text" name="search_category" id="search_category" hidden>
-            </div>
-            <div class="col-sm-2" id="div_btn" >
-                <!--<button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>-->
-                <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+{% include "device_display/logo.html" %}
+<form role="form" action="{% url 'display:getResult_search' %}" method="post" class="search_form">
+    {% csrf_token %}
+    <div class="form-group row" id="search-group">
+        <div class="col-sm-5 col-sm-offset-3" id="div_input">
+            <input type="text" name="search_text" class="form-control" id="searchtext" required
+                   oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+            <input type="text" name="search_category" id="search_category" hidden>
+        </div>
+        <div class="col-sm-2" id="div_btn">
+            <!--<button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>-->
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
                     搜索
                     <span class="caret"></span>
-                  </button>
-                  <button type="submit" id="btn_submit" hidden></button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                </button>
+                <button type="submit" id="btn_submit" hidden></button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a onclick="tosubmit('type')">类型</a></li>
                     <li><a onclick="tosubmit('brand')">品牌</a></li>
                     <li><a onclick="tosubmit('model')">型号</a></li>
                     <li><a onclick="tosubmit('fingerprint')">指纹</a></li>
-                  </ul>
-                </div>
+                </ul>
             </div>
         </div>
-    </form>
+    </div>
+</form>
 
-    <script>
-        function tosubmit(category) {
-            var search_category = $("input#search_category");
-            search_category.val(category);
-            $("button#btn_submit").click();
-        }
-    </script>
+<script>
+    //设置导航栏的元素active切换
+    $(document).ready(function () {
+        $("li.nav_li").attr("class", "nav_li");
+        $("li#nav_search").addClass("active");
+    });
+    //提交表单函数
+    function tosubmit(category) {
+        var search_category = $("input#search_category");
+        search_category.val(category);
+        $("button#btn_submit").click();
+    }
+</script>
 {% endblock %}

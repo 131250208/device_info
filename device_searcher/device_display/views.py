@@ -17,11 +17,18 @@ from django.contrib.auth.decorators import login_required
 
 # @author wycheng
 # 直接获取页面的函数
+
+# login_page
 def getPage_signin(request):
-    return render(request, 'device_display/signin.html')
+    res_content = {'next':''}
+    if 'next' in request.GET:# if there is a next_page
+        if request.GET['next'] != '':
+            res_content['next'] = request.GET['next']
+    return render(request, 'device_display/signin.html',res_content)
 
 # search_page
 def getPage_search(request):
+    # 判断登录
     if not request.user.is_authenticated():# no login
         res_content = {'identity':'tourist'}
     else:
@@ -42,12 +49,30 @@ def getPage_update(request):
     else:
         res_content = {'identity': 'admin'}
     return render(request, 'device_display/update.html',res_content)
-# search_result
-def getResult_search(request):
+
+# managelog_page
+def getPage_managelog(request):
     if not request.user.is_authenticated():# no login
         res_content = {'identity':'tourist'}
     else:
         res_content = {'identity': 'admin'}
+    return render(request, 'device_display/managelog.html',res_content)
+
+# search_result
+def getResult_search(request):
+    # identity
+    res_content = {'identity': 'admin'}
+    if not request.user.is_authenticated():# no login
+        res_content['identity'] = 'tourist'
+    # search_text
+    if 'search_text' in request.POST:
+        if request.POST['search_text'] != '':
+            res_content['search_text'] = request.POST['search_text']
+    # search_category
+    if 'search_category' in request.POST:
+        if request.POST['search_category'] != '':
+            res_content['search_category'] = request.POST['search_category']
+
     return render(request, 'device_display/search_result.html', res_content)
 
 # def getResult_super_search(request):
@@ -80,19 +105,25 @@ def signin(request):
         # Correct password, and the user is marked "active"
         auth.login(request, user)
 
-        # Redirect to a success page.
-        response =  getPage_search(request)
-
         # remember-me
         if remember_me != "true":
             request.session.set_expiry(1800)
-        return response
+
+        # Redirect to a success page.
+        if request.POST['next'] != "":
+            return HttpResponseRedirect(request.POST['next'])  # 跳转到点击登录前的界面
+        else:
+            return HttpResponseRedirect('/display/search_page/')  # 跳转到search界面
     else:
         # Show an error page
         res_content = {'status_code': 'falure', 'text': u'账号密码错误...',
                        "username_input" : username,"password_input" : password}
         return render(request, 'device_display/signin.html', res_content)
-
+# 登出接口
+def logout(request):
+    auth.logout(request)
+    next_page = request.GET['next']
+    return HttpResponseRedirect(next_page)
 
 
 # ----------------------------------------------------------------------------------------------------------------------

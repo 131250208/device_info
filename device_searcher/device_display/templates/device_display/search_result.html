@@ -4,27 +4,73 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link href="{% static 'display/self_defined/css/search_result.css' %}" rel="stylesheet">
+<link href="{% static 'display/self_defined/css/search_result.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main_container %}
-<form role="form">
+<form role="form" method="post">
+    {% csrf_token %}
     <div class="form-group row" id="search-group">
-        <div class="col-sm-5" id="div_input" >
-            <input type="text" style="" class="form-control" id="searchtext" required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+        <div class="col-sm-5" id="div_input">
+            <input type="text" id="searchtext" name="search_text" value="{{ search_text }}" class="form-control"
+                   required oninvalid="setCustomValidity('请输入搜索内容')" oninput="setCustomValidity('')">
+            <input type="text" id="searchcat" name="search_category" hidden value="{{ search_category }}">
         </div>
-        <div class="col-sm-1" id="div_btn" >
-            <button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>
+        <div class="col-sm-1" id="div_btn">
+            <button type="submit" class="btn btn-sm btn-primary btn-block">搜索</button>
         </div>
     </div>
 </form>
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#" data-toggle="tab">类型</a></li>
-    <li><a href="#" data-toggle="tab">品牌</a></li>
-    <li><a href="#" data-toggle="tab">型号</a></li>
-    <li><a href="#" data-toggle="tab">指纹</a></li>
+<ul class="nav nav-tabs" id="nav_result_cat">
+    <li class="cat active" id="cat_type"><a data-toggle="tab">类型</a></li>
+    <li class="cat" id="cat_brand"><a data-toggle="tab">品牌</a></li>
+    <li class="cat" id="cat_model"><a data-toggle="tab">型号</a></li>
+    <li class="cat" id="cat_fingerprint"><a data-toggle="tab">指纹</a></li>
 </ul>
 
-{% include "device_display/result.html" %}
+<script>
 
+    $(document).ready(
+        //切换结果分类标签的active状态
+        function () {
+            $('#nav_result_cat').children().removeClass('active');
+            var cat = $('#searchcat').val();
+            switch (cat) {
+                case 'type' :
+                    $('#cat_type').addClass('active');
+                    break;
+                case 'brand' :
+                    $('#cat_brand').addClass('active');
+                    break;
+                case 'model' :
+                    $('#cat_model').addClass('active');
+                    break;
+                case 'fingerprint' :
+                    $('#cat_fingerprint').addClass('active');
+                    break;
+            }
+        },
+        //将对应的分类作为参数放到隐藏的input里，以便提交
+        $('.cat').click(function () {
+            var searchcat = $('input#searchcat');
+            switch ($(this).attr('id')) {
+                case 'cat_type' :
+                    searchcat.val('type');
+                    break;
+                case 'cat_brand' :
+                    searchcat.val('brand');
+                    break;
+                case 'cat_model' :
+                    searchcat.val('model');
+                    break;
+                case 'cat_fingerprint' :
+                    searchcat.val('fingerprint');
+                    break;
+            }
+        })
+    );
+
+</script>
+
+{% include "device_display/result.html" %}
 {% endblock %}

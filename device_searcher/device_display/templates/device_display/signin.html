@@ -46,7 +46,7 @@
                                oninvalid="setCustomValidity('非法格式的账号，账号合法长度为5-32个字符（可包含英文字母大小写、阿拉伯数字、下划线），不能含中文。')" oninput="setCustomValidity('')" autofocus>
                         <label for="inputPassword" class="sr-only">密码</label>
                         <input type="password" id="inputPassword" class="form-control" placeholder="填写密码" name="password" required oninvalid="setCustomValidity('密码不能为空')" oninput="setCustomValidity('')">
-
+                        <input type="text" hidden name="next" value="{{ next }}">
                         <div class="checkbox-info">
                             <label>
                                 <input type="checkbox" value="true" name="remember" > 两周内免登录

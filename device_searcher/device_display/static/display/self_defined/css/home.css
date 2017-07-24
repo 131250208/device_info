@@ -78,3 +78,15 @@ footer p {
 #main_container {
 
 }
+
+#login_out {
+    padding: 15px 10px;
+    text-align: right;
+
+}
+#login_out a {
+    color: #9d9d9d;
+}
+#login_out a:hover {
+    color: #ffffff;
+}
