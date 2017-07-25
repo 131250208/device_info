@@ -40,6 +40,6 @@ urlpatterns = [
     # 接口
     url(r'^signup/', views.signup),# signup
     url(r'^signin/', views.signin,name='signin'),# login
-    url(r'^logout/',views.logout,name='logout')# logout
-
+    url(r'^logout/',views.logout,name='logout'),# logout
+    url(r'^search/',views.search,name='search')# logout
 ]

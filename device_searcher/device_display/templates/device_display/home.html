@@ -30,9 +30,51 @@
     <![endif]-->
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        /*====================django ajax ======*/
+        jQuery(document).ajaxSend(function (event, xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            function sameOrigin(url) {
+                // url could be relative or scheme relative or absolute
+                var host = document.location.host; // host + port
+                var protocol = document.location.protocol;
+                var sr_origin = '//' + host;
+                var origin = protocol + sr_origin;
+                // Allow absolute or scheme relative URLs to same origin
+                return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                    // or any other URL that isn't scheme relative or absolute i.e relative.
+                    !(/^(\/\/|http:|https:).*/.test(url));
+            }
+
+            function safeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        });
+        /*===============================django ajax end===*/
+    </script>
 </head>
 
-<body>
+<body background="{% static 'display/img/bg.jpg' %}">
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -50,15 +92,17 @@
             <div class="row">
                 <div class="col-sm-8">
                     <ul class="nav navbar-nav">
-                        <li class="active nav_li" id="nav_search"><a href="{% url 'display:getPage_search' %}">搜索</a></li>
-                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">数据统计</a></li>
+                        <li class="active nav_li" id="nav_search"><a href="{% url 'display:getPage_search' %}">搜索</a>
+                        </li>
+                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">数据统计</a>
+                        </li>
                         {% ifequal identity 'admin' %}
                         <li class="nav_li" id="nav_update"><a href="{% url 'display:getPage_update' %}">更新审查</a></li>
                         <li class="nav_li" id="nav_log"><a href="{% url 'display:getPage_managelog' %}">管理日志</a></li>
                         {% endifequal %}
                     </ul>
                 </div>
-                <div class="col-sm-2" id="login_out" >
+                <div class="col-sm-2" id="login_out">
                     {% ifequal identity 'admin' %}
                     <a id="bt_logout">退出</a>
                     {% else %}
@@ -72,13 +116,11 @@
 
 <div class="container" id="main_container">
 
-    <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-12">
+    <div>
+        <div class="col-sm-12">
             {% block main_container %}
 
             {% endblock %}
-
         </div>
     </div><!--/row-->
 
@@ -102,12 +144,11 @@
     var next_href = window.location.href;
     var url_logout = "{% url 'display:logout' %}";
     var url_login = "{% url 'display:getPage_signin' %}";
-    url_logout = url_logout.concat("?next=",next_href);
-    url_login = url_login.concat("?next=",next_href);
+    url_logout = url_logout.concat("?next=", next_href);
+    url_login = url_login.concat("?next=", next_href);
 
-    $("#bt_logout").attr("href",url_logout);
-    $("#bt_login").attr("href",url_login);
+    $("#bt_logout").attr("href", url_logout);
+    $("#bt_login").attr("href", url_login);
 </script>
-
 </body>
 </html>

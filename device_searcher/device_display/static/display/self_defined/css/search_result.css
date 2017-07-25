@@ -22,7 +22,6 @@
 }
 
 #results_container {
-    min-height: 500px;
     max-height: none;
 }
 #results_container button{

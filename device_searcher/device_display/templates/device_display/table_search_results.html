@@ -1,0 +1,27 @@
+{% extends "device_display/table_selfdefined.html" %}
+
+{% block thead %}
+    <tr>
+        <th>
+            <input type="checkbox" style="margin-right: 5px">全选
+        </th>
+
+        {% for name in fieldnames %}
+        <th>{{ name }}</th>
+        {% endfor %}
+    </tr>
+{% endblock %}
+
+{% block tbody %}
+    {% for row in record_list %}
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+
+        {% for value in row %}
+        <th>{{ value }}</th>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+{% endblock %}

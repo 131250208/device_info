@@ -31,43 +31,4 @@
         </div>
     </div>
 </form>
-<div class="table-responsive">
-    <table class="table table-striped" >
-        <thead>
-            <tr>
-                <th>
-                    <input type="checkbox" style="margin-right: 5px">全选
-                </th>
-                <th>序号</th>
-                <th>数据来源</th>
-                <th>目标分类</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <input type="checkbox" >
-                </td>
-                <td>1</td>
-                <td>中关村在线</td>
-                <td>类型/型号</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" >
-                </td>
-                <td>2</td>
-                <td>网站2</td>
-                <td>品牌</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" >
-                </td>
-                <td>3</td>
-                <td>网站3</td>
-                <td>型号</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+{% include "device_display/table_selfdefined.html" %}

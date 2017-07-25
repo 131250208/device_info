@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
+import json
+from django.http import HttpResponse
 from util.general_util import *
 from . import models
 from django.contrib import auth
@@ -12,66 +13,90 @@ from util.start_spider import init_scrapy_module, start_spiders
 from util.start_update import init_start_update_module, start_update
 from django.contrib.auth.decorators import login_required
 
-# if not request.user.is_authenticated():
-#         return HttpResponseRedirect('/accounts/login/?next=%s' % request.path)
 
 # @author wycheng
-# 直接获取页面的函数
+# 直接获取页面的函数 --------------------------------------------------------------
 
 # login_page
 def getPage_signin(request):
-    res_content = {'next':''}
-    if 'next' in request.GET:# if there is a next_page
+    res_content = {'next': ''}
+    if 'next' in request.GET:  # if there is a next_page
         if request.GET['next'] != '':
             res_content['next'] = request.GET['next']
-    return render(request, 'device_display/signin.html',res_content)
+    return render(request, 'device_display/signin.html', res_content)
+
 
 # search_page
 def getPage_search(request):
     # 判断登录
-    if not request.user.is_authenticated():# no login
-        res_content = {'identity':'tourist'}
+    if not request.user.is_authenticated():  # no login
+        res_content = {'identity': 'tourist'}
     else:
         res_content = {'identity': 'admin'}
 
-    return render(request, 'device_display/search.html',res_content)
+    return render(request, 'device_display/search.html', res_content)
+
+
 # statistics page
 def getPage_statistic(request):
-    if not request.user.is_authenticated():# no login
-        res_content = {'identity':'tourist'}
+    if not request.user.is_authenticated():  # no login
+        res_content = {'identity': 'tourist'}
     else:
         res_content = {'identity': 'admin'}
-    return render(request, 'device_display/statistics.html',res_content)
+    return render(request, 'device_display/statistics.html', res_content)
+
+
 # update_page
 def getPage_update(request):
-    if not request.user.is_authenticated():# no login
-        res_content = {'identity':'tourist'}
+    if not request.user.is_authenticated():  # no login
+        res_content = {'identity': 'tourist'}
     else:
         res_content = {'identity': 'admin'}
-    return render(request, 'device_display/update.html',res_content)
+    return render(request, 'device_display/update.html', res_content)
+
 
 # managelog_page
 def getPage_managelog(request):
-    if not request.user.is_authenticated():# no login
-        res_content = {'identity':'tourist'}
+    if not request.user.is_authenticated():  # no login
+        res_content = {'identity': 'tourist'}
     else:
         res_content = {'identity': 'admin'}
-    return render(request, 'device_display/managelog.html',res_content)
+    return render(request, 'device_display/managelog.html', res_content)
+
 
 # search_result
 def getResult_search(request):
     # identity
-    res_content = {'identity': 'admin'}
-    if not request.user.is_authenticated():# no login
-        res_content['identity'] = 'tourist'
+
+    identity = "admin"
+    search_text = ""
+    search_category = ""
+    page_index = ""
+
+    if not request.user.is_authenticated():  #if no login
+        identity = 'tourist'
+
     # search_text
     if 'search_text' in request.POST:
         if request.POST['search_text'] != '':
-            res_content['search_text'] = request.POST['search_text']
+            search_text = request.POST['search_text']
     # search_category
     if 'search_category' in request.POST:
         if request.POST['search_category'] != '':
-            res_content['search_category'] = request.POST['search_category']
+            search_category = request.POST['search_category']
+
+    if 'page_index' in request.POST:
+        if request.POST['page_index'] != '':
+            page_index = request.POST['page_index']
+
+    res_content = {}
+    if search_text != "" and search_category != "" and page_index != "":
+        res_content = search_private(search_text, search_category, page_index)
+
+    res_content['identity'] = identity
+    res_content['search_text'] = search_text
+    res_content['search_category'] = search_category
+    res_content['page_index'] = page_index
 
     return render(request, 'device_display/search_result.html', res_content)
 
@@ -80,7 +105,8 @@ def getResult_search(request):
 #     return render(request, 'device_display/super_search_result.html', res_content)
 
 # wait for liumingdong
-# 后端接口
+# 后端接口 -------------------------------------------------------------------------------------------------
+
 # 临时注册接口
 def signup(request):
     user = User.objects.create_user(username='wychengpublic',
@@ -89,11 +115,13 @@ def signup(request):
 
     user = User.objects.get(username='wychengpublic')
     if user.is_authenticated() and user.check_password("wychengpublic"):
-        res_content = {"info":"signup success! your account : wychengpublic ,your pswd : wychengpublic ."}
+        res_content = {"info": "signup success! your account : wychengpublic ,your pswd : wychengpublic ."}
     else:
-        res_content = {"info":"failure..."}
+        res_content = {"info": "failure..."}
 
-    return render(request, 'device_display/signup_success.html',res_content)
+    return render(request, 'device_display/signup_success.html', res_content)
+
+
 # 登录接口
 def signin(request):
     username = request.POST.get('username', '')
@@ -117,8 +145,10 @@ def signin(request):
     else:
         # Show an error page
         res_content = {'status_code': 'falure', 'text': u'账号密码错误...',
-                       "username_input" : username,"password_input" : password}
+                       "username_input": username, "password_input": password}
         return render(request, 'device_display/signin.html', res_content)
+
+
 # 登出接口
 def logout(request):
     auth.logout(request)
@@ -126,6 +156,40 @@ def logout(request):
     return HttpResponseRedirect(next_page)
 
 
+# 搜索接口
+def search_private(search_text, search_category, page_index):
+    # 调用下层接口获取以下数据 @liumingdong
+    res_content = {}
+    res_content['fieldnames'] = [
+        'fieldname1','fieldname2',
+         'fieldname3','fieldname4'
+    ] # 字段数要与record_list中的每个list长度对应
+
+    res_content['record_list'] = [
+        [ 'value',  'value2'
+            , 'value4', 'value4'],
+        ['value', 'value2'
+            , 'value4', 'value4']
+    ]
+    # 查询结果的list
+    for i in range(13):
+        res_content['record_list'].append(
+            ['value', 'value2'
+                , 'value4', 'value4'])
+
+    res_content['records_num'] = 100 # 结果的总数
+    res_content['search_time'] = 0.134 # 查询用时（s
+    return res_content
+
+# 返回json的search
+def search(request):
+    search_text = request.POST['search_text']
+    search_category = request.POST['search_category']
+    page_index = request.POST['page_index']
+
+    res_content = search_private(search_text,search_category,page_index)
+
+    return HttpResponse(json.dumps(res_content))
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")
@@ -156,7 +220,7 @@ def search_action(request):
     brand_models = []
     search_text = request.POST.get('search_text', '').strip()
     type_list = request.POST.get('type_list', 'brand').strip()
-    
+
     search_type_dict = {'brand': '品牌', 'device_type': '类型', 'model': '型号'}
     if type_list in search_type_dict.keys():
         search_type = search_type_dict[type_list]

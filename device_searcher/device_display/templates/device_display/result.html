@@ -2,11 +2,7 @@
 
 <div class="container" id="results_container">
     <div class="row group_gray">
-        <div class="col-sm-1 chk_all">
-            <input type="checkbox">全选
-        </div>
-
-        <div class="col-sm-3 col-sm-offset-8" style="text-align: right">
+        <div class="col-sm-3 col-sm-offset-9" style="text-align: right">
             {% ifequal identity 'admin' %}
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span> 修改
@@ -20,23 +16,26 @@
             </button>
         </div>
     </div>
-
-</div>
-<div class="container results_content">
-
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3" style="text-align: center">
-             <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-        </div>
+    <div class="row results_content">
+        {% include "device_display/table_search_results.html" %}
     </div>
+
 </div>
+
+<div style="text-align: center">
+    <ul class="pagination">
+        <li><a>&laquo;</a></li>
+        <li><a>1</a></li>
+        <li><a>2</a></li>
+        <li><a>3</a></li>
+        <li><a>4</a></li>
+        <li><a>5</a></li>
+        <li><a>6</a></li>
+        <li><a>7</a></li>
+        <li><a>8</a></li>
+        <li><a>9</a></li>
+        <li><a>10</a></li>
+        <li><a>&raquo;</a></li>
+    </ul>
+</div>
+
