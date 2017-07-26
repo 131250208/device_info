@@ -177,7 +177,8 @@ def search_private(search_text, search_category, page_index):
             ['value', 'value2'
                 , 'value4', 'value4'])
 
-    res_content['records_num'] = 100 # 结果的总数
+    res_content['records_num'] = 300 # 结果的总数
+    res_content['page_total'] = 20 # 总页数,每页最多15条数据，不够15条也算做一页
     res_content['search_time'] = 0.134 # 查询用时（s
     return res_content
 

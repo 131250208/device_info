@@ -40,8 +40,78 @@ function show_intable(result_json) {
     }
 }
 
+// 根据当前页码调整翻页组件,当前页码标签设为active
+// 该调整函数会将原来的页码元素清空，所以需要重新注册点击事件
+function adjust_pages() {
+    var page_index = $("input[name='page_index']").val();
 
-<!--用于处理结果分类的tab状态，以及点击tab改变隐藏分类input的事件和post请求-->
+    var pagination = $('ul.pagination');
+    pagination.empty();
+
+    var page_current_li = page_li(page_index);
+    pagination.append(page_current_li);
+    page_current_li.addClass('active');
+
+    var bf_num = 4;
+    var aft_num = 5;
+
+    var page_num_bf = parseInt(page_index);
+    while (bf_num) {
+        if (--page_num_bf <= 0) {
+            break;
+        }
+        bf_num--;
+        pagination.prepend(page_li(String(page_num_bf)));
+    }
+    aft_num += bf_num;// 如果前方待插入数还有余，用于后方插入直到遇到末页
+
+    var page_end = $("input[name = 'page_total']").val();
+    var page_num_aft = parseInt(page_index);
+    while (aft_num) {
+        if (++page_num_aft > page_end) {
+            break;
+        }
+        aft_num--;
+        pagination.append(page_li(String(page_num_aft)));
+    }
+
+    if (aft_num) {// 如果后方待插入数还有余，用于前方插入直到首页
+        while (aft_num) {
+            if (--page_num_bf <= 0) {
+                break;
+            }
+            aft_num--;
+            pagination.prepend(page_li(String(page_num_bf)));
+        }
+    }
+
+    var prev = page_li("«");
+    var next = page_li("»");
+    pagination.prepend(prev);
+    pagination.append(next);
+
+    if (page_index === "1") {
+        prev.hide();
+    } else if (page_index === page_end) {
+        next.hide();
+    }
+
+}
+
+// 生成页码元素li
+function page_li(page_text) {
+    var li = $("<li></li>");
+    if (page_text === "«") {
+        li = $("<li class='prev'></li>");
+    } else if (page_text === "»") {
+        li = $("<li class='next'></li>");
+    }
+    var a = $("<a></a>");
+    a.text(page_text);
+    li.append(a);
+    return li;
+}
+<!--初始化翻页组件和分类tab组件，并为之注册点击事件-->
 $(document).ready(
     function () {
         // 切换结果分类标签的active状态
@@ -61,20 +131,20 @@ $(document).ready(
                 $('#cat_fingerprint').addClass('active');
                 break;
         }
-        // 当前页码标签设为active
-        var page_index = $("input[name='page_index']").val();
-
-        var li_page_current = $("ul.pagination li:eq(" + page_index + ")");
-        li_page_current.siblings().removeClass('active')
-        li_page_current.addClass('active');
+        // 注册点击分类tab的事件
+        cat_tab_click();
+        // 初始化翻页组件并设置当前页码标签设为active
+        adjust_pages();
+        page_li_click();
 
         // 调整结果容器的高
         var height = window.innerHeight - 380;
         $('div.results_content').css("min-height", height);
 
-    },
-
-    // 注册点击分类tab的事件,将对应的分类作为参数放到隐藏的input里，接着发送post请求调用接口
+    }
+);
+// 注册点击分类tab的事件,将对应的分类作为参数放到隐藏的input里
+function cat_tab_click() {
     $('.cat').click(function () {
         var inp_searchcat = $('input#searchcat');
         switch ($(this).attr('id')) {
@@ -102,42 +172,40 @@ $(document).ready(
         } else {
             get_results(search_text, search_category, page_index);
         }
-    }),
-    // 注册点击页码的事件
-    $('ul.pagination li').click(function () {
-        var search_text = $("input[name='search_text']").val();
-        var search_category = $("input[name='search_category']").val();
-        var inp_page = $("input[name='page_index']");
-        var page_current = inp_page.val();
-        var li_page_current = $("ul.pagination li:eq(" + page_current + ")");
+    });
+}
 
+// 注册点击页码的事件
+function page_li_click() {
+    var search_text = $("input[name='search_text']").val();
+    var search_category = $("input[name='search_category']").val();
+    var inp_page = $("input[name='page_index']");
+
+    var page_current = inp_page.val();
+    var page_end = $("input[name = 'page_total']").val();
+
+    $('ul.pagination li').on("click", function () {
         // 调整页码参数
         var page_next = $(this).text();
 
-        $(this).siblings().removeClass('active');
-
         if (page_next === "«") {
             page_next = parseInt(page_current) - 1;
-            li_page_current.prev().addClass('active');
         }
         else if (page_next === "»") {
             page_next = parseInt(page_current) + 1;
-            li_page_current.next().addClass('active');
-        } else {
-            // 修改当前页码为active
-            $(this).addClass('active');
         }
         // 修改当前页码存放在隐藏input
         inp_page.val(page_next);
 
+        adjust_pages();
+        page_li_click();
 
         var inp_searchtext = document.getElementById("searchtext");
         if (inp_searchtext.value === "") {
-//            inp_searchtext.setCustomValidity('搜索内容不能为空，且不包含特殊字符(\\，；)。');
+            //            inp_searchtext.setCustomValidity('搜索内容不能为空，且不包含特殊字符(\\，；)。');
         } else {
-
             get_results(search_text, search_category, page_next);
         }
-    })
-);
+    });
+}
 
