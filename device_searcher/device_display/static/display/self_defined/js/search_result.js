@@ -4,12 +4,16 @@
 
 
 function append_tr(father, row) {
+    var unit = "td"
+    if (row.id === -1) {
+        unit = "th"
+    }
     var tr = document.createElement("tr");
 
     var input = document.createElement("input");
     input.type = "checkbox";
     input.value = row.id;
-    var chk_box = document.createElement("th");
+    var chk_box = document.createElement(unit);
     chk_box.appendChild(input);
 
     if (row.id === -1) {
@@ -21,7 +25,7 @@ function append_tr(father, row) {
 
     var val_list = row.field_val;
     for (var i = 0; i < val_list.length; ++i) {
-        var th = document.createElement("th");
+        var th = document.createElement(unit);
         th.innerHTML = val_list[i];
         tr.appendChild(th);
     }
@@ -160,6 +164,9 @@ $(document).ready(
         // 为删除按钮添加点击事件
         bt_delete_click();
 
+        // 为修改按钮注册点击事件
+        bt_edit_click();
+
         // 调整结果容器的高
         var height = window.innerHeight - 380;
         $('div.results_content').css("min-height", height);
@@ -262,14 +269,46 @@ function get_ids_checked() {
 
 // 给删除按钮注册点击事件
 function bt_delete_click() {
-    $('button#btn_delete').on('click',function () {
+    $('button#btn_delete').on('click', function () {
         var delete_id_list = get_ids_checked();
-        if(delete_id_list.length != 0){
+        if (delete_id_list.length != 0) {
             var delete_category = $("input[name='search_category']").val();
-            delete_row(delete_id_list,delete_category);
-        }else {
+            delete_row(delete_id_list, delete_category);
+        } else {
             //
             alert("没有选中任何项");
         }
+    });
+}
+
+// 给修改按钮添加点击事件
+function bt_edit_click() {
+    $('button#btn_edit').on('click', function () {
+        var str = $(this).text().Trim();
+
+        if (str === "修改") {
+            // 切换图标
+            $(this).html("<span class='glyphicon glyphicon-floppy-save'></span> 保存");
+            // 将表格切换成编辑框
+            $("input[type='checkbox']:checked").parent().siblings("td").each(function () {
+                var text_inputs = $(this).find("input:text");
+                if (!text_inputs.length) {
+                    // 用 name 属性来保存原来的值，以便修改失败后恢复显示
+                    $(this).html("<input type='text' class='form-control_self' " +
+                        "name='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");
+
+                }
+            });
+            // alert($("tbody tr:nth-of-type(2n)").css("color"));
+        }
+        else if (str === "保存") {
+            // 切换图标
+            $(this).html("<span class='glyphicon glyphicon-pencil'></span> 修改");
+            $("tbody td input:text").each(function () {
+                $(this).parent().html($(this).prop("name"));
+            });
+        }
+
+
     });
 }
