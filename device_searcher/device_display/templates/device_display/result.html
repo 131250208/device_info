@@ -4,15 +4,15 @@
     <div class="row group_gray">
         <div class="col-sm-3 col-sm-offset-9" style="text-align: right">
             {% ifequal identity 'admin' %}
-            <button type="button" class="btn btn-default btn-sm">
+            <button type="button" id="btn_edit" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span> 修改
             </button>
-            <button type="button" class="btn btn-default btn-sm">
+            <button type="button" id="btn_delete" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-trash"></span> 删除
             </button>
             {% endifequal %}
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-download-alt"></span> 导出
+            <button type="button" id="btn_export" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-download-alt"><a href="{% url 'display:export_record' %}"></a></span> 导出
             </button>
         </div>
     </div>

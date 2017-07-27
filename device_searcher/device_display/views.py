@@ -156,26 +156,24 @@ def logout(request):
     return HttpResponseRedirect(next_page)
 
 
-# 搜索接口
+# 搜索接口 @liumingdong
 def search_private(search_text, search_category, page_index):
+    # 参数： 搜索关键词/搜索分类/搜索页码
+    # 分类的可选项 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
+
     # 调用下层接口获取以下数据 @liumingdong
     res_content = {}
     res_content['fieldnames'] = [
         'fieldname1','fieldname2',
          'fieldname3','fieldname4'
-    ] # 字段数要与record_list中的每个list长度对应
+    ] # 字段不包括id
 
-    res_content['record_list'] = [
-        [ 'value',  'value2'
-            , 'value4', 'value4'],
-        ['value', 'value2'
-            , 'value4', 'value4']
-    ]
+    res_content['record_list'] = []
     # 查询结果的list
-    for i in range(13):
+    for i in range(15):
         res_content['record_list'].append(
-            ['value', 'value2'
-                , 'value4', 'value4'])
+            {'id':i , 'field_val':['value', 'value2'
+                , 'value4', 'value4']})
 
     res_content['records_num'] = 300 # 结果的总数
     res_content['page_total'] = 20 # 总页数,每页最多15条数据，不够15条也算做一页
@@ -191,6 +189,21 @@ def search(request):
     res_content = search_private(search_text,search_category,page_index)
 
     return HttpResponse(json.dumps(res_content))
+
+# 删除接口 @liumingdong
+def delete_record(request):
+    id_list = request.POST['id_list[]']# 删除的id_list
+    delete_category = request.POST['delete_category']# 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
+
+    if len(id_list) != 0:
+        # 调用下层接口删除对应id的数据 @liumingdong
+        pass
+    res_content = {'failure':[3,6,7]}# 返回删除失败的记录的id @liumingdong
+    return HttpResponse(json.dumps(res_content))
+
+# 导出接口
+def export_record(request):
+    pass
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

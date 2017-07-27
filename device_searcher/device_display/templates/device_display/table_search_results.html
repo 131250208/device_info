@@ -3,7 +3,7 @@
 {% block thead %}
     <tr>
         <th>
-            <input type="checkbox" style="margin-right: 5px">全选
+            <input type="checkbox" style="margin-right: 5px" value="-1">全选
         </th>
 
         {% for name in fieldnames %}
@@ -16,10 +16,10 @@
     {% for row in record_list %}
     <tr>
         <td>
-            <input type="checkbox">
+            <input type="checkbox" value="{{ row.id }}" >
         </td>
 
-        {% for value in row %}
+        {% for value in row.field_val %}
         <th>{{ value }}</th>
         {% endfor %}
     </tr>

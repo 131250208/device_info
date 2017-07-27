@@ -41,5 +41,7 @@ urlpatterns = [
     url(r'^signup/', views.signup),# signup
     url(r'^signin/', views.signin,name='signin'),# login
     url(r'^logout/',views.logout,name='logout'),# logout
-    url(r'^search/',views.search,name='search')# logout
+    url(r'^search/',views.search,name='search'),# search
+    url(r'^delete_record/',views.delete_record,name='delete_record'),# delete_record
+    url(r'^export_record/',views.export_record,name='export_record')# export_record
 ]

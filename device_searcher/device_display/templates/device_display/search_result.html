@@ -8,8 +8,7 @@
 {% endblock %}
 
 {% block main_container %}
-<form role="form" method="post">
-    {% csrf_token %}
+<form role="form" >
     <div class="form-group row" id="search-group">
         <div class="col-sm-5" id="div_input">
             <input type="text" id="searchtext" name="search_text" value="{{ search_text }}" class="form-control"
@@ -17,10 +16,11 @@
                    oninput="setCustomValidity('')">
             <input type="text" id="searchcat" name="search_category" hidden value="{{ search_category }}">
             <input type="text" name="page_index" value="{{ page_index }}" hidden>
-            <input type="text" name="page_total" value="{{ page_total }}" hidden>
+            <input type="text" id="page_total" value="{{ page_total }}" hidden>
+            <input type="text" id="searchtext_last" value="{{ search_text }}" hidden>
         </div>
         <div class="col-sm-1" id="div_btn">
-            <button type="submit" class="btn btn-sm btn-primary btn-block">搜索</button>
+            <button type="button" id="btn_search" class="btn btn-sm btn-primary btn-block">搜索</button>
         </div>
     </div>
 </form>
@@ -47,6 +47,8 @@
             function (data, status) {
                 if (status === 'success') {
                     alert('success!,参数：' + search_text + "," + search_category + "," + page_index);
+                    // 记录上次搜索成功的关键词，以便下次搜索输入框为空时，作为默认关键词提交
+                    $('input#searchtext_last').val(search_text);
                     var result_json = eval('(' + data + ')');
                     show_intable(result_json);
                 }else {
@@ -54,6 +56,28 @@
                     alert('请求失败了……');
                 }
             });
+    }
+    // post to delete
+    function delete_row(ids_list,delete_category) {
+        var url = "{% url 'display:delete_record' %}";
+        $.post(url,
+            {'id_list':ids_list,
+            'delete_category': delete_category},
+        function (data,status) {
+            if (status === 'success') {
+                var result_json = eval('(' + data + ')');
+
+                var failure_id_list = result_json.failure;
+                var suc_len = ids_list.length - failure_id_list.length;
+                //
+                alert("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length);
+                // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
+
+            }else {
+                // 显示错误信息到页面
+                alert('请求失败了……');
+            }
+        })
     }
 </script>
 {% endblock %}
