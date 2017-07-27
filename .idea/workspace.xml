@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/search_result.css" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/search_result.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_search_results.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_search_results.html" />
-    </list>
+    <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
