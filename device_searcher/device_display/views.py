@@ -164,8 +164,8 @@ def search_private(search_text, search_category, page_index):
     # 调用下层接口获取以下数据 @liumingdong
     res_content = {}
     res_content['fieldnames'] = [
-        'fieldname1','fieldname2',
-         'fieldname3','fieldname4'
+        u'字段1',u'字段2',
+         u'字段3',u'字段4'
     ] # 字段不包括id
 
     res_content['record_list'] = []
@@ -175,8 +175,8 @@ def search_private(search_text, search_category, page_index):
             {'id':i , 'field_val':['value', 'value2'
                 , 'value4', 'value4']})
 
-    res_content['records_num'] = 300 # 结果的总数
-    res_content['page_total'] = 20 # 总页数,每页最多15条数据，不够15条也算做一页
+    res_content['records_num'] = 10 # 结果的总数
+    res_content['page_total'] = 1 # 总页数,每页最多15条数据，不够15条也算做一页
     res_content['search_time'] = 0.134 # 查询用时（s
     return res_content
 

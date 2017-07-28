@@ -34,13 +34,18 @@ function append_tr(father, row) {
 
 // 将查询结果显示到表格上
 function show_intable(result_json) {
+    // result_info
+    var info = $('p#result_info');
+    info.html("查找结果：" + result_json.records_num + " 条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 " + result_json.page_total + " 页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;耗时：" + result_json.search_time + " s");
+
     // thead
     var thead = $('table.table thead');
     thead.empty();
 
-    var field_name = {'id': -1, 'field_val': ['field_name1', 'field_name2', 'field_name3', 'field_name4']}
+    var field_names = result_json.fieldnames
+    var thead_dict = {'id': -1, 'field_val': field_names}
     // var result_json = eval('(' + data + ')');
-    append_tr(thead, field_name)
+    append_tr(thead, thead_dict)
 
     // tbody
     var tbody = $("table.table tbody");
@@ -58,6 +63,10 @@ function show_intable(result_json) {
 // 根据当前页码调整翻页组件,当前页码标签设为active
 // 该调整函数会将原来的页码元素清空，所以需要重新注册点击事件
 function adjust_pages() {
+    var page_total = $("input#page_total").val();
+    if (page_total <= 1){
+        return
+    }
     var page_index = $("input[name='page_index']").val();
 
     var pagination = $('ul.pagination');
@@ -107,7 +116,8 @@ function adjust_pages() {
 
     if (page_index === "1") {
         prev.hide();
-    } else if (page_index === page_end) {
+    }
+    if (page_index === page_end) {
         next.hide();
     }
 
