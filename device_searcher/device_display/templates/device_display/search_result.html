@@ -51,6 +51,8 @@
                     $('input#searchtext_last').val(search_text);
                     var result_json = eval('(' + data + ')');
                     show_intable(result_json);
+                    adjust_pages();
+                    page_li_click();
                 }else {
                     // 显示错误信息到页面
                     alert('请求失败了……');

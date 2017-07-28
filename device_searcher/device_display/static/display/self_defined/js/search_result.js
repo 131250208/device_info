@@ -65,13 +65,15 @@ function show_intable(result_json) {
 // 该调整函数会将原来的页码元素清空，所以需要重新注册点击事件
 function adjust_pages() {
     var page_total = $("input#page_total").val();
-    if (page_total <= 1){
-        return
-    }
+
     var page_index = $("input[name='page_index']").val();
 
     var pagination = $('ul.pagination');
     pagination.empty();
+    
+    if (page_total <= 1){
+        return
+    }
 
     var page_current_li = page_li(page_index);
     pagination.append(page_current_li);
@@ -203,10 +205,7 @@ function cat_tab_click() {
                 break;
         }
 
-
         get_results_post();
-        adjust_pages();
-        page_li_click();
 
     });
 }
