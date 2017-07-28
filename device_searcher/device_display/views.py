@@ -175,8 +175,8 @@ def search_private(search_text, search_category, page_index):
             {'id':i , 'field_val':['value', 'value2'
                 , 'value4', 'value4']})
 
-    res_content['records_num'] = 10 # 结果的总数
-    res_content['page_total'] = 1 # 总页数,每页最多15条数据，不够15条也算做一页
+    res_content['records_num'] = 100 # 结果的总数
+    res_content['page_total'] = 2 # 总页数,每页最多15条数据，不够15条也算做一页
     res_content['search_time'] = 0.134 # 查询用时（s
     return res_content
 
@@ -192,13 +192,13 @@ def search(request):
 
 # 删除接口 @liumingdong
 def delete_record(request):
-    id_list = request.POST['id_list[]']# 删除的id_list
+    id_list = request.POST['id_list']# 删除的id_list
     delete_category = request.POST['delete_category']# 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
 
     if len(id_list) != 0:
         # 调用下层接口删除对应id的数据 @liumingdong
         pass
-    res_content = {'failure':[3,6,7]}# 返回删除失败的记录的id @liumingdong
+    res_content = {'failure':[3,6,7,id_list]}# 返回删除失败的记录的id @liumingdong
     return HttpResponse(json.dumps(res_content))
 
 # 导出接口

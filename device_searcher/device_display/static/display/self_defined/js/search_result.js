@@ -37,6 +37,7 @@ function show_intable(result_json) {
     // result_info
     var info = $('p#result_info');
     info.html("查找结果：" + result_json.records_num + " 条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 " + result_json.page_total + " 页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;耗时：" + result_json.search_time + " s");
+    $("input#page_total").val(result_json.page_total);
 
     // thead
     var thead = $('table.table thead');
@@ -202,7 +203,11 @@ function cat_tab_click() {
                 break;
         }
 
+
         get_results_post();
+        adjust_pages();
+        page_li_click();
+
     });
 }
 
