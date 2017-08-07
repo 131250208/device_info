@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block main_container %}
-<form role="form" >
+<form role="form">
     <div class="form-group row" id="search-group">
         <div class="col-sm-5" id="div_input">
             <input type="text" id="searchtext" name="search_text" value="{{ search_text }}" class="form-control"
@@ -53,33 +53,66 @@
                     show_intable(result_json);
                     adjust_pages();
                     page_li_click();
-                }else {
+                } else {
                     // 显示错误信息到页面
                     alert('请求失败了……');
                 }
             });
     }
     // post to delete
-    function delete_row(ids_list,delete_category) {
+    function delete_row(ids_list, delete_category) {
         var url = "{% url 'display:delete_record' %}";
         $.post(url,
-            {'id_list':ids_list,
-            'delete_category': delete_category},
-        function (data,status) {
-            if (status === 'success') {
-                var result_json = eval('(' + data + ')');
+            {
+                'id_list': ids_list,
+                'delete_category': delete_category
+            },
+            function (data, status) {
+                if (status === 'success') {
+                    var result_json = eval('(' + data + ')');
 
-                var failure_id_list = result_json.failure;
-                var suc_len = ids_list.length - failure_id_list.length;
-                //
-                alert("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
-                // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
+                    var failure_id_list = result_json.failure;
+                    var suc_len = ids_list.length - failure_id_list.length;
+                    //
+                    alert("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
+                    // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
 
-            }else {
-                // 显示错误信息到页面
-                alert('请求失败了……');
+                } else {
+                    // 显示错误信息到页面
+                    alert('请求失败了……');
+                }
+            });
+    }
+    // post to edit
+    function edit_row(row_list, delete_category) {
+        var url = "{% url 'display:edit_record' %}";
+
+        $.post(url,
+            {
+                'list_len': row_list.length,
+                'row_list': row_list,
+                'delete_category': delete_category
+            },
+            function (data, status) {
+                if (status === 'success') {
+                    alert('修改成功了');
+                    var result_json = eval('(' + data + ')');
+                    var list_success = result_json.sucess;
+                    var ind;
+                    for (ind in list_success){
+                        var id = list_success[ind][0];
+                        var row_fields = $("input[type = 'checkbox'][value = "+id+"]").parent().siblings();
+                        row_fields.each(function (index,element) {
+                            $(this).html(list_success[ind][index+1]);
+                        });
+                    }
+                }
+                else {
+                    // 显示错误信息到页面
+                    alert('请求失败了……');
+                }
             }
-        })
+        );
     }
 </script>
 {% endblock %}

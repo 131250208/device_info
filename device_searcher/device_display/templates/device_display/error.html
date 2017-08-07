@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+    <title>{{ error_code }}</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<style>
+    div.text_info {
+        color: #9d9d9d;
+    }
+</style>
+
+<body background="{% static 'display/img/bg.jpg' %}" >
+<div class="foundation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 text_info" style="text-align: center;vertical-align: middle">
+                {{ error_code }}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var height = window.innerHeight;
+        var font_size = 200;
+        $("div.foundation").css("min-height", height);
+
+        var text_info = $("div.text_info");
+        text_info.css("font-size",font_size);
+        text_info.css("margin-top",200);
+    });
+</script>
+</html>

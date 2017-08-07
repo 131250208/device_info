@@ -100,6 +100,18 @@ def getResult_search(request):
 
     return render(request, 'device_display/search_result.html', res_content)
 
+def getErrorPage_404(request):
+    res_content = {"error_code":"404"}
+    return render(request, 'device_display/error.html', res_content)
+
+def getErrorPage_403(request):
+    res_content = {"error_code":"403"}
+    return render(request, 'device_display/error.html', res_content)
+
+def getErrorPage_500(request):
+    res_content = {"error_code":"500"}
+    return render(request, 'device_display/error.html', res_content)
+
 # def getResult_super_search(request):
 #     res_content = {}
 #     return render(request, 'device_display/super_search_result.html', res_content)
@@ -198,9 +210,21 @@ def delete_record(request):
     if len(id_list) != 0:
         # 调用下层接口删除对应id的数据 @liumingdong
         pass
-    res_content = {'failure':[3,6,7,id_list]}# 返回删除失败的记录的id @liumingdong
+    res_content = {'failure':[3,6,7]}# 返回删除失败的记录的id @liumingdong
     return HttpResponse(json.dumps(res_content))
 
+# 修改接口
+def edit_record(request):
+    list_len = request.POST['list_len'] # 要修改的元组个数，方便你计算取list的key值
+    row_list = request.POST.getlist('row_list[0][]')  # 要修改的行数据的list，第一个字段为id
+    delete_category = request.POST['delete_category']  # 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
+
+    print row_list
+    # 进行后台的修改操作 @liumingdong
+
+    res_content = {'sucess':[[0,'字段1','字段2','字段3','字段4'],
+                             [1, '字段1', '字段2', '字段3', '字段4'],]} # 返回修改成功的元组的list，包括id在内的所有字段为一个元组,@liumingdong
+    return HttpResponse(json.dumps(res_content))
 # 导出接口
 def export_record(request):
     pass

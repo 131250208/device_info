@@ -34,14 +34,18 @@ urlpatterns = [
     url(r'^statistics_page/$', views.getPage_statistic, name='getPage_statistic'),
     url(r'^managelog_page/$', views.getPage_managelog, name='getPage_managelog'),
     url(r'^search_result_page/$', views.getResult_search, name='getResult_search'),
+    url(r'^error_page_404/$', views.getErrorPage_404, name='error_page'),
+    url(r'^error_page_403/$', views.getErrorPage_403, name='error_page'),
+    url(r'^error_page_500/$', views.getErrorPage_500, name='error_page'),
     # url(r'^super_search_result_page/$', views.getResult_super_search, name='getResult_super_search'),
 
     # ----------------------------------------------------------------------------------------------
     # 接口
-    url(r'^signup/', views.signup),# signup
-    url(r'^signin/', views.signin,name='signin'),# login
-    url(r'^logout/',views.logout,name='logout'),# logout
-    url(r'^search/',views.search,name='search'),# search
-    url(r'^delete_record/',views.delete_record,name='delete_record'),# delete_record
-    url(r'^export_record/',views.export_record,name='export_record')# export_record
+    url(r'^signup/', views.signup),  # signup
+    url(r'^signin/', views.signin, name='signin'),  # login
+    url(r'^logout/', views.logout, name='logout'),  # logout
+    url(r'^search/', views.search, name='search'),  # search
+    url(r'^edit_record/', views.edit_record, name='edit_record'),  # edit_record
+    url(r'^delete_record/', views.delete_record, name='delete_record'),  # delete_record
+    url(r'^export_record/', views.export_record, name='export_record')  # export_record
 ]

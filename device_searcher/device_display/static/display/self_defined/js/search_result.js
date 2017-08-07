@@ -70,8 +70,8 @@ function adjust_pages() {
 
     var pagination = $('ul.pagination');
     pagination.empty();
-    
-    if (page_total <= 1){
+
+    if (page_total <= 1) {
         return
     }
 
@@ -276,11 +276,6 @@ function get_ids_checked() {
     return id_list;
 }
 
-// // 调用删除接口的函数
-// function delete_records() {
-//
-// }
-
 // 给删除按钮注册点击事件
 function bt_delete_click() {
     $('button#btn_delete').on('click', function () {
@@ -301,28 +296,70 @@ function bt_edit_click() {
         var str = $(this).text().Trim();
 
         if (str === "修改") {
-            // 切换图标
-            $(this).html("<span class='glyphicon glyphicon-floppy-save'></span> 保存");
-            // 将表格切换成编辑框
-            $("input[type='checkbox']:checked").parent().siblings("td").each(function () {
-                var text_inputs = $(this).find("input:text");
-                if (!text_inputs.length) {
-                    // 用 name 属性来保存原来的值，以便修改失败后恢复显示
-                    $(this).html("<input type='text' class='form-control_self' " +
-                        "name='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");
+            var checked_boxes = $("input[type='checkbox']:checked");
 
-                }
-            });
+            if (checked_boxes.length <= 0) {// 先检验是否有选中项
+                alert("你没有选中任何项");
+            }
+            else {
+                // 切换图标
+                $(this).html("<span class='glyphicon glyphicon-floppy-save'></span> 保存");
+                // 将表格切换成编辑框
+                checked_boxes.parent().siblings("td").each(function () {
+                    var text_inputs = $(this).find("input:text");// 验证是否存在编辑框
+                    if (!text_inputs.length) { // 如果不存在编辑框
+                        // 用 name 属性来保存原来的值，以便修改失败后恢复显示
+                        $(this).html("<input type='text' class='form-control_self' " +
+                            "name='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");
+
+                    }
+                });
+            }
+
+
             // alert($("tbody tr:nth-of-type(2n)").css("color"));
         }
         else if (str === "保存") {
             // 切换图标
             $(this).html("<span class='glyphicon glyphicon-pencil'></span> 修改");
-            $("tbody td input:text").each(function () {
-                $(this).parent().html($(this).prop("name"));
-            });
+
+            var checked_boxes = $("input[type='checkbox']:checked");
+            if (checked_boxes.length > 0) {
+                var row_list = [];// 用于存放待修改的元组数据
+                var count_edit = 0;
+
+                checked_boxes.each(function () {
+                    var text_inputs = $(this).parent().siblings().find("input:text");
+                    if (text_inputs.length > 0) {// 用于判断选中项是否可编辑，不可编辑则无效
+                        var checked_row = [];
+                        checked_row[0] = $(this).val();
+                        $(this).parent().siblings().each(function (index, element) {
+                            checked_row[index + 1] = $(this).children("input").val();
+                        });
+                        row_list[count_edit++] = checked_row;
+                    }
+                });
+                // alert(edit_list.join(";"));
+
+                // 先将编辑框取消
+                $("tbody td input:text").each(function () {
+                    $(this).parent().html($(this).prop("name"));// 回复name里存储的值
+                });
+
+                // 调用修改接口
+                if (count_edit === 0) {
+                    alert("没有选中任何有效选项");
+                } else {
+                    var edit_category = $("input[name='search_category']").val();
+                    edit_row(row_list, edit_category);
+                }
+            } else {
+                // 将编辑框取消
+                $("tbody td input:text").each(function () {
+                    $(this).parent().html($(this).prop("name"));// 回复name里存储的值
+                });
+                alert("没有选中任何项");
+            }
         }
-
-
     });
 }
