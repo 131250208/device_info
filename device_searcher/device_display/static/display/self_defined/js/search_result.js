@@ -180,9 +180,15 @@ $(document).ready(
         // 为修改按钮注册点击事件
         bt_edit_click();
 
+        // 为导出按钮添加点击事件
+        bt_export_click();
+
         // 调整结果容器的高
         var height = window.innerHeight - 380;
         $('div.results_content').css("min-height", height);
+
+        // 隐藏添加数据的折叠编辑栏
+        $("#add_editor").collapse("hide");
 
     }
 );
@@ -308,9 +314,9 @@ function bt_edit_click() {
                 checked_boxes.parent().siblings("td").each(function () {
                     var text_inputs = $(this).find("input:text");// 验证是否存在编辑框
                     if (!text_inputs.length) { // 如果不存在编辑框
-                        // 用 name 属性来保存原来的值，以便修改失败后恢复显示
+                        // 用 data-text-before 属性来保存原来的值，以便修改失败后恢复显示
                         $(this).html("<input type='text' class='form-control_self' " +
-                            "name='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");
+                            "data-text-before='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");
 
                     }
                 });
@@ -343,7 +349,7 @@ function bt_edit_click() {
 
                 // 先将编辑框取消
                 $("tbody td input:text").each(function () {
-                    $(this).parent().html($(this).prop("name"));// 回复name里存储的值
+                    $(this).parent().html($(this).data("textBefore"));// 回复data-text-before里存储的值
                 });
 
                 // 调用修改接口
@@ -356,10 +362,21 @@ function bt_edit_click() {
             } else {
                 // 将编辑框取消
                 $("tbody td input:text").each(function () {
-                    $(this).parent().html($(this).prop("name"));// 回复name里存储的值
+                    $(this).parent().html($(this).data("textBefore"));// 回复name里存储的值
                 });
                 alert("没有选中任何项");
             }
         }
+    });
+}
+
+// 给导出按钮增加点击事件
+function bt_export_click() {
+    $("button#btn_export").on("click", function () {
+        var search_text = $("input[name='search_text']").val();
+        var search_category = $("input[name='search_category']").val();
+
+        // post
+        export_result(search_text,search_category);
     });
 }

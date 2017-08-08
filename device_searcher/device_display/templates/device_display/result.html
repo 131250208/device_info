@@ -4,7 +4,8 @@
     <div class="row group_gray">
         <div class="col-sm-4 col-sm-offset-8" style="text-align: right">
             {% ifequal identity 'admin' %}
-            <button type="button" id="btn_add" class="btn btn-default btn-sm">
+            <button type="button" id="btn_add" class="btn btn-default btn-sm" data-toggle="collapse"
+                    data-target="#add_editor">
                 <span class="glyphicon glyphicon-plus"></span> 添加
             </button>
             <button type="button" id="btn_edit" class="btn btn-default btn-sm">
@@ -15,12 +16,15 @@
             </button>
             {% endifequal %}
             <button type="button" id="btn_export" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-download-alt"><a href="{% url 'display:export_record' %}"></a></span> 导出
+                <span class="glyphicon glyphicon-download-alt"></span>
+                导出
             </button>
         </div>
     </div>
-    <div class="row">
-
+    <div id="add_editor" class="row collapse in">
+        Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+        lomo.
     </div>
     <div class="row results_content">
         {% include "device_display/table_search_results.html" %}

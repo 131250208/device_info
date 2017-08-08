@@ -227,7 +227,14 @@ def edit_record(request):
     return HttpResponse(json.dumps(res_content))
 # 导出接口
 def export_record(request):
-    pass
+    search_text = request.POST['search_text']
+    search_category = request.POST['search_category']
+
+    print search_text
+    print search_category
+
+    res_content = {"status":"success"}
+    return HttpResponse(json.dumps(res_content))
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

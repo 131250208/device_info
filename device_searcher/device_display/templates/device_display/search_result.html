@@ -99,17 +99,35 @@
                     var result_json = eval('(' + data + ')');
                     var list_success = result_json.sucess;
                     var ind;
-                    for (ind in list_success){
+                    for (ind in list_success) {
                         var id = list_success[ind][0];
-                        var row_fields = $("input[type = 'checkbox'][value = "+id+"]").parent().siblings();
-                        row_fields.each(function (index,element) {
-                            $(this).html(list_success[ind][index+1]);
+                        var row_fields = $("input[type = 'checkbox'][value = " + id + "]").parent().siblings();
+                        row_fields.each(function (index, element) {
+                            $(this).html(list_success[ind][index + 1]);
                         });
                     }
                 }
                 else {
                     // 显示错误信息到页面
                     alert('请求失败了……');
+                }
+            }
+        );
+    }
+
+    // post to export
+    function export_result(search_text, search_category) {
+        var url = "{% url 'display:export_record' %}";
+        $.post(url,
+            {
+                'search_text': search_text,
+                'search_category': search_category
+            },
+            function (data, status) {
+                if (status === 'success') {
+                    alert("导出请求发送成功!");
+                } else {
+                    alert("导出请求失败...");
                 }
             }
         );
