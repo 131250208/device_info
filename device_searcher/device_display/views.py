@@ -202,6 +202,9 @@ def search(request):
 
     return HttpResponse(json.dumps(res_content))
 
+# 添加接口 @liumingdong
+def add_record(request):
+    pass
 # 删除接口 @liumingdong
 def delete_record(request):
     id_list = request.POST['id_list']# 删除的id_list

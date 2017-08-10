@@ -15,11 +15,10 @@
         <div class="col-sm-5 col-sm-offset-3" id="div_input">
             <input type="text" name="search_text" class="form-control" id="searchtext" required pattern="[^\\,;]+"
                    oninvalid="setCustomValidity('搜索内容不能为空，且不包含特殊字符(\\，；)。')" oninput="setCustomValidity('')">
-            <input type="text" name="search_category" id="search_category" hidden>
-            <input type="text" name="page_index" value="1" hidden>
+            <input type="hidden" name="search_category" id="search_category" >
+            <input type="hidden" name="page_index" value="1" >
         </div>
         <div class="col-sm-2" id="div_btn">
-            <!--<button type="submit" class="btn btn-sm btn-primary btn-block" >搜索</button>-->
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">

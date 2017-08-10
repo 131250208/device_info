@@ -1,7 +1,61 @@
 /**
  * Created by wycheng on 7/25/17.
  */
+<!--初始化翻页组件和分类tab组件，并为之注册点击事件-->
+$(document).ready(
+    function () {
+        // 切换结果分类标签的active状态
+        $('#nav_result_cat').children().removeClass('active');
+        var cat = $('#searchcat').val();
+        switch (cat) {
+            case 'type' :
+                $('#cat_type').addClass('active');
+                break;
+            case 'brand' :
+                $('#cat_brand').addClass('active');
+                break;
+            case 'model' :
+                $('#cat_model').addClass('active');
+                break;
+            case 'fingerprint' :
+                $('#cat_fingerprint').addClass('active');
+                break;
+        }
+        // 注册点击分类tab的事件
+        cat_tab_click();
 
+        // 初始化翻页组件并设置当前页码标签设为active
+        var input_page_total = $("input#page_total");
+        var input_page_index = $("input[name='page_index']");
+        adjust_pages(input_page_total, input_page_index, get_results_post);
+
+        // 为搜索按钮注册点击事件。
+        $("button#btn_search").click(function () {
+            get_results_post();
+        });
+        // 为checkedbox添加点击事件
+        check_all_click();
+
+        // 为添加按钮添加点击事件
+        bt_add_click();
+
+        // 为删除按钮添加点击事件
+        bt_delete_click();
+
+        // 为修改按钮注册点击事件
+        bt_edit_click();
+
+        // 为导出按钮添加点击事件
+        bt_export_click();
+
+        // 调整结果容器的高
+        var height = window.innerHeight - 380;
+        $('div.results_content').css("min-height", height);
+
+        // 调整添加功能的折叠面板
+        // adjust_editor();
+    }
+);
 
 function append_tr(father, row) {
     var unit = "td"
@@ -57,141 +111,10 @@ function show_intable(result_json) {
         append_tr(tbody, list[j]);
     }
 
-    //
+    // 给刚生成的checkbox添加全选点击事件
     check_all_click();
 }
 
-// 根据当前页码调整翻页组件,当前页码标签设为active
-// 该调整函数会将原来的页码元素清空，所以需要重新注册点击事件
-function adjust_pages() {
-    var page_total = $("input#page_total").val();
-
-    var page_index = $("input[name='page_index']").val();
-
-    var pagination = $('ul.pagination');
-    pagination.empty();
-
-    if (page_total <= 1) {
-        return
-    }
-
-    var page_current_li = page_li(page_index);
-    pagination.append(page_current_li);
-    page_current_li.addClass('active');
-
-    var bf_num = 4;
-    var aft_num = 5;
-
-    var page_num_bf = parseInt(page_index);
-    while (bf_num) {
-        if (--page_num_bf <= 0) {
-            break;
-        }
-        bf_num--;
-        pagination.prepend(page_li(String(page_num_bf)));
-    }
-    aft_num += bf_num;// 如果前方待插入数还有余，用于后方插入直到遇到末页
-
-    var page_end = $("input#page_total").val();
-    var page_num_aft = parseInt(page_index);
-    while (aft_num) {
-        if (++page_num_aft > page_end) {
-            break;
-        }
-        aft_num--;
-        pagination.append(page_li(String(page_num_aft)));
-    }
-
-    if (aft_num) {// 如果后方待插入数还有余，用于前方插入直到首页
-        while (aft_num) {
-            if (--page_num_bf <= 0) {
-                break;
-            }
-            aft_num--;
-            pagination.prepend(page_li(String(page_num_bf)));
-        }
-    }
-
-    var prev = page_li("«");
-    var next = page_li("»");
-    pagination.prepend(prev);
-    pagination.append(next);
-
-    if (page_index === "1") {
-        prev.hide();
-    }
-    if (page_index === page_end) {
-        next.hide();
-    }
-
-}
-
-// 生成页码元素li
-function page_li(page_text) {
-    var li = $("<li></li>");
-    if (page_text === "«") {
-        li = $("<li class='prev'></li>");
-    } else if (page_text === "»") {
-        li = $("<li class='next'></li>");
-    }
-    var a = $("<a></a>");
-    a.text(page_text);
-    li.append(a);
-    return li;
-}
-<!--初始化翻页组件和分类tab组件，并为之注册点击事件-->
-$(document).ready(
-    function () {
-        // 切换结果分类标签的active状态
-        $('#nav_result_cat').children().removeClass('active');
-        var cat = $('#searchcat').val();
-        switch (cat) {
-            case 'type' :
-                $('#cat_type').addClass('active');
-                break;
-            case 'brand' :
-                $('#cat_brand').addClass('active');
-                break;
-            case 'model' :
-                $('#cat_model').addClass('active');
-                break;
-            case 'fingerprint' :
-                $('#cat_fingerprint').addClass('active');
-                break;
-        }
-        // 注册点击分类tab的事件
-        cat_tab_click();
-
-        // 初始化翻页组件并设置当前页码标签设为active
-        adjust_pages();
-        // 为翻页组件注册点击事件
-        page_li_click();
-
-        // 为搜索按钮注册点击事件。
-        $("button#btn_search").click(function () {
-            get_results_post();
-        });
-        // 为checkedbox添加点击事件
-        check_all_click();
-
-        // 为删除按钮添加点击事件
-        bt_delete_click();
-
-        // 为修改按钮注册点击事件
-        bt_edit_click();
-
-        // 为导出按钮添加点击事件
-        bt_export_click();
-
-        // 调整结果容器的高
-        var height = window.innerHeight - 380;
-        $('div.results_content').css("min-height", height);
-
-        // 隐藏添加数据的折叠编辑栏
-        $("#add_editor").collapse("hide");
-
-    }
-);
 // 注册点击分类tab的事件,将对应的分类作为参数放到隐藏的input里
 function cat_tab_click() {
     $('.cat').click(function () {
@@ -211,40 +134,16 @@ function cat_tab_click() {
                 break;
         }
 
+        // 将添加编辑框收起
+        $("button#btn_add").html("<span class='glyphicon glyphicon-chevron-down'></span> 添加");// 还原成添加按钮
+
+        var input_text = $("div#add_editor form div.container input[type = 'text']");// 清空input
+        input_text.val("");
+
+        $("div.collapse").collapse("hide");// 收起编辑框
+
+        // 发送搜索请求
         get_results_post();
-
-    });
-}
-
-// 注册点击页码的事件
-function page_li_click() {
-    $('ul.pagination li').on("click", function () {
-        var inp_search_text = $("input[name='search_text']");
-        var search_text = inp_search_text.val();
-        var search_category = $("input[name='search_category']").val();
-        var inp_page = $("input[name='page_index']");
-
-        var page_current = inp_page.val();
-        // 调整页码参数
-        var page_next = $(this).text();
-
-        if (page_next === "«") {
-            page_next = parseInt(page_current) - 1;
-        }
-        else if (page_next === "»") {
-            page_next = parseInt(page_current) + 1;
-        }
-        // 修改当前页码存放在隐藏input
-        inp_page.val(page_next);
-
-        adjust_pages();
-        page_li_click();
-
-        if (search_text === "") {
-            search_text = $('input#searchtext_last').val();
-            inp_search_text.val(search_text);
-        }
-        get_results(search_text, search_category, page_next);
     });
 }
 
@@ -252,6 +151,7 @@ function page_li_click() {
 function get_results_post() {
     var inp_search_text = $("input[name='search_text']");
     var search_text = inp_search_text.val();
+
     var search_category = $("input[name='search_category']").val();
     var page_index = $("input[name='page_index']").val();
     // 发送post请求调用接口
@@ -281,7 +181,30 @@ function get_ids_checked() {
     });
     return id_list;
 }
+// 给添加功能添加点击事件
+function bt_add_click() {
+    $("button#btn_add").on("click",function () {
+        var edit_category = $("input[name='search_category']").val();
 
+        var input_edit_category = $("div#add_editor form input[name = 'edit_category']");
+        input_edit_category.val(edit_category);
+
+        var btn_str = $(this).text().Trim();
+        if (btn_str === "添加"){
+            // 切换图标
+            $(this).html("<span class='glyphicon glyphicon-chevron-up'></span> 收起");
+
+            $("#"+"add_editor_"+edit_category).collapse("show");
+        }else {
+            // 切换图标
+            $(this).html("<span class='glyphicon glyphicon-chevron-down'></span> 添加");
+            var input_text = $("div#add_editor form div.container input[type = 'text']");
+            input_text.val("");
+
+            $("#"+"add_editor_"+edit_category).collapse("hide");
+        }
+    });
+}
 // 给删除按钮注册点击事件
 function bt_delete_click() {
     $('button#btn_delete').on('click', function () {
@@ -377,6 +300,39 @@ function bt_export_click() {
         var search_category = $("input[name='search_category']").val();
 
         // post
-        export_result(search_text,search_category);
+        export_result(search_text, search_category);
     });
 }
+
+// 调整添加功能的折叠面板内容，根据当前的结果分类tab
+function adjust_editor() {
+    var add_editor = $("div#add_editor form div.container");
+    var edit_category = $("input[name='search_category']").val();
+
+    var input_edit_category = $("div#add_editor form input[name = 'edit_category']");
+    input_edit_category.val(edit_category);
+
+    add_editor.empty();
+
+    switch (edit_category)
+    {
+        case 'type':
+
+            break;
+        case 'brand' :
+            add_editor.html();
+            break;
+        case 'model' :
+            add_editor.html();
+            break;
+        case 'fingerprint' :
+            add_editor.html();
+        break;
+    }
+
+    var select2 = $("select");
+
+    // 动态加载数据必须刷新一下,首次加载不需要刷新可以成功是因为，select2的js文件在这段js代码之后引入
+
+}
+

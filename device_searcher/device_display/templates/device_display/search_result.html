@@ -14,10 +14,10 @@
             <input type="text" id="searchtext" name="search_text" value="{{ search_text }}" class="form-control"
                    pattern="[^\\,;]+" required oninvalid="setCustomValidity('搜索内容不能为空，且不包含特殊字符(\\，；)。')"
                    oninput="setCustomValidity('')">
-            <input type="text" id="searchcat" name="search_category" hidden value="{{ search_category }}">
-            <input type="text" name="page_index" value="{{ page_index }}" hidden>
-            <input type="text" id="page_total" value="{{ page_total }}" hidden>
-            <input type="text" id="searchtext_last" value="{{ search_text }}" hidden>
+            <input type="hidden" id="searchcat" name="search_category" value="{{ search_category }}">
+            <input type="hidden" name="page_index" value="{{ page_index }}" >
+            <input type="hidden" id="page_total" value="{{ page_total }}" >
+            <input type="hidden" id="searchtext_last" value="{{ search_text }}" >
         </div>
         <div class="col-sm-1" id="div_btn">
             <button type="button" id="btn_search" class="btn btn-sm btn-primary btn-block">搜索</button>
@@ -51,8 +51,10 @@
                     $('input#searchtext_last').val(search_text);
                     var result_json = eval('(' + data + ')');
                     show_intable(result_json);
-                    adjust_pages();
-                    page_li_click();
+                    // 因为show_intable函数可能改变总页码，所以需要再次调整页码显示
+                    var input_page_total = $("input#page_total");
+                    var input_page_index = $("input[name='page_index']");
+                    adjust_pages(input_page_total, input_page_index, get_results_post);
                 } else {
                     // 显示错误信息到页面
                     alert('请求失败了……');

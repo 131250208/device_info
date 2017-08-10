@@ -26,7 +26,7 @@
     max-height: none;
 }
 
-#results_container button {
+#results_container button.managers{
     color: #fff;
     background-color: transparent;
     border: 0px;
@@ -67,4 +67,11 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
+}
+
+div#add_editor_type,div#add_editor_brand,div#add_editor_model,div#add_editor_fingerprint {
+    background: #333333;
+    color: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 15px;
 }
