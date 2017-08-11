@@ -15,9 +15,9 @@
                    pattern="[^\\,;]+" required oninvalid="setCustomValidity('搜索内容不能为空，且不包含特殊字符(\\，；)。')"
                    oninput="setCustomValidity('')">
             <input type="hidden" id="searchcat" name="search_category" value="{{ search_category }}">
-            <input type="hidden" name="page_index" value="{{ page_index }}" >
-            <input type="hidden" id="page_total" value="{{ page_total }}" >
-            <input type="hidden" id="searchtext_last" value="{{ search_text }}" >
+            <input type="hidden" name="page_index" value="{{ page_index }}">
+            <input type="hidden" id="page_total" value="{{ page_total }}">
+            <input type="hidden" id="searchtext_last" value="{{ search_text }}">
         </div>
         <div class="col-sm-1" id="div_btn">
             <button type="button" id="btn_search" class="btn btn-sm btn-primary btn-block">搜索</button>
@@ -25,14 +25,32 @@
     </div>
 </form>
 <ul class="nav nav-tabs" id="nav_result_cat">
-    <li class="cat active" id="cat_type"><a data-toggle="tab">类型</a></li>
+    <li class="cat" id="cat_type"><a data-toggle="tab">类型</a></li>
     <li class="cat" id="cat_brand"><a data-toggle="tab">品牌</a></li>
     <li class="cat" id="cat_model"><a data-toggle="tab">型号</a></li>
     <li class="cat" id="cat_fingerprint"><a data-toggle="tab">指纹</a></li>
 </ul>
+<!--切换结果分类标签的active状态-->
+<script>
+    $('#nav_result_cat').children().removeClass('active');
+    var cat = $('#searchcat').val();
+    switch (cat) {
+        case 'type' :
+            $('#cat_type').addClass('active');
+            break;
+        case 'brand' :
+            $('#cat_brand').addClass('active');
+            break;
+        case 'model' :
+            $('#cat_model').addClass('active');
+            break;
+        case 'fingerprint' :
+            $('#cat_fingerprint').addClass('active');
+            break;
+    }
+</script>
 
 {% include "device_display/result.html" %}
-
 <script src="{% static 'display/self_defined/js/search_result.js' %}"></script>
 <script>
     // post to get search_results
@@ -133,6 +151,23 @@
                 }
             }
         );
+    }
+
+    // post to add_record
+    function add_record(add_category, record) {
+        var url = "{% url 'display:add_record' %}";
+        alert(record);
+        $.post(url,
+            {
+                'add_category': add_category,
+                'record': record
+            }, function (data, status) {
+                if (status === 'success') {
+                    alert("添加请求发送成功!");
+                } else {
+                    alert("添加请求失败...");
+                }
+            });
     }
 </script>
 {% endblock %}

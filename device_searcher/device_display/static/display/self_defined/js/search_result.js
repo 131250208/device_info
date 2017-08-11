@@ -4,23 +4,6 @@
 <!--初始化翻页组件和分类tab组件，并为之注册点击事件-->
 $(document).ready(
     function () {
-        // 切换结果分类标签的active状态
-        $('#nav_result_cat').children().removeClass('active');
-        var cat = $('#searchcat').val();
-        switch (cat) {
-            case 'type' :
-                $('#cat_type').addClass('active');
-                break;
-            case 'brand' :
-                $('#cat_brand').addClass('active');
-                break;
-            case 'model' :
-                $('#cat_model').addClass('active');
-                break;
-            case 'fingerprint' :
-                $('#cat_fingerprint').addClass('active');
-                break;
-        }
         // 注册点击分类tab的事件
         cat_tab_click();
 
@@ -36,8 +19,11 @@ $(document).ready(
         // 为checkedbox添加点击事件
         check_all_click();
 
-        // 为添加按钮添加点击事件
+        // 为[添加]按钮添加点击事件
         bt_add_click();
+
+        // 给【确定添加】按钮添加点击事件
+        bt_confirm_to_add_click();
 
         // 为删除按钮添加点击事件
         bt_delete_click();
@@ -52,8 +38,6 @@ $(document).ready(
         var height = window.innerHeight - 380;
         $('div.results_content').css("min-height", height);
 
-        // 调整添加功能的折叠面板
-        // adjust_editor();
     }
 );
 
@@ -181,28 +165,132 @@ function get_ids_checked() {
     });
     return id_list;
 }
-// 给添加功能添加点击事件
+// 给[添加]添加点击事件
 function bt_add_click() {
-    $("button#btn_add").on("click",function () {
+    $("button#btn_add").on("click", function () {
         var edit_category = $("input[name='search_category']").val();
 
         var input_edit_category = $("div#add_editor form input[name = 'edit_category']");
         input_edit_category.val(edit_category);
 
         var btn_str = $(this).text().Trim();
-        if (btn_str === "添加"){
+        if (btn_str === "添加") {
             // 切换图标
             $(this).html("<span class='glyphicon glyphicon-chevron-up'></span> 收起");
 
-            $("#"+"add_editor_"+edit_category).collapse("show");
-        }else {
+            $("#" + "add_editor_" + edit_category).collapse("show");
+        } else {
             // 切换图标
             $(this).html("<span class='glyphicon glyphicon-chevron-down'></span> 添加");
             var input_text = $("div#add_editor form div.container input[type = 'text']");
             input_text.val("");
 
-            $("#"+"add_editor_"+edit_category).collapse("hide");
+            $("#" + "add_editor_" + edit_category).collapse("hide");
         }
+    });
+}
+
+// 给【确定添加】按钮添加点击事件
+function bt_confirm_to_add_click() {
+    $("button.confirm_add").on("click", function () {
+        var thisform = $(this).parents("form");
+        var add_category = thisform.find("input[name = 'add_category']").val();
+
+        var record = null;
+        var record_str = "";
+
+        switch (add_category) {
+            case "type":
+                var type = thisform.find("input[name = 'type']").val();
+                var type_cn_name = thisform.find("input[name = 'type_cn_name']").val();
+                var type_en_name = thisform.find("input[name = 'type_en_name']").val();
+                var category = thisform.find("input[name = 'category']").val();
+                var category_cn_name = thisform.find("input[name = 'category_cn_name']").val();
+                var category_en_name = thisform.find("input[name = 'category_en_name']").val();
+                var description = thisform.find("textarea[name = 'description']").val();
+
+                record = {
+                    "type": type,
+                    "type_cn_name": type_cn_name,
+                    "type_en_name": type_en_name,
+                    "category": category,
+                    "category_cn_name": category_cn_name,
+                    "category_en_name": category_en_name,
+                    "description": description,
+                };
+
+                record_str = JSON.stringify(record);
+                break;
+            case "brand":
+                var brand_cn_name = thisform.find("input[name = 'brand_cn_name']").val();
+                var brand_en_name = thisform.find("input[name = 'brand_en_name']").val();
+                var country = thisform.find("select[name = 'country']").val();
+                var product_type = thisform.find("input[name = 'product_type']").val();
+                var brand_link = thisform.find("input[name = 'brand_link']").val();
+                var description = thisform.find("textarea[name = 'description']").val();
+
+                record = {
+                    "cn_name": brand_cn_name,
+                    "en_name": brand_en_name,
+                    "country": country,
+                    "product_type": product_type,
+                    "brand_link": brand_link,
+                    "description": description
+                };
+
+                record_str = JSON.stringify(record);
+                break;
+            case "model":
+                var model = thisform.find("input[name = 'model']").val();
+                var model_link = thisform.find("input[name = 'model_link']").val();
+                var type = thisform.find("select[name = 'type']").val();
+                var category = thisform.find("select[name = 'category']").val();
+                var brand = thisform.find("select[name = 'brand']").val();
+                var description = thisform.find("textarea[name = 'description']").val();
+
+                record = {
+                    "model": model,
+                    "model_link": model_link,
+                    "type": type,
+                    "category": category,
+                    "brand": brand,
+                    "description": description
+                };
+
+                record_str = JSON.stringify(record);
+                break;
+            case "fingerprint":
+                var accuracy = thisform.find("input[name = 'accuracy']").val();
+                var match_type = thisform.find("select[name = 'match_type']").val();
+                var protocol = thisform.find("input[name = 'protocol']").val();
+                var device_category = thisform.find("select[name = 'device_category']").val();
+                var device_type = thisform.find("select[name = 'device_type']").val();
+                var brand = thisform.find("select[name = 'brand']").val();
+                var model = thisform.find("select[name = 'model']").val();
+                var server = thisform.find("input[name = 'server']").val();
+                var www_authenticate = thisform.find("input[name = 'www_authenticate']").val();
+                var title = thisform.find("input[name = 'title']").val();
+                var others = thisform.find("input[name = 'others']").val();
+
+                record = {
+                    "accuracy": accuracy,
+                    "match_type": match_type,
+                    "protocol": protocol,
+                    "device_category": device_category,
+                    "device_type": device_type,
+                    "brand": brand,
+                    "model": model,
+                    "server": server,
+                    "www_authenticate": www_authenticate,
+                    "title": title,
+                    "others": others
+                };
+
+                record_str = JSON.stringify(record);
+                break;
+        }
+
+        add_record(add_category, record_str);
     });
 }
 // 给删除按钮注册点击事件
@@ -304,35 +392,4 @@ function bt_export_click() {
     });
 }
 
-// 调整添加功能的折叠面板内容，根据当前的结果分类tab
-function adjust_editor() {
-    var add_editor = $("div#add_editor form div.container");
-    var edit_category = $("input[name='search_category']").val();
-
-    var input_edit_category = $("div#add_editor form input[name = 'edit_category']");
-    input_edit_category.val(edit_category);
-
-    add_editor.empty();
-
-    switch (edit_category)
-    {
-        case 'type':
-
-            break;
-        case 'brand' :
-            add_editor.html();
-            break;
-        case 'model' :
-            add_editor.html();
-            break;
-        case 'fingerprint' :
-            add_editor.html();
-        break;
-    }
-
-    var select2 = $("select");
-
-    // 动态加载数据必须刷新一下,首次加载不需要刷新可以成功是因为，select2的js文件在这段js代码之后引入
-
-}
 

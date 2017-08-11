@@ -204,7 +204,16 @@ def search(request):
 
 # 添加接口 @liumingdong
 def add_record(request):
-    pass
+    add_category = request.POST["add_category"]
+    record = request.POST["record"] # 需要添加的record的json 字符串
+
+    rcd_json = json.loads(record)# key 完全对应数据库字段名
+
+    print "add_category: %s\nrecord: %s" % (add_category,record)
+
+    res_content = {"status":"success"}
+    return HttpResponse(json.dumps(res_content))
+
 # 删除接口 @liumingdong
 def delete_record(request):
     id_list = request.POST['id_list']# 删除的id_list

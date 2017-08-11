@@ -23,7 +23,7 @@
         </div>
     </div>
     <div id="add_editor_type" class="row collapse">
-        <form role="form" action="{% url 'display:add_record' %}" name="add_editor_type" novalidate method="post">
+        <form role="form" name="add_editor_type" novalidate >
             {% csrf_token %}
             <input type="hidden" class="form-control" value="type" name="add_category">
             <div class="container">
@@ -69,13 +69,13 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <label>相关描述</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control" name="description"></textarea>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
-                    <button type="submit" class="btn btn-primary" ng-disabled="add_editor_type.type_en_name.$invalid ||
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_type.type_en_name.$invalid ||
                     add_editor_type.category_en_name.$invalid">确定添加
                     </button>
                 </div>
@@ -83,7 +83,7 @@
         </form>
     </div>
     <div id="add_editor_brand" class="row collapse">
-        <form role="form" action="{% url 'display:add_record' %}" name="add_editor_brand" novalidate method="post">
+        <form role="form" name="add_editor_brand" novalidate >
             {% csrf_token %}
             <input type="hidden" class="form-control" value="brand" name="add_category">
             <div class="container">
@@ -125,14 +125,13 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <label>相关描述</label>
-                        <!--<input type="text" class="form-control">-->
                         <textarea class="form-control" name="description"></textarea>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
-                    <button type="submit" class="btn btn-primary" ng-disabled="add_editor_brand.brand_en_name.$invalid">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_brand.brand_en_name.$invalid">
                         确定添加
                     </button>
                 </div>
@@ -140,7 +139,7 @@
         </form>
     </div>
     <div id="add_editor_model" class="row collapse">
-        <form role="form" action="{% url 'display:add_record' %}" name="add_editor_model" novalidate method="post">
+        <form role="form" name="add_editor_model" novalidate >
             {% csrf_token %}
             <input type="hidden" class="form-control" value="model" name="add_category">
             <div class="container">
@@ -199,7 +198,7 @@
             </div>
             <div>
                 <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
-                    <button type="submit" class="btn btn-primary"
+                    <button type="button" class="confirm_add btn btn-primary"
                             ng-disabled="add_editor_model.model.$error.required">确定添加
                     </button>
                 </div>
@@ -207,7 +206,7 @@
         </form>
     </div>
     <div id="add_editor_fingerprint" class="row collapse">
-        <form role="form" action="{% url 'display:add_record' %}" name="add_editor_fingerprint" novalidate method="post">
+        <form role="form" name="add_editor_fingerprint" novalidate >
             {% csrf_token %}
             <input type="hidden" class="form-control" value="fingerprint" name="add_category">
             <div class="container">
@@ -296,7 +295,7 @@
             </div>
             <div>
                 <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
-                    <button type="submit" class="btn btn-primary" ng-disabled="add_editor_fingerprint.accuracy.$invalid">确定添加</button>
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_fingerprint.accuracy.$invalid">确定添加</button>
                 </div>
             </div>
         </form>
