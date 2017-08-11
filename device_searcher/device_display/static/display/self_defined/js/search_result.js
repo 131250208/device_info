@@ -16,8 +16,6 @@ $(document).ready(
         $("button#btn_search").click(function () {
             get_results_post();
         });
-        // 为checkedbox添加点击事件
-        check_all_click();
 
         // 为[添加]按钮添加点击事件
         bt_add_click();
@@ -42,7 +40,7 @@ $(document).ready(
 );
 
 function append_tr(father, row) {
-    var unit = "td"
+    var unit = "td";
     if (row.id === -1) {
         unit = "th"
     }
@@ -51,11 +49,13 @@ function append_tr(father, row) {
     var input = document.createElement("input");
     input.type = "checkbox";
     input.value = row.id;
+
     var chk_box = document.createElement(unit);
     chk_box.appendChild(input);
 
     if (row.id === -1) {
         input.style.marginRight = "5px";
+        input.dataset.checkAll = "true";
         chk_box.append('全选');
     }
 
@@ -95,7 +95,6 @@ function show_intable(result_json) {
         append_tr(tbody, list[j]);
     }
 
-    // 给刚生成的checkbox添加全选点击事件
     check_all_click();
 }
 
@@ -146,12 +145,12 @@ function get_results_post() {
     get_results(search_text, search_category, page_index);
 }
 
-// 全选函数
-function check_all_click() {
-    $("input[type='checkbox'][value ='-1']").on('click', function () {
-        $("input[type='checkbox'][value != '-1']").click();
-    });
-}
+// // 全选函数
+// function check_all_click() {
+//     $("input[type='checkbox'][value ='-1']").on('click', function () {
+//         $("input[type='checkbox'][value != '-1']").click();
+//     });
+// }
 
 // 返回选中的元组id，如果没有选中项则返回空数组
 function get_ids_checked() {

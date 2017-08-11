@@ -1,34 +1,55 @@
- <form role="form" class="pane_edit" >
-    <div class="row" >
-        <div class="col-sm-2 source_text" >
-            <input type="text" class="form-control"  disabled="disabled">
-        </div>
-        <div class="col-sm-1 source_drop" >
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" >
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li>中关村在线</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-3 checkboxes">
-            <input type="checkbox" > 类型
-            <input type="checkbox" > 品牌
-            <input type="checkbox" > 型号
-        </div>
-        <div class="col-sm-4 col-sm-offset-2 icon_btns" style="text-align: right">
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-plus"></span> 添加条件
-            </button>
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-minus"></span> 删除条件
-            </button>
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-cloud-download"></span> 爬取
-            </button>
-        </div>
+<form role="form" class="pane_edit">
+    <div class="row">
+
     </div>
 </form>
-{% include "device_display/table_selfdefined.html" %}
+{% extends "device_display/table_selfdefined.html" %}
+{% block thead %}
+<tr>
+    <th>序号</th>
+    <th>数据来源</th>
+    <th>更新周期</th>
+</tr>
+{% endblock %}
+
+{% block tbody %}
+<tr>
+    <td>1</td>
+    <td>中关村在线</td>
+    <td>
+        <select class="selectpicker show-tick form-control" name="model"
+                data-width="98%" data-first-option="false" required>
+            <option value="30">30天</option>
+            <option value="90">90天</option>
+            <option value="180">180天</option>
+            <option value="365">365天</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>中关村在线</td>
+    <td>
+        <select class="selectpicker show-tick form-control" name="model"
+                data-width="98%" data-first-option="false" required>
+            <option value="30">30天</option>
+            <option value="90">90天</option>
+            <option value="180">180天</option>
+            <option value="365">365天</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>中关村在线</td>
+    <td>
+        <select class="selectpicker show-tick form-control" name="model"
+                data-width="98%" data-first-option="false" required>
+            <option value="30">30天</option>
+            <option value="90">90天</option>
+            <option value="180">180天</option>
+            <option value="365">365天</option>
+        </select>
+    </td>
+</tr>
+{% endblock %}
