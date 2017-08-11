@@ -13,6 +13,9 @@
     .table-responsive {
         overflow: visible;
     }
+    .table-responsive th,td{
+        text-align: center;
+    }
 </style>
 <div class="table-responsive">
     <table class="table table-striped" >
@@ -26,3 +29,10 @@
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        var td_check = $("table input[type = 'checkbox']").parent();
+        td_check.css("text-align","left");
+        td_check.addClass("col-sm-1");
+    });
+</script>

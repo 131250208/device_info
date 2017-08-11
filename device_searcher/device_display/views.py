@@ -57,6 +57,7 @@ def getPage_update(request):
 
 # managelog_page
 def getPage_managelog(request):
+
     if not request.user.is_authenticated():  # no login
         res_content = {'identity': 'tourist'}
     else:
