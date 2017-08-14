@@ -215,6 +215,37 @@ def add_record(request):
     res_content = {"status":"success"}
     return HttpResponse(json.dumps(res_content))
 
+# 获取国家列表 @liumingdong
+def get_all_countries(request):
+    res_content = {"A": [{"en_name": "America", "cn_name": "美国"},{"en_name": "Afghanistan", "cn_name": "阿富汗"}],
+                   "B": [{"en_name": "Brunei", "cn_name": "文莱"},],}
+    return HttpResponse(json.dumps(res_content))
+# 获取类别列表 @liumingdong
+def get_all_categories(request):
+    res_content = [{"id": "2", "name": "路由器"}, ]
+    return HttpResponse(json.dumps(res_content))
+# 获取类型列表 @liumingdong
+def get_types(request):
+    category_id = request.POST["category_id"]
+    # 根据类别 id 查找该类别下的所有类型
+    res_content = [{"id": "2", "name": "XXX路由器"}, ]
+    return HttpResponse(json.dumps(res_content))
+# 获取品牌列表 @liumingdong
+def get_brands(request):
+    category_id = request.POST["category_id"]
+    type_id = request.POST["type_id"]
+    # 根据类别 id 和类型 id 查找所有品牌
+    res_content = [{"id": "2", "name": "tp-link"}, ]
+    return HttpResponse(json.dumps(res_content))
+# 获取型号列表 @liumingdong
+def get_models(request):
+    category_id = request.POST["category_id"]
+    type_id = request.POST["type_id"]
+    brand_id = request.POST["brand_id"]
+    # 根据类别 id 、类型 id 和品牌 id 查找所有型号
+    res_content = [{"id": "2", "name": "型号名称"}, ]
+    return HttpResponse(json.dumps(res_content))
+
 # 删除接口 @liumingdong
 def delete_record(request):
     id_list = request.POST['id_list']# 删除的id_list

@@ -51,6 +51,7 @@ function append_tr(father, row) {
     input.value = row.id;
 
     var chk_box = document.createElement(unit);
+    chk_box.className = "col-sm-1 checkbox_par";
     chk_box.appendChild(input);
 
     if (row.id === -1) {

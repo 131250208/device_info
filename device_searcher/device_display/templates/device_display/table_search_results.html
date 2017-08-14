@@ -2,7 +2,7 @@
 
 {% block thead %}
     <tr>
-        <th>
+        <th class="col-sm-1 checkbox_par" >
             <input type="checkbox" style="margin-right: 5px" value="-1" data-check-all="true">全选
         </th>
 
@@ -15,7 +15,7 @@
 {% block tbody %}
     {% for row in record_list %}
     <tr>
-        <td>
+        <td  class="col-sm-1 checkbox_par">
             <input type="checkbox" value="{{ row.id }}" >
         </td>
 

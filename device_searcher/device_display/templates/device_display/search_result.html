@@ -119,6 +119,7 @@
                     var result_json = eval('(' + data + ')');
                     var list_success = result_json.sucess;
                     var ind;
+                    // 将修改成功的内容回显
                     for (ind in list_success) {
                         var id = list_success[ind][0];
                         var row_fields = $("input[type = 'checkbox'][value = " + id + "]").parent().siblings();
@@ -169,5 +170,6 @@
                 }
             });
     }
+
 </script>
 {% endblock %}

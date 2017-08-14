@@ -45,6 +45,13 @@ urlpatterns = [
     url(r'^signin/', views.signin, name='signin'),  # login
     url(r'^logout/', views.logout, name='logout'),  # logout
     url(r'^search/', views.search, name='search'),  # search
+
+    url(r'^get_all_countries/', views.get_all_countries, name='get_all_countries'),  # get_all_countries
+    url(r'^get_all_categories/', views.get_all_categories, name='get_all_categories'),  # get_all_categories
+    url(r'^get_types/', views.get_types, name='get_types'),  # get_types
+    url(r'^get_brands/', views.get_brands, name='get_brands'),  # get_brands
+    url(r'^get_models/', views.get_models, name='get_models'),  # get_models
+
     url(r'^add_record/', views.add_record, name='add_record'),  # edit_record
     url(r'^edit_record/', views.edit_record, name='edit_record'),  # edit_record
     url(r'^delete_record/', views.delete_record, name='delete_record'),  # delete_record

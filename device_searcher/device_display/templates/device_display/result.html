@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>所在国家</label>
-                        <select class="selectpicker show-tick form-control" id="type_select"
+                        <select class="selectpicker show-tick form-control"
                                 data-width="98%" data-first-option="false" required name="country"
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -300,11 +300,43 @@
             </div>
         </form>
     </div>
+    <!--初始化添加功能编辑面板的各个下拉框选项数据-->
+    <script>
+        var selectpicker = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
+        selectpicker.empty();
 
+        var url = "{% url 'display:get_all_countries' %}"
+        $.get(url,
+            function (data,status) {
+                if (status === 'success') {
+                    var result_json = eval('(' + data + ')');
+                    // post to get_all_countries
+                    for (x in result_json){
+                        var optgroup = $('<optgroup label="' + x + '"></optgroup>');
+                        var countries = result_json[x];
+                        for (country_ind in countries){
+                            var en_name = countries[country_ind].en_name;
+                            var cn_name = countries[country_ind].cn_name;
+                            var opt = $('<option value="' + en_name + '">' + cn_name + '</option>');
+                            optgroup.append(opt);
+                        }
+
+                        selectpicker.append(optgroup);
+                    }
+
+                    //alert(selectpicker.selectpicker('val')); //返回选中值
+                } else {
+                    alert("请求失败...");
+                }
+            });
+
+        selectpicker.on("changed.bs.select",function (event, clickedIndex, newValue, oldValue) {
+            alert(selectpicker.selectpicker('val')); //返回选中值
+        });
+    </script>
     <div class="row results_content">
         {% include "device_display/table_search_results.html" %}
     </div>
-
 </div>
 
 {% include "device_display/pagination.html" %}
