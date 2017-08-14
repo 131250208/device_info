@@ -170,7 +170,7 @@
                     </div>
                     <div class="col-sm-4">
                         <label>对应类型</label>
-                        <select class="selectpicker show-tick form-control" name="type"
+                        <select class="selectpicker show-tick form-control" name="type" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="col-sm-4">
                         <label>对应品牌</label>
-                        <select class="selectpicker show-tick form-control" name="brand"
+                        <select class="selectpicker show-tick form-control" name="brand" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -245,7 +245,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label>对应类型</label>
-                        <select class="selectpicker show-tick form-control" name="device_type"
+                        <select class="selectpicker show-tick form-control" name="device_type" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -255,7 +255,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label>对应品牌</label>
-                        <select class="selectpicker show-tick form-control" name="brand"
+                        <select class="selectpicker show-tick form-control" name="brand" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -265,7 +265,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label>对应型号</label>
-                        <select class="selectpicker show-tick form-control" name="model"
+                        <select class="selectpicker show-tick form-control" name="model" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
@@ -302,10 +302,11 @@
     </div>
     <!--初始化添加功能编辑面板的各个下拉框选项数据-->
     <script>
-        var selectpicker = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
-        selectpicker.empty();
+        // 初始化国家列表
+        var selectpicker_brand_country = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
+        selectpicker_brand_country.empty();
 
-        var url = "{% url 'display:get_all_countries' %}"
+        var url = "{% url 'display:get_all_countries' %}";
         $.get(url,
             function (data,status) {
                 if (status === 'success') {
@@ -321,7 +322,7 @@
                             optgroup.append(opt);
                         }
 
-                        selectpicker.append(optgroup);
+                        selectpicker_brand_country.append(optgroup);
                     }
 
                     //alert(selectpicker.selectpicker('val')); //返回选中值
@@ -330,9 +331,38 @@
                 }
             });
 
-        selectpicker.on("changed.bs.select",function (event, clickedIndex, newValue, oldValue) {
-            alert(selectpicker.selectpicker('val')); //返回选中值
+        selectpicker_brand_country.on("changed.bs.select",function (event, clickedIndex, newValue, oldValue) {
+            alert(selectpicker_brand_country.selectpicker('val')); //返回选中值
         });
+
+        // 初始化类别列表
+        var selectpicker_model_category = $("form[name = 'add_editor_model'] select.selectpicker[name = 'category']");
+        selectpicker_model_category.empty();
+        selectpicker_model_category.append($('<option value="-1">请选择</option>'));
+
+        var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'device_category']");
+        selectpicker_fingerprint_category.empty();
+        selectpicker_fingerprint_category.append($('<option value="-1">请选择</option>'));
+
+        url = "{% url 'display:get_all_categories' %}";
+        $.get(url,
+            function (data,status) {
+                if (status === 'success') {
+                    var result_json = eval('(' + data + ')');
+                    for (cat_ind in result_json){
+                        var id = result_json[cat_ind].id;
+                        var name = result_json[cat_ind].name;
+
+                        var opt_1 = $('<option value="' + id + '">' + name + '</option>');
+                        var opt_2 = $('<option value="' + id + '">' + name + '</option>');
+
+                        selectpicker_model_category.append(opt_1);
+                        selectpicker_fingerprint_category.append(opt_2);
+                    }
+                } else {
+                    alert("请求失败...");
+                }
+            });
     </script>
     <div class="row results_content">
         {% include "device_display/table_search_results.html" %}
