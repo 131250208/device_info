@@ -163,29 +163,23 @@
                         <select class="selectpicker show-tick form-control" name="category"
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
                         <label>对应类型</label>
-                        <select class="selectpicker show-tick form-control" name="type" disabled
+                        <select class="selectpicker show-tick form-control" name="type" disabled="true"
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
                         <label>对应品牌</label>
-                        <select class="selectpicker show-tick form-control" name="brand" disabled
+                        <select class="selectpicker show-tick form-control" name="brand" disabled="true"
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                 </div>
@@ -235,22 +229,18 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label>对应类别</label>
-                        <select class="selectpicker show-tick form-control" name="device_category"
+                        <select class="selectpicker show-tick form-control" name="category"
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
                         <label>对应类型</label>
-                        <select class="selectpicker show-tick form-control" name="device_type" disabled
+                        <select class="selectpicker show-tick form-control" name="type" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
@@ -258,9 +248,7 @@
                         <select class="selectpicker show-tick form-control" name="brand" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
@@ -268,9 +256,7 @@
                         <select class="selectpicker show-tick form-control" name="model" disabled
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                 </div>
@@ -300,7 +286,7 @@
             </div>
         </form>
     </div>
-    <!--初始化添加功能编辑面板的各个下拉框选项数据-->
+    <!--初始化添加功能编辑面板的类别与国家下拉框选项数据-->
     <script>
         // 初始化国家列表
         var selectpicker_brand_country = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
@@ -340,7 +326,7 @@
         selectpicker_model_category.empty();
         selectpicker_model_category.append($('<option value="-1">请选择</option>'));
 
-        var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'device_category']");
+        var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'category']");
         selectpicker_fingerprint_category.empty();
         selectpicker_fingerprint_category.append($('<option value="-1">请选择</option>'));
 
@@ -363,6 +349,17 @@
                     alert("请求失败...");
                 }
             });
+
+        // 将其他下拉框设为disabled
+        var sp_type = $("form select.selectpicker[name = 'type']");
+        var sp_brand = $("form select.selectpicker[name = 'brand']");
+        var sp_model = $("form select.selectpicker[name = 'model']");
+        sp_type.prop("disabled",true);
+        sp_brand.prop("disabled",true);
+        sp_model.prop("disabled",true);
+        sp_type.selectpicker("refresh");
+        sp_brand.selectpicker("refresh");
+        sp_model.selectpicker("refresh");
     </script>
     <div class="row results_content">
         {% include "device_display/table_search_results.html" %}

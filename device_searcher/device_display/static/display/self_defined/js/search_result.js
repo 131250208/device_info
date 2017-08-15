@@ -32,6 +32,9 @@ $(document).ready(
         // 为导出按钮添加点击事件
         bt_export_click();
 
+        // 为下拉框添加选择事件
+        select_changed();
+
         // 调整结果容器的高
         var height = window.innerHeight - 380;
         $('div.results_content').css("min-height", height);
@@ -146,13 +149,6 @@ function get_results_post() {
     get_results(search_text, search_category, page_index);
 }
 
-// // 全选函数
-// function check_all_click() {
-//     $("input[type='checkbox'][value ='-1']").on('click', function () {
-//         $("input[type='checkbox'][value != '-1']").click();
-//     });
-// }
-
 // 返回选中的元组id，如果没有选中项则返回空数组
 function get_ids_checked() {
     var id_list = [];
@@ -263,8 +259,8 @@ function bt_confirm_to_add_click() {
                 var accuracy = thisform.find("input[name = 'accuracy']").val();
                 var match_type = thisform.find("select[name = 'match_type']").val();
                 var protocol = thisform.find("input[name = 'protocol']").val();
-                var device_category = thisform.find("select[name = 'device_category']").val();
-                var device_type = thisform.find("select[name = 'device_type']").val();
+                var category = thisform.find("select[name = 'category']").val();
+                var type = thisform.find("select[name = 'type']").val();
                 var brand = thisform.find("select[name = 'brand']").val();
                 var model = thisform.find("select[name = 'model']").val();
                 var server = thisform.find("input[name = 'server']").val();
@@ -276,8 +272,8 @@ function bt_confirm_to_add_click() {
                     "accuracy": accuracy,
                     "match_type": match_type,
                     "protocol": protocol,
-                    "device_category": device_category,
-                    "device_type": device_type,
+                    "device_category": category,
+                    "device_type": type,
                     "brand": brand,
                     "model": model,
                     "server": server,
@@ -293,6 +289,7 @@ function bt_confirm_to_add_click() {
         add_record(add_category, record_str);
     });
 }
+
 // 给删除按钮注册点击事件
 function bt_delete_click() {
     $('button#btn_delete').on('click', function () {
