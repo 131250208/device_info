@@ -55,13 +55,15 @@ def getPage_update(request):
     return render(request, 'device_display/update.html', res_content)
 
 
-# managelog_page
+# managelog_page @liumingdong 8.15 修改
 def getPage_managelog(request):
+    res_content = {'page_total': '13', 'page_index': "1"}# page_index是当前页码，默认为1，不必修改
+                                                            # page_total返回的是日志列表的页码总数，每页记录条数暂定为15
 
     if not request.user.is_authenticated():  # no login
-        res_content = {'identity': 'tourist'}
+        res_content['identity'] = 'tourist'
     else:
-        res_content = {'identity': 'admin'}
+        res_content['identity'] = 'admin'
     return render(request, 'device_display/managelog.html', res_content)
 
 
@@ -203,7 +205,7 @@ def search(request):
 
     return HttpResponse(json.dumps(res_content))
 
-# 添加接口 @liumingdong
+# 添加接口 @liumingdong 8.15
 def add_record(request):
     add_category = request.POST["add_category"]
     record = request.POST["record"] # 需要添加的record的json 字符串
@@ -215,29 +217,29 @@ def add_record(request):
     res_content = {"status":"success"}
     return HttpResponse(json.dumps(res_content))
 
-# 获取国家列表 @liumingdong
+# 获取国家列表 @liumingdong 8.15
 def get_all_countries(request):
     res_content = {"A": [{"en_name": "America", "cn_name": "美国"},{"en_name": "Afghanistan", "cn_name": "阿富汗"}],
                    "B": [{"en_name": "Brunei", "cn_name": "文莱"},],}
     return HttpResponse(json.dumps(res_content))
-# 获取类别列表 @liumingdong
+# 获取类别列表 @liumingdong 8.15
 def get_all_categories(request):
     res_content = [{"id": "2", "name": "路由器"}, ]
     return HttpResponse(json.dumps(res_content))
-# 获取类型列表 @liumingdong
+# 获取类型列表 @liumingdong 8.15
 def get_types(request):
     category_id = request.POST["category_id"]
     # 根据类别 id 查找该类别下的所有类型
     res_content = [{"id": "2", "name": "XXX路由器"}, ]
     return HttpResponse(json.dumps(res_content))
-# 获取品牌列表 @liumingdong
+# 获取品牌列表 @liumingdong 8.15
 def get_brands(request):
     category_id = request.POST["category_id"]
     type_id = request.POST["type_id"]
     # 根据类别 id 和类型 id 查找所有品牌
     res_content = [{"id": "2", "name": "tp-link"}, ]
     return HttpResponse(json.dumps(res_content))
-# 获取型号列表 @liumingdong
+# 获取型号列表 @liumingdong 8.15
 def get_models(request):
     category_id = request.POST["category_id"]
     type_id = request.POST["type_id"]
@@ -279,6 +281,53 @@ def export_record(request):
 
     res_content = {"status":"success"}
     return HttpResponse(json.dumps(res_content))
+
+# 接口，获取网站爬虫更新的源网站列表 @liumingdong 8.15
+def get_srcweb_list(request):
+
+    # circle的可选值：[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
+    res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "1个月"},
+                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "1个月"}]
+    return HttpResponse(json.dumps(res_content))
+
+# 接口，获取更新记录列表 @liumingdong 8.15
+def get_updrcd_list(request):
+    page = request.GET["page"]
+
+    res_content = [{"id": "1", "data_src_name": "中关村在线", "upd_time": "2017-10-3 15:44:56",
+                    "type_num": "132", "brand_num": "44", "model_num": "345"},
+                   {"id": "2", "data_src_name": "xxx文件名", "upd_time": "2017-10-3 15:42:56",
+                    "type_num": "34", "brand_num": "345", "model_num": "111"},]
+    return HttpResponse(json.dumps(res_content))
+
+# 修改源网站更新周期的接口 @liumingdong 8.15
+def adjust_upd_circle(request):
+    web_id = request.POST["web_id"]
+    new_circle = request.POST["new_circle"]# circle参数的值有["1", "2", "3", "6", "12"]，
+                                            # 对应[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
+
+    res_content = {"status": "success"}
+    return HttpResponse(json.dumps(res_content))
+
+# 更新回退操作接口 @liumingdong 8.15
+def recall_upd(request):
+    upd_id_list_str = request.POST["upd_id_list_str"]
+    upd_id_list_json = json.loads(upd_id_list_str)# 获取的是一个id_list，里面存有需要回退的所有更新记录的id
+
+    res_content = {"status": "success"}
+    return HttpResponse(json.dumps(res_content))
+
+# 获取操作管理日志的接口 @liumingdong8.15
+def get_manage_log(request):
+    page = request.GET["page_index"]
+
+    res_content = [{"opt_time": "2017-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
+                    "opt_detail": "记录详情"},
+                   {"opt_time": "2017-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
+                    "opt_detail": "记录详情"},]
+    return HttpResponse(json.dumps(res_content))
+
+
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

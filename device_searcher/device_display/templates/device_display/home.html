@@ -99,12 +99,11 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav_li" id="nav_search"><a href="{% url 'display:getPage_search' %}">搜索</a>
                         </li>
-                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">数据统计</a>
-                        </li>
                         {% ifequal identity 'admin' %}
-                        <li class="nav_li" id="nav_update"><a href="{% url 'display:getPage_update' %}">更新审查</a></li>
+                        <li class="nav_li" id="nav_update"><a href="{% url 'display:getPage_update' %}">数据更新</a></li>
                         <li class="nav_li" id="nav_log"><a href="{% url 'display:getPage_managelog' %}">管理日志</a></li>
                         {% endifequal %}
+                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">能力展示</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-2" id="login_out">

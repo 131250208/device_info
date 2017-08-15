@@ -55,5 +55,12 @@ urlpatterns = [
     url(r'^add_record/', views.add_record, name='add_record'),  # edit_record
     url(r'^edit_record/', views.edit_record, name='edit_record'),  # edit_record
     url(r'^delete_record/', views.delete_record, name='delete_record'),  # delete_record
-    url(r'^export_record/', views.export_record, name='export_record')  # export_record
+    url(r'^export_record/', views.export_record, name='export_record'),  # export_record
+
+    url(r'^get_srcweb_list/', views.get_srcweb_list, name='get_srcweb_list'),  # get_srcweb_list
+    url(r'^get_updrcd_list/', views.get_updrcd_list, name='get_updrcd_list'),  # get_updrcd_list
+
+    url(r'^adjust_upd_circle/', views.adjust_upd_circle, name='adjust_upd_circle'),
+    url(r'^recall_upd/', views.recall_upd, name='recall_upd'),
+    url(r'^get_manage_log/', views.get_manage_log, name='get_manage_log'),
 ]

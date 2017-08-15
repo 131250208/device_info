@@ -80,13 +80,13 @@ function adjust_pages(input_page_total, input_page_index, after_click) {
     }
 
     // 给页码添加点击事件
-    page_li_click(input_page_total, input_page_total, after_click);
+    page_li_click(input_page_total, input_page_index, after_click);
 }
 
 // 注册点击页码的事件
 function page_li_click(input_page_total, input_page_index, after_click) {
     $('ul.pagination li').on("click", function () {
-        var inp_page = $("input[name='page_index']");
+        var inp_page = input_page_index;
 
         var page_current = inp_page.val();
 

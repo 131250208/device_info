@@ -3,8 +3,8 @@
 
 {% block main_container %}
 
-<input type="hidden" name="input_page_total" value="9">
-<input type="hidden" name="input_page_index" value="3">
+<input type="hidden" name="input_page_total" value="{{ page_total }}">
+<input type="hidden" name="input_page_index" value="{{ page_index }}">
 
 {% include "device_display/log_table.html" %}
 
@@ -23,9 +23,36 @@
             var input_page_total = $("input[name= 'input_page_total']");
             var input_page_index = $("input[name= 'input_page_index']");
 
+            get_manage_logs(input_page_index.val());
+
             adjust_pages(input_page_total,input_page_index,after_click_page);
         }
     );
+
+    function get_manage_logs(page_index) {
+        var tbody = $("table tbody");
+        var url_get_logs = "{% url 'display:get_manage_log' %}";
+        $.get(url_get_logs,
+            {"page_index": page_index},
+        function (data, status) {
+            if(status === "success"){
+                tbody.empty();
+                var result_json = eval('(' + data + ')');
+                for (log_ind in result_json){
+                    var log = $('<tr>' +
+                        '<td>' + result_json[log_ind].opt_time + '</td>' +
+                        '<td>' + result_json[log_ind].opt_user + '</td>' +
+                        '<td>' + result_json[log_ind].opt_brief + '</td>' +
+                    '</tr>');
+
+                    tbody.append(log);
+                }
+            }else {
+                alert("获取log请求失败了");
+            }
+        });
+
+    }
 </script>
 {% endblock %}
 
