@@ -12,7 +12,8 @@
 
 <script>
     function after_click_page() {
-
+        var input_page_index = $("input[name= 'input_page_index']");
+        get_manage_logs(input_page_index.val());
     }
     //设置导航栏的元素active切换
     $(document).ready(
