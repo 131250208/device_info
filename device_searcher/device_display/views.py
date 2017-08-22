@@ -328,6 +328,24 @@ def get_manage_log(request):
     return HttpResponse(json.dumps(res_content))
 
 
+# 上传并导入文件的接口 @liumingdong 8.22
+def upload_file(request):
+    num_files = len(request.FILES)
+    for index in range(num_files):
+        file = request.FILES['upl_file_' + str(index)]
+        name = file.name
+        with open('./upd_files/'+ name +'.txt', 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+    # 上传文件完毕，这里可以做一些导入文件到数据库的处理 @liumingdong 8.22
+
+    # 上传完毕重新跳转上传文件页面
+    res_content = {"status": "updfile_success"}
+    if not request.user.is_authenticated():  # no login
+        res_content['identity'] = 'tourist'
+    else:
+        res_content['identity'] = 'admin'
+    return render(request, 'device_display/update.html', res_content)
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

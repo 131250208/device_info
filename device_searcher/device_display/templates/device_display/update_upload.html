@@ -1,53 +1,80 @@
 <form role="form" class="pane_edit">
     <div class="row">
         <div class="col-sm-4 col-sm-offset-8 icon_btns" style="text-align: right">
-            <button type="button" class="btn btn-default btn-sm">
+            <button type="button" class="btn btn-default btn-sm" id="uploader_browse">
                 <span class="glyphicon glyphicon-plus"></span> 添加文件
             </button>
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-minus"></span> 删除文件
+            <button type="button" class="btn btn-default btn-sm" id="remove_files">
+                <span class="glyphicon glyphicon-minus"></span> 移除文件
             </button>
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-open"></span> 上传
+            <button type="button" class="btn btn-default btn-sm" id="uploader_start">
+                <span class="glyphicon glyphicon-open"></span> 导入
             </button>
         </div>
     </div>
 </form>
+
 {% extends "device_display/table_selfdefined.html" %}
+
+{% block table%}
+<form role="form" method="post" action="{% url 'display:upload_file' %}" enctype="multipart/form-data"
+      class="form_upl_files">
+    {% csrf_token %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="checkbox_par">
+                    <input type="checkbox" style="margin-right: 5px" data-check-all="true">全选
+                </th>
+                <th>文件</th>
+            </tr>
+        </thead>
+        <tbody>
+            <button type="submit" class="btn_upl_file" hidden></button>
+        </tbody>
+    </table>
+</form>
+
+<script>
+    $(document).ready(function () {
+        // 导入文件的点击事件
+        $("button#uploader_start").on("click", function () {
+            var num_tr = $("form.form_upl_files tbody").find("tr").length;
+            if (num_tr <= 0){
+                alert("没有添加任何文件");
+            }else {
+                var btns_upl_file = $("button.btn_upl_file");
+                btns_upl_file.click();
+            }
+        });
+        // 添加上传文件的点击事件
+        $("button#uploader_browse").on("click", function () {
+            var tbody = $("form.form_upl_files tbody");
+
+            var num_tr = tbody.find("tr").length;
+
+            var tr_upl_file = $('<tr>' +
+                '<td class="checkbox_par">' +
+                '<input type="checkbox">' +
+                '</td>' +
+                '<td>' +
+                '<input type="file" name="upl_file_' + num_tr + '">' +
+                '</td>' +
+                '</tr>');
+
+            tbody.append(tr_upl_file);// 在tbody中添加一行
+
+            tr_upl_file.find("input").click();
+        });
+    });
+</script>
+{% endblock %}
+
 {% block thead %}
-<tr>
-    <th>
-        <input type="checkbox" style="margin-right: 5px" data-check-all="true">全选
-    </th>
-    <th>序号</th>
-    <th>数据来源</th>
-    <th>数据分类</th>
-</tr>
+
 {% endblock %}
 
 {% block tbody %}
-<tr>
-    <td>
-        <input type="checkbox">
-    </td>
-    <td>1</td>
-    <td>文件名1.doc</td>
-    <td>类型/型号</td>
-</tr>
-<tr>
-    <td>
-        <input type="checkbox">
-    </td>
-    <td>2</td>
-    <td>文件名2.txt</td>
-    <td>品牌</td>
-</tr>
-<tr>
-    <td>
-        <input type="checkbox">
-    </td>
-    <td>3</td>
-    <td>文件名3.cvs</td>
-    <td>型号</td>
-</tr>
+
 {% endblock %}
+

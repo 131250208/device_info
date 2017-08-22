@@ -69,7 +69,11 @@
 
 }
 
-div#add_editor_type,div#add_editor_brand,div#add_editor_model,div#add_editor_fingerprint {
+div#add_editor_type
+,div#add_editor_brand
+,div#add_editor_model
+,div#add_editor_fingerprint
+,div#add_editor_category {
     background: #333333;
     color: #ffffff;
     padding-top: 5px;

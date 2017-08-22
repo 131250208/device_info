@@ -107,6 +107,9 @@ function cat_tab_click() {
     $('.cat').click(function () {
         var inp_searchcat = $('input#searchcat');
         switch ($(this).attr('id')) {
+            case 'cat_category' :
+                inp_searchcat.val('category');
+                break;
             case 'cat_type' :
                 inp_searchcat.val('type');
                 break;
@@ -196,6 +199,21 @@ function bt_confirm_to_add_click() {
         var record_str = "";
 
         switch (add_category) {
+             case "category":
+                var category = thisform.find("input[name = 'category']").val();
+                var category_cn_name = thisform.find("input[name = 'category_cn_name']").val();
+                var category_en_name = thisform.find("input[name = 'category_en_name']").val();
+                var description = thisform.find("textarea[name = 'description']").val();
+
+                record = {
+                    "category": category,
+                    "cn_name": category_cn_name,
+                    "en_name": category_en_name,
+                    "description": description,
+                };
+
+                record_str = JSON.stringify(record);
+                break;
             case "type":
                 var type = thisform.find("input[name = 'type']").val();
                 var type_cn_name = thisform.find("input[name = 'type_cn_name']").val();

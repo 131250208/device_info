@@ -1,0 +1,99 @@
+{% load staticfiles %}
+
+<script src="{% static 'display/others/js/jquery-ui.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'display/others/css/jquery-ui.min.css' %}"/>
+
+<script src="{% static 'display/others/js/plupload.full.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'display/others/js/jquery.ui.plupload.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'display/others/js/zh_CN.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'display/others/css/jquery.ui.plupload.css' %}"/>
+
+<div id="uploader">
+    <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+</div>
+
+<form role="form" method="post" action="{% url 'display:upload_file' %}">
+    {% csrf_token %}
+    <label for="exampleInputFile">File input</label>
+    <input type="file" class="form-control" id="exampleInputFile">
+
+    <button type="submit" class="btn btn-sm">submit</button>
+</form>
+<script>
+$(function() {
+    $("#uploader").plupload({
+        // General settings
+        runtimes : 'html5,flash,silverlight,html4',
+        browse_button : 'uploader_browse',
+        url : "/",
+
+        // Maximum file size
+        max_file_size : '200mb',
+
+        chunk_size: '1mb',
+
+        // Resize images on clientside if we can
+        resize : {
+            width : 200,
+            height : 200,
+            quality : 90,
+            crop: true // crop to exact dimensions
+        },
+
+        // Specify what files to browse for
+        filters : [
+            {title : "Image files", extensions : "jpg,gif,png"},
+            {title : "Zip files", extensions : "zip,avi"}
+        ],
+
+        // Rename files by clicking on their titles
+        rename: true,
+
+        // Sort files
+        sortable: true,
+
+        // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
+        dragdrop: true,
+
+        // Views to activate
+        views: {
+            list: true,
+            active: 'list'
+        },
+
+        // Flash settings
+        flash_swf_url : "{% static 'display/others/js/Moxie.swf' %}",
+
+        // Silverlight settings
+        silverlight_xap_url : "{% static 'display/others/js/Moxie.xap' %}",
+        multipart: true,
+        multipart_params: {
+            "authenticity_token": "what???"
+        },
+    });
+});
+
+$(document).ready(function () {
+    var uploader = $("#uploader");
+
+    // 给自定义按钮添加功能
+    $("button#uploader_start").on("click",function () {
+        uploader.plupload('start');// 开始上传
+    });
+
+    $("button#uploader_stop").on("click",function () {
+        uploader.plupload('stop');// 开始上传
+    });
+
+    $("button#remove_files").on("click",function () {
+        uploader.plupload('clearQueue');// 清空文件队列
+    });
+
+    // 调整一些组件的位置，隐藏一些组件
+    $("div#uploader_buttons a").text("");
+    $("div.plupload_logo").remove();
+    $("div.plupload_header_content").css("padding-left",15);
+
+});
+
+</script>

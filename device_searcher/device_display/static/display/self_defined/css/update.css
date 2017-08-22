@@ -32,7 +32,7 @@
 
 .pane_edit .icon_btns button{
     color: #fff;
-    background-color: transparent;
+    background: transparent;
     border: 0px;
     font-size: 15px;
 }

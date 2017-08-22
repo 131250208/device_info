@@ -22,6 +22,45 @@
             </button>
         </div>
     </div>
+    <div id="add_editor_category" class="row collapse">
+        <form role="form" name="add_editor_category" novalidate >
+            {% csrf_token %}
+            <input type="hidden" class="form-control" value="type" name="add_category">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>类别</label>
+                        <input type="text" class="form-control" name="category">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>类别中文名称</label>
+                        <input type="text" class="form-control" name="category_cn_name">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>类别英文名称(必填)</label>
+                        <input type="text" class="form-control" name="category_en_name" ng-model="type_en_name"
+                               pattern="[^\u2E80-\u9FFF ]+" required>
+                        <span style="color:red"
+                              ng-show="add_editor_category.category_en_name.$dirty && add_editor_category.category_en_name.$invalid">
+                            <span ng-show="add_editor_category.category_en_name.$invalid">类别英文名称不得含有中文字符。</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>相关描述</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_category.category_en_name.$invalid">确定添加
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="add_editor_type" class="row collapse">
         <form role="form" name="add_editor_type" novalidate >
             {% csrf_token %}
@@ -58,7 +97,7 @@
                     <div class="col-sm-4">
                         <label>类别英文名称(必填)</label>
                         <input type="text" class="form-control" name="category_en_name" ng-model="category_en_name"
-                               pattern="[^\u2E80-\u9FFF ]+"
+                               pattern="[^\u2E80-\u9FFF ]*"
                                required>
                         <span style="color:red"
                               ng-show="add_editor_type.category_en_name.$dirty && add_editor_type.category_en_name.$invalid">

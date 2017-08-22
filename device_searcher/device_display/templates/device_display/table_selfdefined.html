@@ -27,6 +27,7 @@
     }
 </style>
 <div class="table-responsive">
+    {% block table%}
     <table class="table table-striped" >
         <thead>
             {% block thead %}
@@ -37,4 +38,5 @@
             {% endblock %}
         </tbody>
     </table>
+    {% endblock %}
 </div>

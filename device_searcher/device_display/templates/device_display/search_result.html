@@ -25,6 +25,7 @@
     </div>
 </form>
 <ul class="nav nav-tabs" id="nav_result_cat">
+    <li class="cat" id="cat_category"><a data-toggle="tab">类别</a></li>
     <li class="cat" id="cat_type"><a data-toggle="tab">类型</a></li>
     <li class="cat" id="cat_brand"><a data-toggle="tab">品牌</a></li>
     <li class="cat" id="cat_model"><a data-toggle="tab">型号</a></li>
@@ -32,9 +33,13 @@
 </ul>
 <!--切换结果分类标签的active状态-->
 <script>
+    // 从主搜索页跳转到该页，调整tab的active
     $('#nav_result_cat').children().removeClass('active');
     var cat = $('#searchcat').val();
     switch (cat) {
+        case 'category' :
+            $('#cat_category').addClass('active');
+            break;
         case 'type' :
             $('#cat_type').addClass('active');
             break;
