@@ -224,7 +224,15 @@ def get_all_countries(request):
     return HttpResponse(json.dumps(res_content))
 # 获取类别列表 @liumingdong 8.15
 def get_all_categories(request):
-    res_content = [{"id": "2", "name": "路由器"}, ]
+    res_content = [{"id": "1", "name": "路由器1"},
+                   {"id": "2", "name": "路由器2"},
+                   {"id": "3", "name": "路由器3"},
+                   {"id": "4", "name": "路由器4"},
+                   {"id": "5", "name": "路由器5"},
+                   {"id": "6", "name": "路由器6"},
+                   {"id": "7", "name": "路由器7"},
+                   {"id": "8", "name": "路由器8"},
+                   {"id": "9", "name": "路由器9"},]
     return HttpResponse(json.dumps(res_content))
 # 获取类型列表 @liumingdong 8.15
 def get_types(request):
@@ -325,6 +333,12 @@ def get_manage_log(request):
                     "opt_detail": "记录详情"},
                    {"opt_time": "2017-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
                     "opt_detail": "记录详情"},]
+
+    if page == "2":
+        res_content = [{"opt_time": "2019-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
+                        "opt_detail": "记录详情"},
+                       {"opt_time": "2018-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
+                        "opt_detail": "记录详情"}, ]
     return HttpResponse(json.dumps(res_content))
 
 

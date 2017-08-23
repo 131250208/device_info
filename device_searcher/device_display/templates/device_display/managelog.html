@@ -12,8 +12,8 @@
 
 <script>
     function after_click_page() {
-        var input_page_index = $("input[name= 'input_page_index']");
-        get_manage_logs(input_page_index.val());
+        var page_index = $("input[name= 'input_page_index']").val();
+        get_manage_logs(page_index);
     }
     //设置导航栏的元素active切换
     $(document).ready(
@@ -43,7 +43,7 @@
                     var log = $('<tr>' +
                         '<td>' + result_json[log_ind].opt_time + '</td>' +
                         '<td>' + result_json[log_ind].opt_user + '</td>' +
-                        '<td>' + result_json[log_ind].opt_brief + '</td>' +
+                        '<td>' + result_json[log_ind].opt_brief + '<a href="#" data-toggle="tooltip" title="'+ result_json[log_ind].opt_detail +'">（查看详情请悬停在我上面）</a></td>' +
                     '</tr>');
 
                     tbody.append(log);
