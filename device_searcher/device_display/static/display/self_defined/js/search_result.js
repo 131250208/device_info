@@ -7,6 +7,9 @@ $(document).ready(
         // 注册点击分类tab的事件
         cat_tab_click();
 
+        // 显示搜索结果
+        get_results_post();
+
         // 初始化翻页组件并设置当前页码标签设为active
         var input_page_total = $("input#page_total");
         var input_page_index = $("input[name='page_index']");
@@ -42,33 +45,36 @@ $(document).ready(
     }
 );
 
-function append_tr(father, row) {
+function append_tr(father, row, relevancy_sign) {
     var unit = "td";
     if (row.id === -1) {
         unit = "th"
     }
     var tr = document.createElement("tr");
 
-    var input = document.createElement("input");
-    input.type = "checkbox";
-    input.value = row.id;
+    // 先构造第一个包含复选框的td/th
+    var check_box = document.createElement("input");
+    check_box.type = "checkbox";
+    check_box.value = row.id;
 
-    var chk_box = document.createElement(unit);
-    chk_box.className = "col-sm-1 checkbox_par";
-    chk_box.appendChild(input);
+    var chk_box_inp = document.createElement(unit);
+    chk_box_inp.className = "col-sm-1 checkbox_par";
+    chk_box_inp.appendChild(check_box);
 
     if (row.id === -1) {
-        input.style.marginRight = "5px";
-        input.dataset.checkAll = "true";
-        chk_box.append('全选');
+        check_box.style.marginRight = "5px";
+        check_box.dataset.checkAll = "true";
+        chk_box_inp.append('全选');
     }
 
-    tr.appendChild(chk_box);
+    tr.appendChild(chk_box_inp);
 
+    // 遍历构造包含每个字段对应值的td并添加到tr中
     var val_list = row.field_val;
     for (var i = 0; i < val_list.length; ++i) {
         var th = document.createElement(unit);
         th.innerHTML = val_list[i];
+        th.dataset.relevancy = relevancy_sign[i];
         tr.appendChild(th);
     }
     father.append(tr);
@@ -81,14 +87,15 @@ function show_intable(result_json) {
     info.html("查找结果：" + result_json.records_num + " 条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 " + result_json.page_total + " 页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;耗时：" + result_json.search_time + " s");
     $("input#page_total").val(result_json.page_total);
 
+    var relevancy_sign = result_json.relevancy;
     // thead
     var thead = $('table.table thead');
     thead.empty();
 
-    var field_names = result_json.fieldnames
+    var field_names = result_json.fieldnames;
     var thead_dict = {'id': -1, 'field_val': field_names}
     // var result_json = eval('(' + data + ')');
-    append_tr(thead, thead_dict)
+    append_tr(thead, thead_dict, relevancy_sign)
 
     // tbody
     var tbody = $("table.table tbody");
@@ -96,7 +103,7 @@ function show_intable(result_json) {
 
     var list = result_json.record_list;
     for (var j = 0; j < list.length; ++j) {
-        append_tr(tbody, list[j]);
+        append_tr(tbody, list[j], relevancy_sign);
     }
 
     check_all_click();
@@ -239,7 +246,7 @@ function bt_confirm_to_add_click() {
                 var brand_cn_name = thisform.find("input[name = 'brand_cn_name']").val();
                 var brand_en_name = thisform.find("input[name = 'brand_en_name']").val();
                 var country = thisform.find("select[name = 'country']").val();
-                var product_type = thisform.find("input[name = 'product_type']").val();
+                var product_type = thisform.find("select[name = 'type']").val();
                 var brand_link = thisform.find("input[name = 'brand_link']").val();
                 var description = thisform.find("textarea[name = 'description']").val();
 
@@ -396,15 +403,6 @@ function bt_edit_click() {
     });
 }
 
-// 给导出按钮增加点击事件
-function bt_export_click() {
-    $("button#btn_export").on("click", function () {
-        var search_text = $("input[name='search_text']").val();
-        var search_category = $("input[name='search_category']").val();
 
-        // post
-        export_result(search_text, search_category);
-    });
-}
 
 

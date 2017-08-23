@@ -183,142 +183,156 @@
         // 类别列表
         var sp_category = $("form select.selectpicker[name = 'category']");
 
-        sp_category.on("changed.bs.select",function () {
+        sp_category.on("changed.bs.select", function () {
             var cat_id = $(this).selectpicker('val'); //返回选中值
             var sp_type = $(this).parents("form").find("select.selectpicker[name = 'type']");
 
-            if (cat_id === "-1"){// 如果选中的是“请选择”
-                var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
-                var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
-                sp_type.selectpicker("val","请选择");
-                sp_brand.selectpicker("val","请选择");
-                sp_model.selectpicker("val","请选择");
+            var url = "{% url 'display:get_types' %}";
+            $.post(url,
+                {"category_id": cat_id},
+                function (data, status) {
+                    if (status === 'success') {
+                        sp_type.empty();
 
-                sp_type.prop("disabled",true);
-                sp_brand.prop("disabled",true);
-                sp_model.prop("disabled",true);
+                        var result_json = eval('(' + data + ')');
+                        for (model_ind in result_json) {
+                            var id = result_json[model_ind].id;
+                            var name = result_json[model_ind].name;
 
-                sp_type.selectpicker("refresh");
-                sp_brand.selectpicker("refresh");
-                sp_model.selectpicker("refresh");
-            }else {
-                var url = "{% url 'display:get_types' %}";
-                $.post(url,
-                    {"category_id": cat_id},
-                    function (data,status) {
-                        if (status === 'success') {
-                            sp_type.empty();
-                            sp_type.append($('<option value="-1">请选择</option>'));
+                            var opt = $('<option value="' + id + '">' + name + '</option>');
 
-                            var result_json = eval('(' + data + ')');
-                            for (model_ind in result_json){
-                                var id = result_json[model_ind].id;
-                                var name = result_json[model_ind].name;
-
-                                var opt = $('<option value="' + id + '">' + name + '</option>');
-
-                                sp_type.append(opt);
-                            }
-                            sp_type.prop("disabled",false);
-                            sp_type.selectpicker("render");
-                            sp_type.selectpicker("refresh");
-                        } else {
-                            alert("请求失败...");
+                            sp_type.append(opt);
                         }
-                    });
-            }
+                        sp_type.prop("disabled", false);
+                        sp_brand.empty();
+                        sp_brand.prop("disabled", true);
+                        sp_model.empty();
+                        sp_model.prop("disabled", true);
+                        sp_type.selectpicker("render");
+                        sp_type.selectpicker("refresh");
+                        sp_brand.selectpicker("refresh");
+                        sp_model.selectpicker("refresh");
+                    } else {
+                        alert("请求失败...");
+                    }
+                });
         });
 
         // 类型列表
         var sp_type = $("form select.selectpicker[name = 'type']");
-        
-        sp_type.on("changed.bs.select",function () {
+
+        sp_type.on("changed.bs.select", function () {
             var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
             var type_id = $(this).selectpicker('val'); //返回选中值
             var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
 
-            if (type_id === "-1"){// 如果选中的是“请选择”
-                var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
-                sp_brand.selectpicker("val","请选择");
-                sp_model.selectpicker("val","请选择");
-                sp_brand.prop("disabled",true);
-                sp_model.prop("disabled",true);
+//            if (type_id === "-1"){// 如果选中的是“请选择”
+//                var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
+//                sp_brand.selectpicker("val","请选择");
+//                sp_model.selectpicker("val","请选择");
+//                sp_brand.prop("disabled",true);
+//                sp_model.prop("disabled",true);
+//
+//                sp_model.selectpicker("refresh");
+//                sp_brand.selectpicker("refresh");
+//            }else {
+            var url = "{% url 'display:get_brands' %}";
+            $.post(url,
+                {
+                    "type_id": type_id,
+                    "category_id": cat_id
+                },
+                function (data, status) {
+                    if (status === 'success') {
+                        sp_brand.empty();
+//                            sp_brand.append($('<option value="-1">请选择</option>'));
 
-                sp_model.selectpicker("refresh");
-                sp_brand.selectpicker("refresh");
-            }else {
-                var url = "{% url 'display:get_brands' %}";
-                $.post(url,
-                    {"type_id": type_id,
-                    "category_id": cat_id},
-                    function (data,status) {
-                        if (status === 'success') {
-                            sp_brand.empty();
-                            sp_brand.append($('<option value="-1">请选择</option>'));
+                        var result_json = eval('(' + data + ')');
+                        for (brand_ind in result_json) {
+                            var id = result_json[brand_ind].id;
+                            var name = result_json[brand_ind].name;
 
-                            var result_json = eval('(' + data + ')');
-                            for (brand_ind in result_json){
-                                var id = result_json[brand_ind].id;
-                                var name = result_json[brand_ind].name;
+                            var opt = $('<option value="' + id + '">' + name + '</option>');
 
-                                var opt = $('<option value="' + id + '">' + name + '</option>');
-
-                                sp_brand.append(opt);
-                            }
-                            sp_brand.prop("disabled",false);
-                            sp_brand.selectpicker("render");
-                            sp_brand.selectpicker("refresh");
-                        } else {
-                            alert("请求失败...");
+                            sp_brand.append(opt);
                         }
-                    });
-            }
+
+                        sp_brand.prop("disabled", false);
+                        sp_model.empty();
+                        sp_model.prop("disabled", true);
+                        sp_brand.selectpicker("render");
+                        sp_model.selectpicker("render");
+                        sp_brand.selectpicker("refresh");
+                        sp_model.selectpicker("refresh");
+                    } else {
+                        alert("请求失败...");
+                    }
+                });
+//            }
         });
 
         // 品牌列表
         var sp_brand = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'brand']");
 
-        sp_brand.on("changed.bs.select",function () {
+        sp_brand.on("changed.bs.select", function () {
             var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
             var type_id = $(this).parents("form").find("select.selectpicker[name = 'type']").selectpicker("val"); //返回选中值
             var brand_id = $(this).selectpicker('val'); //返回选中值
 
             var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
 
-            if (brand_id === "-1"){// 如果选中的是“请选择”
-                sp_model.selectpicker("val","请选择");
-                sp_model.prop("disabled",true);
-
-                sp_model.selectpicker("refresh");
-            }else {
-                var url = "{% url 'display:get_models' %}";
-                $.post(url,
-                    {"type_id": type_id,
+//            if (brand_id === "-1"){// 如果选中的是“请选择”
+//                sp_model.selectpicker("val","请选择");
+//                sp_model.prop("disabled",true);
+//
+//                sp_model.selectpicker("refresh");
+//            }else {
+            var url = "{% url 'display:get_models' %}";
+            $.post(url,
+                {
+                    "type_id": type_id,
                     "category_id": cat_id,
-                    "brand_id": brand_id},
-                    function (data,status) {
-                        if (status === 'success') {
-                            sp_model.empty();
-                            sp_model.append($('<option value="-1">请选择</option>'));
+                    "brand_id": brand_id
+                },
+                function (data, status) {
+                    if (status === 'success') {
+                        sp_model.empty();
+//                            sp_model.append($('<option value="-1">请选择</option>'));
 
-                            var result_json = eval('(' + data + ')');
-                            for (model_ind in result_json){
-                                var id = result_json[model_ind].id;
-                                var name = result_json[model_ind].name;
+                        var result_json = eval('(' + data + ')');
+                        for (model_ind in result_json) {
+                            var id = result_json[model_ind].id;
+                            var name = result_json[model_ind].name;
 
-                                var opt = $('<option value="' + id + '">' + name + '</option>');
+                            var opt = $('<option value="' + id + '">' + name + '</option>');
 
-                                sp_model.append(opt);
-                            }
-                            sp_model.prop("disabled",false);
-                            sp_model.selectpicker("render");
-                            sp_model.selectpicker("refresh");
-                        } else {
-                            alert("请求失败...");
+                            sp_model.append(opt);
                         }
-                    });
-            }
+                        sp_model.selectpicker("render");
+
+                        sp_model.prop("disabled", false);
+                        sp_model.selectpicker("refresh");
+                    } else {
+                        alert("请求失败...");
+                    }
+                });
+//            }
         });
+    }
+
+    // 给导出按钮增加点击事件
+    function bt_export_click() {
+        var btn_export = $("button#btn_export");
+
+        var search_text = $("input[name='search_text']").val();
+        var search_category = $("input[name='search_category']").val();
+
+        var export_url = "{% url 'display:export_record' %}?search_text=" + search_text + "&search_category=" + search_category;
+
+        btn_export.on("click", function () {
+            window.open(export_url);
+        });
+        // export_result(search_text, search_category);
     }
 </script>
 {% endblock %}

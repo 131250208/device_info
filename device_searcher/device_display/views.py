@@ -174,7 +174,7 @@ def logout(request):
 # 搜索接口 @liumingdong
 def search_private(search_text, search_category, page_index):
     # 参数： 搜索关键词/搜索分类/搜索页码
-    # 分类的可选项 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
+    # 分类的可选项 (字符串类型 : category/type/brand/model/fingerprint 类型/品牌/型号/指纹
 
     # 调用下层接口获取以下数据 @liumingdong
     res_content = {}
@@ -182,6 +182,12 @@ def search_private(search_text, search_category, page_index):
         u'字段1',u'字段2',
          u'字段3',u'字段4'
     ] # 字段不包括id
+
+    # 标记是否是关联字段（修改时是否需要下拉框),与字段名对应 @liumingdong 8.23
+    res_content['relevancy'] = [
+        '0', '0',
+        '1', '0'
+    ]
 
     res_content['record_list'] = []
     # 查询结果的list
@@ -238,7 +244,9 @@ def get_all_categories(request):
 def get_types(request):
     category_id = request.POST["category_id"]
     # 根据类别 id 查找该类别下的所有类型
-    res_content = [{"id": "2", "name": "XXX路由器"}, ]
+    res_content = [{"id": "1", "name": "XXX路由器"},
+                   {"id": "2", "name": "WWW路由器"},
+                   {"id": "3", "name": "YYY路由器"},]
     return HttpResponse(json.dumps(res_content))
 # 获取品牌列表 @liumingdong 8.15
 def get_brands(request):
@@ -281,8 +289,8 @@ def edit_record(request):
     return HttpResponse(json.dumps(res_content))
 # 导出接口
 def export_record(request):
-    search_text = request.POST['search_text']
-    search_category = request.POST['search_category']
+    search_text = request.GET['search_text']
+    search_category = request.GET['search_category']
 
     print search_text
     print search_category

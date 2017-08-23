@@ -140,12 +140,28 @@
                             <span ng-show="add_editor_brand.brand_en_name.$invalid">品牌英文名称不能为空且不得含有中文字符。</span>
                         </span>
                     </div>
+                    <div class="col-sm-4">
+                        <label>品牌链接</label>
+                        <input type="text" class="form-control" name="brand_link">
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <label>所在国家</label>
-                        <select data-size="7" class="selectpicker show-tick form-control"
-                                data-width="98%" data-first-option="false" required name="country"
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="country" title="请选择..."
+                                data-live-search="true">
+                            <option value="sdf">jskdfljs</option>
+                            <option value="ttre">weed</option>
+                            <option value="bbbbb">wfhyj</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>对应类别</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="category" title="请选择..."
                                 data-live-search="true">
                             <option value="sdf">jskdfljs</option>
                             <option value="ttre">weed</option>
@@ -154,11 +170,11 @@
                     </div>
                     <div class="col-sm-4">
                         <label>现有商品类型</label>
-                        <input type="text" class="form-control" name="product_type">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>品牌链接</label>
-                        <input type="text" class="form-control" name="brand_link">
+                        <select data-size="7" class="selectpicker form-control" multiple
+                                data-width="98%" data-first-option="false" required
+                                name="type" title="请选择..."
+                                data-live-search="true">
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -199,27 +215,27 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>对应类别</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="category"
+                        <select data-size="7" class="selectpicker form-control"
+                                name="category" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
                             <button type="button" class="btn btn-sm">test</button>
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
                         <label>对应类型</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="type" disabled="true"
+                        <select data-size="7" class="selectpicker form-control"
+                                name="type" disabled="true" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
                         <label>对应品牌</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="brand" disabled="true"
+                        <select data-size="7" class="selectpicker form-control"
+                                name="brand" disabled="true" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                 </div>
@@ -254,8 +270,9 @@
                         </span>
                     </div>
                     <div class="col-sm-3">
-                        <label>匹配方式</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="match_type"
+                        <label>匹配方式（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="match_type" ng-model="match_type" title="请选择..."
                                 data-width="98%" data-first-option="false" required>
                             <option value="0">模糊匹配</option>
                             <option value="1">精确匹配</option>
@@ -268,35 +285,35 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        <label>对应类别</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="category"
+                        <label>对应类别（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="category" ng-model="category" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <label>对应类型</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="type" disabled
+                        <label>对应类型（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="type" disabled ng-model="type" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <label>对应品牌</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="brand" disabled
+                        <label>对应品牌（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="brand" disabled ng-model="brand" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-sm-3">
                         <label>对应型号</label>
-                        <select data-size="7" class="selectpicker show-tick form-control" name="model" disabled
+                        <select data-size="7" class="selectpicker form-control"
+                                name="model" disabled ng-model="model" title="请选择..."
                                 data-width="98%" data-first-option="false" required
                                 data-live-search="true">
-                            <option value="-1">请选择</option>
                         </select>
                     </div>
                 </div>
@@ -321,7 +338,9 @@
             </div>
             <div>
                 <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
-                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_fingerprint.accuracy.$invalid">确定添加</button>
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="
+                     add_editor_fingerprint.accuracy.$invalid||add_editor_fingerprint.brand.$pristine
+                     ||add_editor_fingerprint.match_type.$pristine">确定添加</button>
                 </div>
             </div>
         </form>
@@ -350,25 +369,22 @@
 
                         selectpicker_brand_country.append(optgroup);
                     }
-
-                    //alert(selectpicker.selectpicker('val')); //返回选中值
                 } else {
                     alert("请求失败...");
                 }
             });
 
-        selectpicker_brand_country.on("changed.bs.select",function (event, clickedIndex, newValue, oldValue) {
-            alert(selectpicker_brand_country.selectpicker('val')); //返回选中值
-        });
-
         // 初始化类别列表
+        var selectpicker_brand_category = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'category']");
+        selectpicker_brand_category.empty();
+
         var selectpicker_model_category = $("form[name = 'add_editor_model'] select.selectpicker[name = 'category']");
         selectpicker_model_category.empty();
-        selectpicker_model_category.append($('<option value="-1">请选择</option>'));
 
         var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'category']");
         selectpicker_fingerprint_category.empty();
-        selectpicker_fingerprint_category.append($('<option value="-1">请选择</option>'));
+
+
 
         url = "{% url 'display:get_all_categories' %}";
         $.get(url,
@@ -379,9 +395,11 @@
                         var id = result_json[cat_ind].id;
                         var name = result_json[cat_ind].name;
 
+                        var opt_0 = $('<option value="' + id + '">' + name + '</option>');
                         var opt_1 = $('<option value="' + id + '">' + name + '</option>');
                         var opt_2 = $('<option value="' + id + '">' + name + '</option>');
 
+                        selectpicker_brand_category.append(opt_0);
                         selectpicker_model_category.append(opt_1);
                         selectpicker_fingerprint_category.append(opt_2);
                     }
@@ -402,7 +420,7 @@
         sp_model.selectpicker("refresh");
     </script>
     <div class="row results_content">
-        {% include "device_display/table_search_results.html" %}
+        {% include "device_display/table_selfdefined.html" %}
     </div>
 </div>
 
