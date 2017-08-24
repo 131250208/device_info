@@ -63,6 +63,19 @@
     // post to get search_results
     function get_results(search_text, search_category, page_index) {
         var url = "{% url 'display:search' %}";
+
+        if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1){
+            url = "{% url 'display:super_search' %}";
+
+            var res_json = {};
+            var kv_pairs = search_text.split("&&");
+            for (var i = 0; i < kv_pairs.length; ++i){
+                var pair = kv_pairs[i].split("=");
+                res_json[pair[0]] = pair[1];
+            }
+
+            search_text = JSON.stringify(res_json);
+        }
         $.post(url,
             {
                 'search_text': search_text,
@@ -226,16 +239,6 @@
             var type_id = $(this).selectpicker('val'); //返回选中值
             var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
 
-//            if (type_id === "-1"){// 如果选中的是“请选择”
-//                var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
-//                sp_brand.selectpicker("val","请选择");
-//                sp_model.selectpicker("val","请选择");
-//                sp_brand.prop("disabled",true);
-//                sp_model.prop("disabled",true);
-//
-//                sp_model.selectpicker("refresh");
-//                sp_brand.selectpicker("refresh");
-//            }else {
             var url = "{% url 'display:get_brands' %}";
             $.post(url,
                 {
@@ -245,7 +248,6 @@
                 function (data, status) {
                     if (status === 'success') {
                         sp_brand.empty();
-//                            sp_brand.append($('<option value="-1">请选择</option>'));
 
                         var result_json = eval('(' + data + ')');
                         for (brand_ind in result_json) {
@@ -268,7 +270,6 @@
                         alert("请求失败...");
                     }
                 });
-//            }
         });
 
         // 品牌列表
@@ -281,12 +282,6 @@
 
             var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
 
-//            if (brand_id === "-1"){// 如果选中的是“请选择”
-//                sp_model.selectpicker("val","请选择");
-//                sp_model.prop("disabled",true);
-//
-//                sp_model.selectpicker("refresh");
-//            }else {
             var url = "{% url 'display:get_models' %}";
             $.post(url,
                 {
@@ -316,7 +311,6 @@
                         alert("请求失败...");
                     }
                 });
-//            }
         });
     }
 
@@ -332,7 +326,6 @@
         btn_export.on("click", function () {
             window.open(export_url);
         });
-        // export_result(search_text, search_category);
     }
 </script>
 {% endblock %}

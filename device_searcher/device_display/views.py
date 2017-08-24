@@ -212,6 +212,18 @@ def search(request):
 
     return HttpResponse(json.dumps(res_content))
 
+# 高级搜索接口 @liumingdong 8.24
+# 与普通搜索的不同之处在于 高级搜索的搜索关键词 是json格式的键值对{“字段名”：“字段值”，},前端输入示例: kk=33&&op=43
+def super_search(request):
+    search_text = json.loads(request.POST['search_text'])
+    search_category = request.POST['search_category']
+    page_index = request.POST['page_index']
+
+    print search_text
+
+    res_content = {}# 返回的json格式与普通搜索的返回结果一致
+    return HttpResponse(json.dumps(res_content))
+
 # 添加接口 @liumingdong 8.15
 def add_record(request):
     add_category = request.POST["add_category"]

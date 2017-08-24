@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^signin/', views.signin, name='signin'),  # login
     url(r'^logout/', views.logout, name='logout'),  # logout
     url(r'^search/', views.search, name='search'),  # search
+    url(r'^super_search/', views.super_search, name='super_search'),
 
     url(r'^get_all_countries/', views.get_all_countries, name='get_all_countries'),  # get_all_countries
     url(r'^get_all_categories/', views.get_all_categories, name='get_all_categories'),  # get_all_categories
