@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/views.py" afterPath="$PROJECT_DIR$/device_searcher/device_display/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,21 +72,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="194" column="23" lean-forward="true" selection-start-line="197" selection-start-column="54" selection-end-line="197" selection-end-column="90" />
+            <state relative-caret-position="70">
+              <caret line="306" column="0" lean-forward="true" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="update.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="101" column="17" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="17" />
+            <state relative-caret-position="390">
+              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -192,7 +193,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>action</find>
       <find>submit</find>
       <find>method=&quot;post&quot;</find>
       <find>type_select</find>
@@ -222,6 +222,7 @@
       <find>exp</find>
       <find>srcweb</find>
       <find>get_src</find>
+      <find>src</find>
     </findStrings>
     <replaceStrings>
       <replace>$1 +</replace>
@@ -282,7 +283,6 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/plupload.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upd_rcd.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/managelog.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/search_result.css" />
@@ -292,6 +292,7 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/urls.py" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/views.py" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
       </list>
     </option>
   </component>
@@ -1227,18 +1228,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="101" column="17" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="17" />
+        <state relative-caret-position="70">
+          <caret line="306" column="0" lean-forward="true" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="194" column="23" lean-forward="true" selection-start-line="197" selection-start-column="54" selection-end-line="197" selection-end-column="90" />
+        <state relative-caret-position="390">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -315,8 +315,8 @@ def export_record(request):
 def get_srcweb_list(request):
 
     # circle的可选值：[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
-    res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "2个月"},
-                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "6个月"}]
+    res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "2"},
+                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "6"}]
     return HttpResponse(json.dumps(res_content))
 
 # 接口，获取更新记录列表 @liumingdong 8.15

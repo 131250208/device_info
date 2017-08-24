@@ -98,13 +98,14 @@
             '</td>' +
             '</tr>');
 
-        var circle_sp = row.find("select.selectpicker");
-        circle_sp.selectpicker('val', cycle);// 设置默认选项
 
         tbody.append(row);
         // select2动态加元素需要刷新
+        var circle_sp = row.find("select.selectpicker");
         circle_sp.selectpicker('render');
         circle_sp.selectpicker("refresh");
+
+        circle_sp.selectpicker('val', cycle);// 设置默认选项
     }
 
     // 增加一行文件（上传）导入表格行
