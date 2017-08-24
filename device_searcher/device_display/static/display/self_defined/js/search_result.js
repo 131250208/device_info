@@ -73,11 +73,43 @@ function append_tr(father, row, relevancy_sign) {
     var val_list = row.field_val;
     for (var i = 0; i < val_list.length; ++i) {
         var th = document.createElement(unit);
-        th.innerHTML = val_list[i];
         th.dataset.relevancy = relevancy_sign[i];
+        if (relevancy_sign[i] != "none" && row.id !== -1) {// 关联字段且非标题行加带有onclick的a标签
+            var text = '"' + val_list[i] +'"';
+            var category = '"' + relevancy_sign[i] +'"';
+            th.innerHTML = "<a onclick='relevancy_click(" + text + "," + category + ")'>" + val_list[i] + "</a>";
+        }else {
+            th.innerHTML = val_list[i];
+        }
         tr.appendChild(th);
     }
     father.append(tr);
+}
+
+// 关联字段点击查找
+function relevancy_click(search_text, search_category) {
+    var inp_search_text = $("input[name='search_text']");
+    var inp_page_index = $("input[name='page_index']");
+    inp_search_text.val(search_text);
+    inp_page_index.val("1");
+
+    switch (search_category) {
+        case "category":
+            $("li.cat#cat_category").click();
+            break;
+        case "type":
+            $("li.cat#cat_type").click();
+            break;
+        case "brand":
+            $("li.cat#cat_brand").click();
+            break;
+        case "model":
+            $("li.cat#cat_model").click();
+            break;
+        case "fingerprint":
+            $("li.cat#cat_fingerprint").click();
+            break;
+    }
 }
 
 // 将查询结果显示到表格上
@@ -93,9 +125,9 @@ function show_intable(result_json) {
     thead.empty();
 
     var field_names = result_json.fieldnames;
-    var thead_dict = {'id': -1, 'field_val': field_names}
-    // var result_json = eval('(' + data + ')');
-    append_tr(thead, thead_dict, relevancy_sign)
+    var thead_dict = {'id': -1, 'field_val': field_names};
+
+    append_tr(thead, thead_dict, relevancy_sign);
 
     // tbody
     var tbody = $("table.table tbody");
@@ -206,7 +238,7 @@ function bt_confirm_to_add_click() {
         var record_str = "";
 
         switch (add_category) {
-             case "category":
+            case "category":
                 var category = thisform.find("input[name = 'category']").val();
                 var category_cn_name = thisform.find("input[name = 'category_cn_name']").val();
                 var category_en_name = thisform.find("input[name = 'category_en_name']").val();
@@ -346,7 +378,9 @@ function bt_edit_click() {
                 // 将表格切换成编辑框
                 checked_boxes.parent().siblings("td").each(function () {
                     var text_inputs = $(this).find("input:text");// 验证是否存在编辑框
-                    if (!text_inputs.length) { // 如果不存在编辑框
+                    var relevancy = $(this).data("relevancy");
+
+                    if (!text_inputs.length && relevancy === "none") { // 如果不存在编辑框且为非关联字段,关联字段暂定不可修改
                         // 用 data-text-before 属性来保存原来的值，以便修改失败后恢复显示
                         $(this).html("<input type='text' class='form-control_self' " +
                             "data-text-before='" + $(this).text() + "' style='background-color: transparent' value='" + $(this).text() + "'>");

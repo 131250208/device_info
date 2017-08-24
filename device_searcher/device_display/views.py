@@ -183,10 +183,11 @@ def search_private(search_text, search_category, page_index):
          u'字段3',u'字段4'
     ] # 字段不包括id
 
-    # 标记是否是关联字段（修改时是否需要下拉框),与字段名对应 @liumingdong 8.23
+    # 标记是否是关联字段（修改时是否需要下拉框),与字段名对应 @liumingdong 8.24
+    # 标记的可选值有['category', 'type', 'brand', 'model', 'fingerprint', 'none'],其中none为非关联字段
     res_content['relevancy'] = [
-        '0', '0',
-        '1', '0'
+        'none', 'brand',
+        'type', 'none'
     ]
 
     res_content['record_list'] = []
