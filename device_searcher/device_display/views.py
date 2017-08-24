@@ -195,7 +195,7 @@ def search_private(search_text, search_category, page_index):
     for i in range(15):
         res_content['record_list'].append(
             {'id':i , 'field_val':['value', 'value2'
-                , 'value4', 'value4']})
+                , 'value4', 'value4'], 'detail_list': [{'1': 'detail1'},{'3': 'detail3'},]})
 
     res_content['records_num'] = 100 # 结果的总数
     res_content['page_total'] = 2 # 总页数,每页最多15条数据，不够15条也算做一页
@@ -315,8 +315,8 @@ def export_record(request):
 def get_srcweb_list(request):
 
     # circle的可选值：[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
-    res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "1个月"},
-                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "1个月"}]
+    res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "2个月"},
+                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "6个月"}]
     return HttpResponse(json.dumps(res_content))
 
 # 接口，获取更新记录列表 @liumingdong 8.15
