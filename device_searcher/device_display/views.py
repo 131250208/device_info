@@ -187,8 +187,8 @@ def search_private(search_text, search_category, page_index):
     # 标记的可选值有['category', 'type', 'brand', 'model', 'fingerprint', 'none'],其中none为非关联字段
     res_content['relevancy'] = [
         'none', 'brand',
-        'type', 'none'
-    ]
+        'none', 'type'
+    ]# 还是要保留，这里的none对应的字段的detail是空字符串
 
     res_content['record_list'] = []
     # 查询结果的list

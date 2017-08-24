@@ -77,7 +77,10 @@ function append_tr(father, row, relevancy_sign) {
         if (relevancy_sign[i] != "none" && row.id !== -1) {// 关联字段且非标题行加带有onclick的a标签
             var text = '"' + val_list[i] +'"';
             var category = '"' + relevancy_sign[i] +'"';
-            th.innerHTML = "<a onclick='relevancy_click(" + text + "," + category + ")'>" + val_list[i] + "</a>";
+
+            // 加上点击搜索函数，和悬停显示关联记录
+            th.innerHTML = "<a href='#' data-toggle='tooltip' title='"+ row.detail_list[i] +"' " +
+                "onclick='relevancy_click(" + text + "," + category + ")'>" + val_list[i] + "</a>";
         }else {
             th.innerHTML = val_list[i];
         }
