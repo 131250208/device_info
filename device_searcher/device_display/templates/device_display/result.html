@@ -25,7 +25,6 @@
     <div id="add_editor_category" class="row collapse">
         <form role="form" name="add_editor_category" novalidate >
             {% csrf_token %}
-            <input type="hidden" class="form-control" value="type" name="add_category">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -38,7 +37,7 @@
                     </div>
                     <div class="col-sm-4">
                         <label>类别英文名称(必填)</label>
-                        <input type="text" class="form-control" name="category_en_name" ng-model="type_en_name"
+                        <input type="text" class="form-control" name="category_en_name" ng-model="en_name"
                                pattern="[^\u2E80-\u9FFF ]+" required>
                         <span style="color:red"
                               ng-show="add_editor_category.category_en_name.$dirty && add_editor_category.category_en_name.$invalid">
@@ -64,45 +63,32 @@
     <div id="add_editor_type" class="row collapse">
         <form role="form" name="add_editor_type" novalidate >
             {% csrf_token %}
-            <input type="hidden" class="form-control" value="type" name="add_category">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label>类型</label>
                         <input type="text" class="form-control" name="type">
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label>类型中文名称</label>
                         <input type="text" class="form-control" name="type_cn_name">
                     </div>
-                    <div class="col-sm-4">
-                        <label>类型英文名称</label>
+                    <div class="col-sm-3">
+                        <label>类型英文名称(必填)</label>
                         <input type="text" class="form-control" name="type_en_name" ng-model="type_en_name"
-                               pattern="[^\u2E80-\u9FFF ]*">
+                               pattern="[^\u2E80-\u9FFF ]*" required>
                         <span style="color:red"
                               ng-show="add_editor_type.type_en_name.$dirty && add_editor_type.type_en_name.$invalid">
-                            <span ng-show="add_editor_type.type_en_name.$invalid">类型英文名称不得含有中文字符。</span>
+                            <span ng-show="add_editor_type.type_en_name.$invalid">类型英文名称为必填项且不得含有中文字符。</span>
                         </span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label>所属类别</label>
-                        <input type="text" class="form-control" name="category">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>类别中文名称</label>
-                        <input type="text" class="form-control" name="category_cn_name">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>类别英文名称(必填)</label>
-                        <input type="text" class="form-control" name="category_en_name" ng-model="category_en_name"
-                               pattern="[^\u2E80-\u9FFF ]*"
-                               required>
-                        <span style="color:red"
-                              ng-show="add_editor_type.category_en_name.$dirty && add_editor_type.category_en_name.$invalid">
-                            <span ng-show="add_editor_type.category_en_name.$invalid">类别英文名称不能为空且不得含有中文字符。</span>
-                        </span>
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="category" title="请选择..."
+                                data-live-search="true">
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -124,7 +110,6 @@
     <div id="add_editor_brand" class="row collapse">
         <form role="form" name="add_editor_brand" novalidate >
             {% csrf_token %}
-            <input type="hidden" class="form-control" value="brand" name="add_category">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -163,9 +148,6 @@
                                 data-width="98%" data-first-option="false" required
                                 name="category" title="请选择..."
                                 data-live-search="true">
-                            <option value="sdf">jskdfljs</option>
-                            <option value="ttre">weed</option>
-                            <option value="bbbbb">wfhyj</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
@@ -196,7 +178,6 @@
     <div id="add_editor_model" class="row collapse">
         <form role="form" name="add_editor_model" novalidate >
             {% csrf_token %}
-            <input type="hidden" class="form-control" value="model" name="add_category">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -258,7 +239,6 @@
     <div id="add_editor_fingerprint" class="row collapse">
         <form role="form" name="add_editor_fingerprint" novalidate >
             {% csrf_token %}
-            <input type="hidden" class="form-control" value="fingerprint" name="add_category">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
@@ -384,7 +364,8 @@
         var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'category']");
         selectpicker_fingerprint_category.empty();
 
-
+        var selectpicker_type_category = $("form[name = 'add_editor_type'] select.selectpicker[name = 'category']");
+        selectpicker_type_category.empty();
 
         url = "{% url 'display:get_all_categories' %}";
         $.get(url,
@@ -398,10 +379,12 @@
                         var opt_0 = $('<option value="' + id + '">' + name + '</option>');
                         var opt_1 = $('<option value="' + id + '">' + name + '</option>');
                         var opt_2 = $('<option value="' + id + '">' + name + '</option>');
+                        var opt_3 = $('<option value="' + id + '">' + name + '</option>');
 
                         selectpicker_brand_category.append(opt_0);
                         selectpicker_model_category.append(opt_1);
                         selectpicker_fingerprint_category.append(opt_2);
+                        selectpicker_type_category.append(opt_3);
                     }
                 } else {
                     alert("请求失败...");

@@ -235,7 +235,7 @@ function bt_add_click() {
 function bt_confirm_to_add_click() {
     $("button.confirm_add").on("click", function () {
         var thisform = $(this).parents("form");
-        var add_category = thisform.find("input[name = 'add_category']").val();
+        var add_category = $("input[name = 'search_category']").val();
 
         var record = null;
         var record_str = "";
@@ -260,9 +260,7 @@ function bt_confirm_to_add_click() {
                 var type = thisform.find("input[name = 'type']").val();
                 var type_cn_name = thisform.find("input[name = 'type_cn_name']").val();
                 var type_en_name = thisform.find("input[name = 'type_en_name']").val();
-                var category = thisform.find("input[name = 'category']").val();
-                var category_cn_name = thisform.find("input[name = 'category_cn_name']").val();
-                var category_en_name = thisform.find("input[name = 'category_en_name']").val();
+                var category = thisform.find("select[name = 'category']").val();
                 var description = thisform.find("textarea[name = 'description']").val();
 
                 record = {
@@ -270,8 +268,6 @@ function bt_confirm_to_add_click() {
                     "type_cn_name": type_cn_name,
                     "type_en_name": type_en_name,
                     "category": category,
-                    "category_cn_name": category_cn_name,
-                    "category_en_name": category_en_name,
                     "description": description,
                 };
 

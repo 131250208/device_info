@@ -200,6 +200,8 @@
             var cat_id = $(this).selectpicker('val'); //返回选中值
             var sp_type = $(this).parents("form").find("select.selectpicker[name = 'type']");
 
+            if (sp_type.length === 0) return;
+
             var url = "{% url 'display:get_types' %}";
             $.post(url,
                 {"category_id": cat_id},
@@ -232,12 +234,14 @@
         });
 
         // 类型列表
-        var sp_type = $("form select.selectpicker[name = 'type']");
+        var sp_type = $("form select.selectpicker[name = 'type'][multiple != true]");
 
         sp_type.on("changed.bs.select", function () {
             var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
             var type_id = $(this).selectpicker('val'); //返回选中值
             var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
+
+            if (sp_brand.length === 0) return;
 
             var url = "{% url 'display:get_brands' %}";
             $.post(url,
@@ -281,6 +285,8 @@
             var brand_id = $(this).selectpicker('val'); //返回选中值
 
             var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
+
+            if (sp_model.length === 0) return;
 
             var url = "{% url 'display:get_models' %}";
             $.post(url,
