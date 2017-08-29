@@ -29,5 +29,6 @@ $(document).ready(function () {
 
     // 给所有的全选checkbox加上点击全选事件
     check_all_click();
+
 });
 

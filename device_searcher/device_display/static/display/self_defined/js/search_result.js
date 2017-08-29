@@ -573,7 +573,7 @@ function get_results(search_text, search_category, page_index) {
         },
         function (data, status) {
             if (status === 'success') {
-                Messenger().post('success!,参数：' + search_text + "," + search_category + "," + page_index);
+                // Messenger().post('success!,参数：' + search_text + "," + search_category + "," + page_index);
                 // 记录上次搜索成功的关键词，以便下次搜索输入框为空时，作为默认关键词提交
                 $('input#searchtext_last').val(search_text);
                 var result_json = eval('(' + data + ')');
@@ -648,7 +648,7 @@ function edit_row(row_list, delete_category) {
 // post to add_record
 function add_record(add_category, record) {
     var url = get_url("display:add_record");
-    Messenger().post(record);
+    // Messenger().post(record);
     $.post(url,
         {
             'add_category': add_category,

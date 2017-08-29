@@ -27,6 +27,9 @@ $(document).ready(
 
         // 导入文件的点击事件
         btn_uploader_start_click();
+
+        // 从上传列表中移除文件的点击事件
+        btn_remove_files_click();
     }
 );
 function btn_uploader_start_click() {
@@ -192,12 +195,18 @@ function update_immediately_click() {
         var id_list = [];
         var count = 0;
         var checkedboxes = $("div#panel_crawl input[type='checkbox']:checked");
+
         checkedboxes.each(function (index, data) {
             var website_id = $(this).parents('tr').data('websiteId');
             if (typeof(website_id) !== "undefined") {// 过滤掉选中的全选checkbox
                 id_list[count++] = website_id;
             }
         });
+
+        if (id_list.length === 0){
+            Messenger().post("没有选中任何项");
+            return;
+        }
 
         var url_upd_immediately = get_url("display:update_immediately");
 
@@ -210,5 +219,25 @@ function update_immediately_click() {
                     Messenger().post("立即更新请求失败");
                 }
             });
+    });
+}
+
+// 将选中文件从上传列表中移除
+function btn_remove_files_click() {
+    $('button#remove_files').on("click",function () {
+        var checkedboxes = $("div#panel_upload input[type='checkbox']:checked");
+
+        checkedboxes.each(function (index, data) {
+            var check_all = $(this).data("checkAll");
+            if(typeof(check_all) === "undefined"){// 不是全选的checkbox
+                $(this).parents("tr").remove();
+            }
+        });
+
+        // 删除操作以后重新按序命名上传队列的文件，因为后台从0开始按序读取文件
+        var files = $("tbody input[type = 'file']");
+        files.each(function (index, data) {
+            $(this).prop("name","upl_file_" + index);
+        });
     });
 }
