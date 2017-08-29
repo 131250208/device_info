@@ -13,7 +13,10 @@
     <li><a href="#panel_upload" data-toggle="tab">文件导入</a></li>
     <li><a href="#panel_upd_rcd" data-toggle="tab">更新记录</a></li>
 </ul>
-<input id="nav_text" type="hidden" value="{{ status }}">
+
+<!--如果后台文件上传函数处理完毕跳转到该页面，会将状态信息传到这里-->
+<input id="nav_text" type="hidden" value="{{ res_info }}">
+
 <div class="tab-content">
     <div class="tab-pane in fade active" id="panel_crawl">
         {% include "device_display/update_crawl.html" %}

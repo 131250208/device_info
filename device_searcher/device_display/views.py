@@ -368,6 +368,8 @@ def adjust_upd_circle(request):
     # 对应[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
 
     res_content = {"status": "success"}
+
+    res_content["res_info"] = "修改周期成功" # 如果修改失败，返回具体原因。 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 
@@ -409,11 +411,15 @@ def upload_file(request):
     # 上传文件完毕，这里可以做一些导入文件到数据库的处理 @liumingdong 8.22
 
     # 上传完毕重新跳转上传文件页面
-    res_content = {"status": "updfile_success"}
+    res_content = {}
+
     if not request.user.is_authenticated():  # no login
         res_content['identity'] = 'tourist'
     else:
         res_content['identity'] = 'admin'
+
+    res_content["res_info"] = "文件导入成功"  # 如果导入失败，返回具体原因。 @liumingdong 8.29
+
     return render(request, 'device_display/update.html', res_content)
 
 
@@ -423,6 +429,8 @@ def update_immediately(request):
     print website_id_list
 
     res_content = {"status": "success"}
+
+    res_content["res_info"] = "网站爬取更新成功"  # 如果更新失败，返回具体原因。 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 # 获取能力展示的柱状图数据 @liumingdong 8.29

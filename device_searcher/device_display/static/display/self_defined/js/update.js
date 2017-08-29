@@ -8,8 +8,8 @@ $(document).ready(
         $("li#nav_update").addClass("active");
 
         var nav_text = $("input#nav_text").val();
-        if (nav_text === "updfile_success") {
-            Messenger().post("文件导入完毕");
+        if (nav_text !== "") {
+            Messenger().post(nav_text);
             $('a[href = "#panel_upload"]').click();
         }
 
@@ -34,54 +34,54 @@ $(document).ready(
 );
 function btn_uploader_start_click() {
     $("button#uploader_start").on("click", function () {
-            var num_tr = $("form.form_upl_files tbody").find("tr").length;
-            if (num_tr <= 0) {
-                alert("没有添加任何文件");
-            } else {
-                var btns_upl_file = $("button.btn_upl_file");
-                btns_upl_file.click();
-            }
-        });
+        var num_tr = $("form.form_upl_files tbody").find("tr").length;
+        if (num_tr <= 0) {
+            alert("没有添加任何文件");
+        } else {
+            var btns_upl_file = $("button.btn_upl_file");
+            btns_upl_file.click();
+        }
+    });
 }
 function btn_uploader_browse_click() {
     $("button#uploader_browse").on("click", function () {
-            var tbody = $("form.form_upl_files tbody");
+        var tbody = $("form.form_upl_files tbody");
 
-            var num_tr = tbody.find("tr").length;
+        var num_tr = tbody.find("tr").length;
 
-            var tr_upl_file = $('<tr>' +
-                '<td class="checkbox_par">' +
-                '<input type="checkbox">' +
-                '</td>' +
-                '<td>' +
-                '<input type="file" name="upl_file_' + num_tr + '">' +
-                '</td>' +
-                '</tr>');
+        var tr_upl_file = $('<tr>' +
+            '<td class="checkbox_par">' +
+            '<input type="checkbox">' +
+            '</td>' +
+            '<td>' +
+            '<input type="file" name="upl_file_' + num_tr + '">' +
+            '</td>' +
+            '</tr>');
 
-            tbody.append(tr_upl_file);// 在tbody中添加一行
+        tbody.append(tr_upl_file);// 在tbody中添加一行
 
-            tr_upl_file.find("input").click();// 新增一条后立即点击浏览进行文件选择
-        });
+        tr_upl_file.find("input").click();// 新增一条后立即点击浏览进行文件选择
+    });
 }
 
 function init_updrcd_list() {
     var url_updrcd = get_url("display:get_updrcd_list");
-        $.get(url_updrcd,
-            {"page": "1"},
-            function (data, status) {
-                if (status === "success") {
-                    var tbody = $("div#panel_upd_rcd table tbody");
-                    tbody.empty();
-                    var result_json = eval('(' + data + ')');
-                    for (rcd_ind in result_json) {
-                        add_row_upd_rcd(parseInt(rcd_ind) + 1, result_json[rcd_ind].id,
-                            result_json[rcd_ind].data_src_name, result_json[rcd_ind].upd_time,
-                            result_json[rcd_ind].type_num, result_json[rcd_ind].brand_num, result_json[rcd_ind].model_num);
-                    }
-                } else {
-                    Messenger().post("获取更新日志列表请求失败了");
+    $.get(url_updrcd,
+        {"page": "1"},
+        function (data, status) {
+            if (status === "success") {
+                var tbody = $("div#panel_upd_rcd table tbody");
+                tbody.empty();
+                var result_json = eval('(' + data + ')');
+                for (rcd_ind in result_json) {
+                    add_row_upd_rcd(parseInt(rcd_ind) + 1, result_json[rcd_ind].id,
+                        result_json[rcd_ind].data_src_name, result_json[rcd_ind].upd_time,
+                        result_json[rcd_ind].type_num, result_json[rcd_ind].brand_num, result_json[rcd_ind].model_num);
                 }
-            });
+            } else {
+                Messenger().post("获取更新日志列表请求失败了");
+            }
+        });
 }
 
 function init_website_list() {
@@ -181,7 +181,10 @@ function on_adjust_circle() {
             },
             function (data, status) {
                 if (status === "success") {
-                    Messenger().post("调整周期请求成功");
+                    var result_json = eval('(' + data + ')');
+
+                    // 提示框显示返回信息
+                    Messenger().post(result_json.res_info);
                 } else {
                     Messenger().post("调整周期请求失败");
                 }
@@ -203,7 +206,7 @@ function update_immediately_click() {
             }
         });
 
-        if (id_list.length === 0){
+        if (id_list.length === 0) {
             Messenger().post("没有选中任何项");
             return;
         }
@@ -214,7 +217,10 @@ function update_immediately_click() {
             {"website_id_list": JSON.stringify(id_list)},
             function (data, status) {
                 if (status === "success") {
-                    Messenger().post("立即更新请求成功");
+                    var result_json = eval('(' + data + ')');
+
+                    // 提示框显示返回信息
+                    Messenger().post(result_json.res_info);
                 } else {
                     Messenger().post("立即更新请求失败");
                 }
@@ -224,12 +230,12 @@ function update_immediately_click() {
 
 // 将选中文件从上传列表中移除
 function btn_remove_files_click() {
-    $('button#remove_files').on("click",function () {
+    $('button#remove_files').on("click", function () {
         var checkedboxes = $("div#panel_upload input[type='checkbox']:checked");
 
         checkedboxes.each(function (index, data) {
             var check_all = $(this).data("checkAll");
-            if(typeof(check_all) === "undefined"){// 不是全选的checkbox
+            if (typeof(check_all) === "undefined") {// 不是全选的checkbox
                 $(this).parents("tr").remove();
             }
         });
@@ -237,7 +243,7 @@ function btn_remove_files_click() {
         // 删除操作以后重新按序命名上传队列的文件，因为后台从0开始按序读取文件
         var files = $("tbody input[type = 'file']");
         files.each(function (index, data) {
-            $(this).prop("name","upl_file_" + index);
+            $(this).prop("name", "upl_file_" + index);
         });
     });
 }

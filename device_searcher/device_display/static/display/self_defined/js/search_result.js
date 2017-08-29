@@ -391,7 +391,7 @@ function bt_delete_click() {
             delete_row(delete_id_list, delete_category);
         } else {
             //
-            alert("没有选中任何项");
+            Messenger().post("没有选中任何项");
         }
     });
 }
@@ -405,7 +405,7 @@ function bt_edit_click() {
             var checked_boxes = $("input[type='checkbox']:checked");
 
             if (checked_boxes.length <= 0) {// 先检验是否有选中项
-                alert("你没有选中任何项");
+                Messenger().post("你没有选中任何项");
             }
             else {
                 // 切换图标
@@ -425,7 +425,7 @@ function bt_edit_click() {
             }
 
 
-            // alert($("tbody tr:nth-of-type(2n)").css("color"));
+            // Messenger().post($("tbody tr:nth-of-type(2n)").css("color"));
         }
         else if (str === "保存") {
             // 切换图标
@@ -447,7 +447,7 @@ function bt_edit_click() {
                         row_list[count_edit++] = checked_row;
                     }
                 });
-                // alert(edit_list.join(";"));
+                // Messenger().post(edit_list.join(";"));
 
                 // 先将编辑框取消
                 $("tbody td input:text").each(function () {
@@ -456,7 +456,7 @@ function bt_edit_click() {
 
                 // 调用修改接口
                 if (count_edit === 0) {
-                    alert("没有选中任何有效选项");
+                    Messenger().post("没有选中任何有效选项");
                 } else {
                     var edit_category = $("input[name='search_category']").val();
                     edit_row(row_list, edit_category);
@@ -466,7 +466,7 @@ function bt_edit_click() {
                 $("tbody td input:text").each(function () {
                     $(this).parent().html($(this).data("textBefore"));// 回复name里存储的值
                 });
-                alert("没有选中任何项");
+                Messenger().post("没有选中任何项");
             }
         }
     });
@@ -604,7 +604,7 @@ function delete_row(ids_list, delete_category) {
             if (status === 'success') {
                 var result_json = eval('(' + data + ')');
 
-                //
+                // 提示框显示返回信息
                 Messenger().post(result_json.res_info);
 
                 var failure_id_list = result_json.failure;

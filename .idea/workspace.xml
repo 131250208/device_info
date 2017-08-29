@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/views.py" afterPath="$PROJECT_DIR$/device_searcher/device_display/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,8 +77,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="301" column="19" lean-forward="true" selection-start-line="301" selection-start-column="19" selection-end-line="301" selection-end-column="19" />
+            <state relative-caret-position="250">
+              <caret line="411" column="0" lean-forward="true" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,8 +87,8 @@
       <file leaf-file-name="update.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="54" />
+            <state relative-caret-position="320">
+              <caret line="16" column="33" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -119,8 +119,8 @@
       <file leaf-file-name="update.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="216" column="49" lean-forward="true" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
+            <state relative-caret-position="300">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -151,11 +151,11 @@
       <file leaf-file-name="search_result.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="687" column="41" lean-forward="true" selection-start-line="687" selection-start-column="41" selection-end-line="687" selection-end-column="41" />
+            <state relative-caret-position="-2160">
+              <caret line="607" column="55" lean-forward="true" selection-start-line="607" selection-start-column="55" selection-end-line="607" selection-end-column="55" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
-                <marker date="1504011308390" expanded="true" signature="14459:14488" ph="..." />
+                <marker date="1504012364054" expanded="true" signature="14481:14510" ph="..." />
               </folding>
             </state>
           </provider>
@@ -193,7 +193,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectpicker</find>
       <find>(selectpicker.*)</find>
       <find>(&lt;select)</find>
       <find>log</find>
@@ -216,13 +215,14 @@
       <find>ex</find>
       <find>get</find>
       <find>exp</find>
-      <find>alert</find>
       <find>search</find>
       <find>add</find>
       <find>\&quot;\{\% url '(.*)' \%\}\&quot;;</find>
       <find>upl</find>
       <find>getre</find>
       <find>get_re</find>
+      <find>alert</find>
+      <find>adjus</find>
     </findStrings>
     <replaceStrings>
       <replace>$1 +</replace>
@@ -283,7 +283,6 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/log_table.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/urls.py" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html" />
@@ -293,9 +292,10 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/views.py" />
       </list>
     </option>
@@ -1210,24 +1210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="216" column="49" lean-forward="true" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="521">
@@ -1254,19 +1236,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="687" column="41" lean-forward="true" selection-start-line="687" selection-start-column="41" selection-end-line="687" selection-end-column="41" />
+        <state relative-caret-position="-2160">
+          <caret line="607" column="55" lean-forward="true" selection-start-line="607" selection-start-column="55" selection-end-line="607" selection-end-column="55" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
-            <marker date="1504011308390" expanded="true" signature="14459:14488" ph="..." />
+            <marker date="1504012364054" expanded="true" signature="14481:14510" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="33" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="301" column="19" lean-forward="true" selection-start-line="301" selection-start-column="19" selection-end-line="301" selection-end-column="19" />
+        <state relative-caret-position="250">
+          <caret line="411" column="0" lean-forward="true" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
           <folding />
         </state>
       </provider>
