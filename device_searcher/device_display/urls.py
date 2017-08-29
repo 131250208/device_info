@@ -62,6 +62,7 @@ urlpatterns = [
     url(r'^get_updrcd_list/', views.get_updrcd_list, name='get_updrcd_list'),  # get_updrcd_list
 
     url(r'^adjust_upd_circle/', views.adjust_upd_circle, name='adjust_upd_circle'),
+    url(r'^update_immediately/', views.update_immediately, name='update_immediately'),
     url(r'^recall_upd/', views.recall_upd, name='recall_upd'),
     url(r'^get_manage_log/', views.get_manage_log, name='get_manage_log'),
     url(r'^upload_file/', views.upload_file, name='upload_file'),

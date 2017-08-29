@@ -301,6 +301,7 @@ def edit_record(request):
                              [1, '字段1', '字段2', '字段3', '字段4'],]} # 返回修改成功的元组的list，包括id在内的所有字段为一个元组,@liumingdong
     return HttpResponse(json.dumps(res_content))
 # 导出接口
+# @liumingdong 8.29 导出接口用GET方法传递参数
 def export_record(request):
     search_text = request.GET['search_text']
     search_category = request.GET['search_category']
@@ -381,6 +382,14 @@ def upload_file(request):
     else:
         res_content['identity'] = 'admin'
     return render(request, 'device_display/update.html', res_content)
+
+# 网站爬取更新下的立即更新功能的接口 @liumingdong 8.29
+def update_immediately(request):
+    website_id_list = json.loads(request.POST['website_id_list'])
+    print website_id_list
+
+    res_content = {"status": "success"}
+    return HttpResponse(json.dumps(res_content))
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

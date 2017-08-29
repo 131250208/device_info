@@ -46,7 +46,7 @@
                         tbody.empty();
                         var result_json = eval('(' + data + ')');
                         for (web_ind in result_json) {
-                            add_row_crawl(web_ind, result_json[web_ind].id,
+                            add_row_crawl(parseInt(web_ind) + 1, result_json[web_ind].id,
                                 result_json[web_ind].name, result_json[web_ind].website, result_json[web_ind].cycle);
                         }
 
@@ -56,6 +56,10 @@
                         alert("获取源网站列表请求失败了");
                     }
                 });
+
+            // 给从网站爬取更新的立即更新按钮添加点击事件
+            update_immediately_click();
+
             // 初始化更新日志列表
             var url_updrcd = "{% url 'display:get_updrcd_list' %}";
             $.get(url_updrcd,
@@ -66,17 +70,16 @@
                         tbody.empty();
                         var result_json = eval('(' + data + ')');
                         for (rcd_ind in result_json) {
-                            add_row_upd_rcd(rcd_ind, result_json[rcd_ind].id,
+                            add_row_upd_rcd(parseInt(rcd_ind) + 1, result_json[rcd_ind].id,
                                 result_json[rcd_ind].data_src_name, result_json[rcd_ind].upd_time,
                                 result_json[rcd_ind].type_num, result_json[rcd_ind].brand_num, result_json[rcd_ind].model_num);
                         }
-
-                        // 给回退按钮添加点击事件
-                        btn_recall_click();
                     } else {
                         alert("获取更新日志列表请求失败了");
                     }
                 });
+
+
         }
     );
 
@@ -84,6 +87,9 @@
     function add_row_crawl(serial_num, web_id, web_name, website, cycle) {
         var tbody = $("div#panel_crawl table tbody");
         var row = $('<tr data-website-id="' + web_id + '">' +
+            '<td class="checkbox_par">' +
+            '<input type="checkbox">' +
+            '</td>' +
             '<td>' + serial_num + '</td>' +
             '<td><a target="_blank" href="' + website + '">' + web_name + '</a></td>' +
             '<td>' +
@@ -127,18 +133,12 @@
     function add_row_upd_rcd(serial_num, upd_rcd_id, data_src, upd_time, type_num, brand_num, model_num) {
         var tbody = $("div#panel_upd_rcd table tbody");
         var row = $('<tr data-updrcd-id="' + upd_rcd_id + '">' +
-            '<td class="checkbox_par">' +
-            '<input type="checkbox">' +
-            '</td>' +
             '<td>' + serial_num + '</td>' +
             '<td>' + data_src + '</td>' +
             '<td>' + upd_time + '</td>' +
             '<td>' + type_num + '</td>' +
             '<td>' + brand_num + '</td>' +
             '<td>' + model_num + '</td>' +
-            '<td>' +
-            '<button type="button" class="btn btn-sm btn-primary btn_recall">回退</button>' +
-            '</td>' +
             '</tr>');
 
         tbody.append(row);
@@ -166,25 +166,52 @@
                 });
         });
     }
-    // 给回退按钮添加点击事件
-    function btn_recall_click() {
-        var btn_recall = $("button.btn_recall");
-        btn_recall.on("click", function () {
-            var rcd_id = $(this).parents("tr").data("updrcdId");
-            var rcd_id_list = [rcd_id,];
-            var url_recall_upd = "{% url 'display:recall_upd' %}";
 
-            $.post(url_recall_upd,
-                {"upd_id_list_str": JSON.stringify(rcd_id_list)},
+    // 立即从选中的源网站中爬取更新的数据
+    function update_immediately_click() {
+        $('button#update_immediately').on('click', function () {
+            var id_list = [];
+            var count = 0;
+            var checkedboxes = $("div#panel_crawl input[type='checkbox']:checked");
+            checkedboxes.each(function (index, data) {
+                var website_id = $(this).parents('tr').data('websiteId');
+                if (typeof(website_id) !== "undefined") {// 过滤掉选中的全选checkbox
+                    id_list[count++] = website_id;
+                }
+            });
+
+            var url_upd_immediately = "{% url 'display:update_immediately' %}";
+
+            $.post(url_upd_immediately,
+                {"website_id_list": JSON.stringify(id_list)},
                 function (data, status) {
                     if (status === "success") {
-                        alert("更新回退请求成功");
+                        alert("立即更新请求成功");
                     } else {
-                        alert("更新回退请求失败");
+                        alert("立即更新请求失败");
                     }
                 });
         });
     }
+    //    // 给回退按钮添加点击事件
+    //    function btn_recall_click() {
+    //        var btn_recall = $("button.btn_recall");
+    //        btn_recall.on("click", function () {
+    //            var rcd_id = $(this).parents("tr").data("updrcdId");
+    //            var rcd_id_list = [rcd_id,];
+    //            var url_recall_upd = "{% url 'display:recall_upd' %}";
+    //
+    //            $.post(url_recall_upd,
+    //                {"upd_id_list_str": JSON.stringify(rcd_id_list)},
+    //                function (data, status) {
+    //                    if (status === "success") {
+    //                        alert("更新回退请求成功");
+    //                    } else {
+    //                        alert("更新回退请求失败");
+    //                    }
+    //                });
+    //        });
+    //    }
 </script>
 
 {% endblock %}

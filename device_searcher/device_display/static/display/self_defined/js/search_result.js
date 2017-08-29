@@ -96,21 +96,24 @@ function relevancy_click(search_text, search_category) {
     inp_search_text.val(search_text);
     inp_page_index.val("1");
 
+    // 移除当前tab的active类
+    $('#nav_result_cat').children().removeClass('active');
+
     switch (search_category) {
         case "category":
-            $("li.cat#cat_category").click();
+            $("li.cat#cat_category").addClass('active').click();
             break;
         case "type":
-            $("li.cat#cat_type").click();
+            $("li.cat#cat_type").addClass('active').click();
             break;
         case "brand":
-            $("li.cat#cat_brand").click();
+            $("li.cat#cat_brand").addClass('active').click();
             break;
         case "model":
-            $("li.cat#cat_model").click();
+            $("li.cat#cat_model").addClass('active').click();
             break;
         case "fingerprint":
-            $("li.cat#cat_fingerprint").click();
+            $("li.cat#cat_fingerprint").addClass('active').click();
             break;
     }
 }

@@ -1,25 +1,16 @@
 <form role="form" class="pane_edit">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-8 icon_btns" style="text-align: right">
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-backward"></span> 回退
-            </button>
-        </div>
     </div>
 </form>
 
 {% extends "device_display/table_selfdefined.html" %}
 {% block thead %}
 <tr>
-    <th class="checkbox_par">
-        <input type="checkbox" style="margin-right: 5px" data-check-all="true" >全选
-    </th>
     <th>序号</th>
     <th>数据来源</th>
     <th>更新时间</th>
     <th>类型数量</th>
     <th>品牌数量</th>
     <th>型号数量</th>
-    <th>回退</th>
 </tr>
 {% endblock %}
