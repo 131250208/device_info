@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/views.py" afterPath="$PROJECT_DIR$/device_searcher/device_display/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,11 +74,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="395" column="24" lean-forward="true" selection-start-line="395" selection-start-column="24" selection-end-line="395" selection-end-column="24" />
+            <state relative-caret-position="230">
+              <caret line="301" column="19" lean-forward="true" selection-start-line="301" selection-start-column="19" selection-end-line="301" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -115,14 +116,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="update.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="541">
-              <caret line="231" column="66" lean-forward="true" selection-start-line="231" selection-start-column="66" selection-end-line="231" selection-end-column="66" />
+              <caret line="216" column="49" lean-forward="true" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,54 +148,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_editors.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="302" column="10" lean-forward="true" selection-start-line="302" selection-start-column="10" selection-end-line="302" selection-end-column="10" />
-              <folding>
-                <element signature="n#div#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#div#3;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#div#4;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="search_result.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="652" column="9" lean-forward="true" selection-start-line="652" selection-start-column="9" selection-end-line="652" selection-end-column="9" />
+            <state relative-caret-position="260">
+              <caret line="687" column="41" lean-forward="true" selection-start-line="687" selection-start-column="41" selection-end-line="687" selection-end-column="41" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
-                <marker date="1504003472504" expanded="true" signature="14459:14488" ph="..." />
+                <marker date="1504011308390" expanded="true" signature="14459:14488" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html">
+      <file leaf-file-name="table_selfdefined.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-              <folding>
-                <element signature="e#1559#1757#0" expanded="false" />
-                <element signature="n#script#3;n#head#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="400">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,8 +193,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>web</find>
-      <find>([\S].*)</find>
       <find>selectpicker</find>
       <find>(selectpicker.*)</find>
       <find>(&lt;select)</find>
@@ -241,6 +221,8 @@
       <find>add</find>
       <find>\&quot;\{\% url '(.*)' \%\}\&quot;;</find>
       <find>upl</find>
+      <find>getre</find>
+      <find>get_re</find>
     </findStrings>
     <replaceStrings>
       <replace>$1 +</replace>
@@ -292,12 +274,10 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/update.css" />
         <option value="$PROJECT_DIR$/device_searcher/device_searcher/settings.py" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/plupload.html" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/search_result.css" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_search_results.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upd_rcd.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_crawl.html" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/views.py" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/manageloge.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/managelog.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/log_table.html" />
@@ -313,8 +293,10 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/views.py" />
       </list>
     </option>
   </component>
@@ -1027,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="39" column="12" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="39" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_search_results.html" />
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/css/search_result.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -1126,14 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_crawl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1188,31 +1155,20 @@
           <caret line="302" column="10" lean-forward="true" selection-start-line="302" selection-start-column="10" selection-end-line="302" selection-end-column="10" />
           <folding>
             <element signature="n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#div#2;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#2;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#!!top" expanded="false" />
             <element signature="n#div#3;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#3;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#!!top" expanded="false" />
             <element signature="n#div#4;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="652" column="9" lean-forward="true" selection-start-line="652" selection-start-column="9" selection-end-line="652" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-            <marker date="1504003472504" expanded="true" signature="14459:14488" ph="..." />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1246,14 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1270,21 +1218,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="395" column="24" lean-forward="true" selection-start-line="395" selection-start-column="24" selection-end-line="395" selection-end-column="24" />
+        <state relative-caret-position="541">
+          <caret line="216" column="49" lean-forward="true" selection-start-line="216" selection-start-column="49" selection-end-line="216" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js">
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="231" column="66" lean-forward="true" selection-start-line="231" selection-start-column="66" selection-end-line="231" selection-end-column="66" />
+        <state relative-caret-position="372">
+          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/table_selfdefined.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="687" column="41" lean-forward="true" selection-start-line="687" selection-start-column="41" selection-end-line="687" selection-end-column="41" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
+            <marker date="1504011308390" expanded="true" signature="14459:14488" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="301" column="19" lean-forward="true" selection-start-line="301" selection-start-column="19" selection-end-line="301" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

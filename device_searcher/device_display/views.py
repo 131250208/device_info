@@ -204,6 +204,8 @@ def search_private(search_text, search_category, page_index):
     res_content['records_num'] = 100  # 结果的总数
     res_content['page_total'] = 2  # 总页数,每页最多15条数据，不够15条也算做一页
     res_content['search_time'] = 0.134  # 查询用时（s
+
+    res_content['res_info'] = '搜索成功' # 失败时，返回具体原因 @liumingdong 8.29
     return res_content
 
 
@@ -228,6 +230,7 @@ def super_search(request):
     print search_text
 
     res_content = {}  # 返回的json格式与普通搜索的返回结果一致
+    res_content['res_info'] = '搜索成功'  # 失败时，返回具体原因 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 
@@ -241,6 +244,8 @@ def add_record(request):
     print "add_category: %s\nrecord: %s" % (add_category, record)
 
     res_content = {"status": "success"}
+
+    res_content['res_info'] = '添加成功'  # 失败时，返回具体原因 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 
@@ -296,27 +301,31 @@ def get_models(request):
 
 # 删除接口 @liumingdong
 def delete_record(request):
-    id_list = request.POST['id_list']  # 删除的id_list
+    # 修正了传参方式为传递json字符串 @liumingdong 8.29
+    id_list = json.loads(request.POST['id_list'])  # 删除的id_list
     delete_category = request.POST['delete_category']  # 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
 
     if len(id_list) != 0:
         # 调用下层接口删除对应id的数据 @liumingdong
         pass
     res_content = {'failure': [3, 6, 7]}  # 返回删除失败的记录的id @liumingdong
+    res_content['res_info'] = '部分选项删除失败了,...'  # 有失败选项时，返回具体原因 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 
 # 修改接口
 def edit_record(request):
-    list_len = request.POST['list_len']  # 要修改的元组个数，方便你计算取list的key值
-    row_list = request.POST.getlist('row_list[0][]')  # 要修改的行数据的list，第一个字段为id
+    # 修正了传参方式为传递json字符串 @liumingdong 8.29
+    row_list = json.loads(request.POST['row_list'])  # 要修改的行数据的list，第一个字段为id
     delete_category = request.POST['delete_category']  # 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
 
-    print row_list
     # 进行后台的修改操作 @liumingdong
 
     res_content = {'sucess': [[0, '字段1', '字段2', '字段3', '字段4'],
                               [1, '字段1', '字段2', '字段3', '字段4'], ]}  # 返回修改成功的元组的list，包括id在内的所有字段为一个元组,@liumingdong
+
+    res_content['failure'] = [2,3,4]
+    res_content['res_info'] = '部分选项修改失败了,...'  # 有失败选项时，返回具体原因 @liumingdong 8.29
     return HttpResponse(json.dumps(res_content))
 
 

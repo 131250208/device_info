@@ -576,12 +576,16 @@ function get_results(search_text, search_category, page_index) {
                 // Messenger().post('success!,参数：' + search_text + "," + search_category + "," + page_index);
                 // 记录上次搜索成功的关键词，以便下次搜索输入框为空时，作为默认关键词提交
                 $('input#searchtext_last').val(search_text);
+
                 var result_json = eval('(' + data + ')');
                 show_intable(result_json);
+
                 // 因为show_intable函数可能改变总页码，所以需要再次调整页码显示
                 var input_page_total = $("input#page_total");
                 var input_page_index = $("input[name='page_index']");
                 adjust_pages(input_page_total, input_page_index, get_results_post);
+
+                Messenger().post(result_json.res_info);
             } else {
                 // 显示错误信息到页面
                 Messenger().post('请求失败了……');
@@ -593,19 +597,48 @@ function delete_row(ids_list, delete_category) {
     var url = get_url("display:delete_record");
     $.post(url,
         {
-            'id_list': ids_list,
+            'id_list': JSON.stringify(ids_list),
             'delete_category': delete_category
         },
         function (data, status) {
             if (status === 'success') {
                 var result_json = eval('(' + data + ')');
 
-                var failure_id_list = result_json.failure;
-                var suc_len = ids_list.length - failure_id_list.length;
                 //
-                Messenger().post("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
-                // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
+                Messenger().post(result_json.res_info);
 
+                var failure_id_list = result_json.failure;
+                if (failure_id_list.length !== 0) {
+                    for (ind in failure_id_list) {
+                        var tr_fail = $("input[value = '" + failure_id_list[ind] + "']").parents("tr");
+                        tr_fail.addClass("warning");
+                    }
+
+                    var msg = Messenger().post({
+                        message: "删除失败选项数量: " + failure_id_list.length,
+                        actions: {
+                            retry: {
+                                label: '再试一次',
+                                action: function () {
+                                    delete_row(JSON.stringify(failure_id_list), delete_category);
+                                }
+                            },
+                            cancel: {
+                                label: '我知道了',
+                                phrase: 'Retrying TIME',
+                                auto: true,
+                                delay: 5,
+                                action: function () {
+                                    for (ind in failure_id_list) {
+                                        var tr_fail = $("input[value = '" + failure_id_list[ind] + "']").parents("tr");
+                                        tr_fail.removeClass("warning");
+                                    }
+                                    return msg.cancel();
+                                }
+                            }
+                        }
+                    });
+                }
             } else {
                 // 显示错误信息到页面
                 Messenger().post('请求失败了……');
@@ -618,13 +651,12 @@ function edit_row(row_list, delete_category) {
 
     $.post(url,
         {
-            'list_len': row_list.length,
-            'row_list': row_list,
+            'row_list': JSON.stringify(row_list),
             'delete_category': delete_category
         },
         function (data, status) {
             if (status === 'success') {
-                Messenger().post('修改成功了');
+
                 var result_json = eval('(' + data + ')');
                 var list_success = result_json.sucess;
                 var ind;
@@ -634,6 +666,35 @@ function edit_row(row_list, delete_category) {
                     var row_fields = $("input[type = 'checkbox'][value = " + id + "]").parent().siblings();
                     row_fields.each(function (index, element) {
                         $(this).html(list_success[ind][index + 1]);
+                    });
+                }
+
+                Messenger().post(result_json.res_info);
+
+                var failure_id_list = result_json.failure;
+                if (failure_id_list.length !== 0) {
+                    for (ind in failure_id_list) {
+                        var tr_fail = $("input[value = '" + failure_id_list[ind] + "']").parents("tr");
+                        tr_fail.addClass("warning");
+                    }
+
+                    var msg = Messenger().post({
+                        message: "修改失败选项数量: " + failure_id_list.length,
+                        actions: {
+                            cancel: {
+                                label: '我知道了',
+                                phrase: 'Retrying TIME',
+                                auto: true,
+                                delay: 5,
+                                action: function () {
+                                    for (ind in failure_id_list) {
+                                        var tr_fail = $("input[value = '" + failure_id_list[ind] + "']").parents("tr");
+                                        tr_fail.removeClass("warning");
+                                    }
+                                    return msg.cancel();
+                                }
+                            }
+                        }
                     });
                 }
             }
@@ -655,7 +716,7 @@ function add_record(add_category, record) {
             'record': record
         }, function (data, status) {
             if (status === 'success') {
-                Messenger().post("添加请求发送成功!");
+                Messenger().post(result_json.res_info);
             } else {
                 Messenger().post("添加请求失败...");
             }
