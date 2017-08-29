@@ -64,12 +64,12 @@
     function get_results(search_text, search_category, page_index) {
         var url = "{% url 'display:search' %}";
 
-        if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1){
+        if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1) {
             url = "{% url 'display:super_search' %}";
 
             var res_json = {};
             var kv_pairs = search_text.split("&&");
-            for (var i = 0; i < kv_pairs.length; ++i){
+            for (var i = 0; i < kv_pairs.length; ++i) {
                 var pair = kv_pairs[i].split("=");
                 res_json[pair[0]] = pair[1];
             }
@@ -306,12 +306,24 @@
     function bt_export_click() {
         var btn_export = $("button#btn_export");
 
-        var search_text = $("input[name='search_text']").val();
-        var search_category = $("input[name='search_category']").val();
-
-        var export_url = "{% url 'display:export_record' %}?search_text=" + search_text + "&search_category=" + search_category;
-
         btn_export.on("click", function () {
+            var search_text = $("input[name='search_text']").val();
+            var search_category = $("input[name='search_category']").val();
+
+            if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1) {
+                url = "{% url 'display:super_search' %}";
+
+                var res_json = {};
+                var kv_pairs = search_text.split("&&");
+                for (var i = 0; i < kv_pairs.length; ++i) {
+                    var pair = kv_pairs[i].split("=");
+                    res_json[pair[0]] = pair[1];
+                }
+
+                search_text = JSON.stringify(res_json);
+            }
+
+            var export_url = "{% url 'display:export_record' %}?search_text=" + search_text + "&search_category=" + search_category;
             window.open(export_url);
         });
     }
