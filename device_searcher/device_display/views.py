@@ -57,8 +57,8 @@ def getPage_update(request):
 
 # managelog_page @liumingdong 8.15 修改
 def getPage_managelog(request):
-    res_content = {'page_total': '13', 'page_index': "1"}# page_index是当前页码，默认为1，不必修改
-                                                            # page_total返回的是日志列表的页码总数，每页记录条数暂定为15
+    res_content = {'page_total': '13', 'page_index': "1"}  # page_index是当前页码，默认为1，不必修改
+    # page_total返回的是日志列表的页码总数，每页记录条数暂定为15
 
     if not request.user.is_authenticated():  # no login
         res_content['identity'] = 'tourist'
@@ -76,7 +76,7 @@ def getResult_search(request):
     search_category = ""
     page_index = ""
 
-    if not request.user.is_authenticated():  #if no login
+    if not request.user.is_authenticated():  # if no login
         identity = 'tourist'
 
     # search_text
@@ -103,17 +103,21 @@ def getResult_search(request):
 
     return render(request, 'device_display/search_result.html', res_content)
 
+
 def getErrorPage_404(request):
-    res_content = {"error_code":"404"}
+    res_content = {"error_code": "404"}
     return render(request, 'device_display/error.html', res_content)
+
 
 def getErrorPage_403(request):
-    res_content = {"error_code":"403"}
+    res_content = {"error_code": "403"}
     return render(request, 'device_display/error.html', res_content)
 
+
 def getErrorPage_500(request):
-    res_content = {"error_code":"500"}
+    res_content = {"error_code": "500"}
     return render(request, 'device_display/error.html', res_content)
+
 
 # def getResult_super_search(request):
 #     res_content = {}
@@ -179,28 +183,29 @@ def search_private(search_text, search_category, page_index):
     # 调用下层接口获取以下数据 @liumingdong
     res_content = {}
     res_content['fieldnames'] = [
-        u'字段1',u'字段2',
-         u'字段3',u'字段4'
-    ] # 字段不包括id
+        u'字段1', u'字段2',
+        u'字段3', u'字段4'
+    ]  # 字段不包括id
 
     # 标记是否是关联字段（修改时是否需要下拉框),与字段名对应 @liumingdong 8.24
     # 标记的可选值有['category', 'type', 'brand', 'model', 'fingerprint', 'none'],其中none为非关联字段
     res_content['relevancy'] = [
         'none', 'brand',
         'none', 'type'
-    ]# 还是要保留，这里的none对应的字段的detail是空字符串
+    ]  # 还是要保留，这里的none对应的字段的detail是空字符串
 
     res_content['record_list'] = []
     # 查询结果的list
     for i in range(15):
         res_content['record_list'].append(
-            {'id':i , 'field_val':['value', 'value2'
-                , 'value4', 'value4'], 'detail_list': ['','detail1','','detail3']})# @liumingdong 8.24
+            {'id': i, 'field_val': ['value', 'value2'
+                , 'value4', 'value4'], 'detail_list': ['', 'detail1', '', 'detail3']})  # @liumingdong 8.24
 
-    res_content['records_num'] = 100 # 结果的总数
-    res_content['page_total'] = 2 # 总页数,每页最多15条数据，不够15条也算做一页
-    res_content['search_time'] = 0.134 # 查询用时（s
+    res_content['records_num'] = 100  # 结果的总数
+    res_content['page_total'] = 2  # 总页数,每页最多15条数据，不够15条也算做一页
+    res_content['search_time'] = 0.134  # 查询用时（s
     return res_content
+
 
 # 返回json的search
 def search(request):
@@ -208,9 +213,10 @@ def search(request):
     search_category = request.POST['search_category']
     page_index = request.POST['page_index']
 
-    res_content = search_private(search_text,search_category,page_index)
+    res_content = search_private(search_text, search_category, page_index)
 
     return HttpResponse(json.dumps(res_content))
+
 
 # 高级搜索接口 @liumingdong 8.24
 # 与普通搜索的不同之处在于 高级搜索的搜索关键词 是json格式的键值对{“字段名”：“字段值”，},前端输入示例: kk=33&&op=43
@@ -221,26 +227,30 @@ def super_search(request):
 
     print search_text
 
-    res_content = {}# 返回的json格式与普通搜索的返回结果一致
+    res_content = {}  # 返回的json格式与普通搜索的返回结果一致
     return HttpResponse(json.dumps(res_content))
+
 
 # 添加接口 @liumingdong 8.15
 def add_record(request):
     add_category = request.POST["add_category"]
-    record = request.POST["record"] # 需要添加的record的json 字符串
+    record = request.POST["record"]  # 需要添加的record的json 字符串
 
-    rcd_json = json.loads(record)# key 完全对应数据库字段名
+    rcd_json = json.loads(record)  # key 完全对应数据库字段名
 
-    print "add_category: %s\nrecord: %s" % (add_category,record)
+    print "add_category: %s\nrecord: %s" % (add_category, record)
 
-    res_content = {"status":"success"}
+    res_content = {"status": "success"}
     return HttpResponse(json.dumps(res_content))
+
 
 # 获取国家列表 @liumingdong 8.15
 def get_all_countries(request):
-    res_content = {"A": [{"en_name": "America", "cn_name": "美国"},{"en_name": "Afghanistan", "cn_name": "阿富汗"}],
-                   "B": [{"en_name": "Brunei", "cn_name": "文莱"},],}
+    res_content = {"A": [{"en_name": "America", "cn_name": "美国"}, {"en_name": "Afghanistan", "cn_name": "阿富汗"}],
+                   "B": [{"en_name": "Brunei", "cn_name": "文莱"}, ], }
     return HttpResponse(json.dumps(res_content))
+
+
 # 获取类别列表 @liumingdong 8.15
 def get_all_categories(request):
     res_content = [{"id": "1", "name": "路由器1"},
@@ -251,16 +261,20 @@ def get_all_categories(request):
                    {"id": "6", "name": "路由器6"},
                    {"id": "7", "name": "路由器7"},
                    {"id": "8", "name": "路由器8"},
-                   {"id": "9", "name": "路由器9"},]
+                   {"id": "9", "name": "路由器9"}, ]
     return HttpResponse(json.dumps(res_content))
+
+
 # 获取类型列表 @liumingdong 8.15
 def get_types(request):
     category_id = request.POST["category_id"]
     # 根据类别 id 查找该类别下的所有类型
     res_content = [{"id": "1", "name": "XXX路由器"},
                    {"id": "2", "name": "WWW路由器"},
-                   {"id": "3", "name": "YYY路由器"},]
+                   {"id": "3", "name": "YYY路由器"}, ]
     return HttpResponse(json.dumps(res_content))
+
+
 # 获取品牌列表 @liumingdong 8.15
 def get_brands(request):
     category_id = request.POST["category_id"]
@@ -268,6 +282,8 @@ def get_brands(request):
     # 根据类别 id 和类型 id 查找所有品牌
     res_content = [{"id": "2", "name": "tp-link"}, ]
     return HttpResponse(json.dumps(res_content))
+
+
 # 获取型号列表 @liumingdong 8.15
 def get_models(request):
     category_id = request.POST["category_id"]
@@ -277,29 +293,33 @@ def get_models(request):
     res_content = [{"id": "2", "name": "型号名称"}, ]
     return HttpResponse(json.dumps(res_content))
 
+
 # 删除接口 @liumingdong
 def delete_record(request):
-    id_list = request.POST['id_list']# 删除的id_list
-    delete_category = request.POST['delete_category']# 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
+    id_list = request.POST['id_list']  # 删除的id_list
+    delete_category = request.POST['delete_category']  # 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
 
     if len(id_list) != 0:
         # 调用下层接口删除对应id的数据 @liumingdong
         pass
-    res_content = {'failure':[3,6,7]}# 返回删除失败的记录的id @liumingdong
+    res_content = {'failure': [3, 6, 7]}  # 返回删除失败的记录的id @liumingdong
     return HttpResponse(json.dumps(res_content))
+
 
 # 修改接口
 def edit_record(request):
-    list_len = request.POST['list_len'] # 要修改的元组个数，方便你计算取list的key值
+    list_len = request.POST['list_len']  # 要修改的元组个数，方便你计算取list的key值
     row_list = request.POST.getlist('row_list[0][]')  # 要修改的行数据的list，第一个字段为id
     delete_category = request.POST['delete_category']  # 删除的分类 (字符串类型 : type/brand/model/fingerprint 类型/品牌/型号/指纹
 
     print row_list
     # 进行后台的修改操作 @liumingdong
 
-    res_content = {'sucess':[[0,'字段1','字段2','字段3','字段4'],
-                             [1, '字段1', '字段2', '字段3', '字段4'],]} # 返回修改成功的元组的list，包括id在内的所有字段为一个元组,@liumingdong
+    res_content = {'sucess': [[0, '字段1', '字段2', '字段3', '字段4'],
+                              [1, '字段1', '字段2', '字段3', '字段4'], ]}  # 返回修改成功的元组的list，包括id在内的所有字段为一个元组,@liumingdong
     return HttpResponse(json.dumps(res_content))
+
+
 # 导出接口
 # @liumingdong 8.29 导出接口用GET方法传递参数
 def export_record(request):
@@ -309,16 +329,17 @@ def export_record(request):
     print search_text
     print search_category
 
-    res_content = {"status":"success"}
+    res_content = {"status": "success"}
     return HttpResponse(json.dumps(res_content))
+
 
 # 接口，获取网站爬虫更新的源网站列表 @liumingdong 8.15
 def get_srcweb_list(request):
-
     # circle的可选值：[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
     res_content = [{"id": "1", "name": "中关村在线", "website": "http://www.zol.com.cn/", "cycle": "2"},
-                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "6"}]# @liumingdong 8.24
+                   {"id": "2", "name": "中关村不在", "website": "http://www.woc.com.cn/", "cycle": "6"}]  # @liumingdong 8.24
     return HttpResponse(json.dumps(res_content))
+
 
 # 接口，获取更新记录列表 @liumingdong 8.15
 def get_updrcd_list(request):
@@ -327,25 +348,28 @@ def get_updrcd_list(request):
     res_content = [{"id": "1", "data_src_name": "中关村在线", "upd_time": "2017-10-3 15:44:56",
                     "type_num": "132", "brand_num": "44", "model_num": "345"},
                    {"id": "2", "data_src_name": "xxx文件名", "upd_time": "2017-10-3 15:42:56",
-                    "type_num": "34", "brand_num": "345", "model_num": "111"},]
+                    "type_num": "34", "brand_num": "345", "model_num": "111"}, ]
     return HttpResponse(json.dumps(res_content))
+
 
 # 修改源网站更新周期的接口 @liumingdong 8.15
 def adjust_upd_circle(request):
     web_id = request.POST["web_id"]
-    new_circle = request.POST["new_circle"]# circle参数的值有["1", "2", "3", "6", "12"]，
-                                            # 对应[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
+    new_circle = request.POST["new_circle"]  # circle参数的值有["1", "2", "3", "6", "12"]，
+    # 对应[“1个月”， “2个月”， “3个月”， “6个月”， “1年”]
 
     res_content = {"status": "success"}
     return HttpResponse(json.dumps(res_content))
+
 
 # 更新回退操作接口 @liumingdong 8.15
 def recall_upd(request):
     upd_id_list_str = request.POST["upd_id_list_str"]
-    upd_id_list_json = json.loads(upd_id_list_str)# 获取的是一个id_list，里面存有需要回退的所有更新记录的id
+    upd_id_list_json = json.loads(upd_id_list_str)  # 获取的是一个id_list，里面存有需要回退的所有更新记录的id
 
     res_content = {"status": "success"}
     return HttpResponse(json.dumps(res_content))
+
 
 # 获取操作管理日志的接口 @liumingdong8.15
 def get_manage_log(request):
@@ -354,7 +378,7 @@ def get_manage_log(request):
     res_content = [{"opt_time": "2017-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
                     "opt_detail": "记录详情"},
                    {"opt_time": "2017-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
-                    "opt_detail": "记录详情"},]
+                    "opt_detail": "记录详情"}, ]
 
     if page == "2":
         res_content = [{"opt_time": "2019-10-3 15:44:56", "opt_user": "admin", "opt_brief": "添加了一条记录......",
@@ -370,7 +394,7 @@ def upload_file(request):
     for index in range(num_files):
         file = request.FILES['upl_file_' + str(index)]
         name = file.name
-        with open('./upd_files/'+ name +'.txt', 'wb+') as destination:
+        with open('./upd_files/' + name + '.txt', 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
     # 上传文件完毕，这里可以做一些导入文件到数据库的处理 @liumingdong 8.22
@@ -383,6 +407,7 @@ def upload_file(request):
         res_content['identity'] = 'admin'
     return render(request, 'device_display/update.html', res_content)
 
+
 # 网站爬取更新下的立即更新功能的接口 @liumingdong 8.29
 def update_immediately(request):
     website_id_list = json.loads(request.POST['website_id_list'])
@@ -390,6 +415,40 @@ def update_immediately(request):
 
     res_content = {"status": "success"}
     return HttpResponse(json.dumps(res_content))
+
+# 获取能力展示的柱状图数据 @liumingdong 8.29
+def get_capacity(request):
+    res_content = [
+        {'能力方向': '型号', '总量': 1523, '品牌数量': 1523},
+        {'能力方向': '指纹', '总量': 1223, '品牌数量': 1523},
+    ]
+    return HttpResponse(json.dumps(res_content))
+
+
+# 获取能力展示的型号对应品牌的饼图数据 @liumingdong 8.29
+def get_brands_model(request):
+    res_content = [
+        {'brand_name': '品牌1', 'num': 1523},
+        {'brand_name': '品牌2', 'num': 1223},
+        {'brand_name': '品牌3', 'num': 2123},
+        {'brand_name': '品牌4', 'num': 4123},
+        {'brand_name': '品牌5', 'num': 3123},
+        {'brand_name': '品牌6', 'num': 7123}
+    ]
+    return HttpResponse(json.dumps(res_content))
+
+# 获取能力展示的指纹识别的饼图数据 @liumingdong 8.29
+def get_brands_fingerprint(request):
+    res_content = [
+        {'brand_name': '品牌1', 'num': 1523},
+        {'brand_name': '品牌2', 'num': 1223},
+        {'brand_name': '品牌3', 'num': 2123},
+        {'brand_name': '品牌4', 'num': 4123},
+        {'brand_name': '品牌5', 'num': 3123},
+        {'brand_name': '品牌6', 'num': 7123}
+    ]
+    return HttpResponse(json.dumps(res_content))
+
 # ----------------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, "device_display/index.html")

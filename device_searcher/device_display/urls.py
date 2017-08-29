@@ -66,4 +66,8 @@ urlpatterns = [
     url(r'^recall_upd/', views.recall_upd, name='recall_upd'),
     url(r'^get_manage_log/', views.get_manage_log, name='get_manage_log'),
     url(r'^upload_file/', views.upload_file, name='upload_file'),
+
+    url(r'^get_capacity/', views.get_capacity, name='get_capacity'),
+    url(r'^get_brands_model/', views.get_brands_model, name='get_brands_model'),
+    url(r'^get_brands_fingerprint/', views.get_brands_fingerprint, name='get_brands_fingerprint'),
 ]
