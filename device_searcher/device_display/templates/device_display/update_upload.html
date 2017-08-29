@@ -34,47 +34,6 @@
         </tbody>
     </table>
 </form>
-
-<script>
-    $(document).ready(function () {
-        // 导入文件的点击事件
-        $("button#uploader_start").on("click", function () {
-            var num_tr = $("form.form_upl_files tbody").find("tr").length;
-            if (num_tr <= 0){
-                alert("没有添加任何文件");
-            }else {
-                var btns_upl_file = $("button.btn_upl_file");
-                btns_upl_file.click();
-            }
-        });
-        // 添加上传文件的点击事件
-        $("button#uploader_browse").on("click", function () {
-            var tbody = $("form.form_upl_files tbody");
-
-            var num_tr = tbody.find("tr").length;
-
-            var tr_upl_file = $('<tr>' +
-                '<td class="checkbox_par">' +
-                '<input type="checkbox">' +
-                '</td>' +
-                '<td>' +
-                '<input type="file" name="upl_file_' + num_tr + '">' +
-                '</td>' +
-                '</tr>');
-
-            tbody.append(tr_upl_file);// 在tbody中添加一行
-
-            tr_upl_file.find("input").click();
-        });
-    });
-</script>
 {% endblock %}
 
-{% block thead %}
-
-{% endblock %}
-
-{% block tbody %}
-
-{% endblock %}
 

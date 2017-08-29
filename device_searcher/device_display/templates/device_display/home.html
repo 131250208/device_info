@@ -25,7 +25,8 @@
 
     <!--提示消息插件的css文件-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-future.min.css"
+          rel="stylesheet">
 
     {% block css %}
     {% endblock %}
@@ -111,7 +112,8 @@
                         <li class="nav_li" id="nav_update"><a href="{% url 'display:getPage_update' %}">数据更新</a></li>
                         <li class="nav_li" id="nav_log"><a href="{% url 'display:getPage_managelog' %}">管理日志</a></li>
                         {% endifequal %}
-                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">能力展示</a></li>
+                        <li class="nav_li" id="nav_statistics"><a href="{% url 'display:getPage_statistic' %}">能力展示</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-2" id="login_out">
@@ -134,7 +136,7 @@
 
             {% endblock %}
         </div>
-    </div><!--/row-->
+    </div>
 
 </div><!--/.container-->
 <!--<footer>-->
@@ -157,20 +159,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger-theme-future.min.js"></script>
 
-<!--将登录和退出前的页面url当作参数传递，以便登录和退出完成后回到原来的页面-->
 <script>
-    var next_href = window.location.href;
-    var url_logout = "{% url 'display:logout' %}";
-    var url_login = "{% url 'display:getPage_signin' %}";
-    url_logout = url_logout.concat("?next=", next_href);
-    url_login = url_login.concat("?next=", next_href);
+    // 因为django的模板语言在js文件中无效，故放在html中供js文件中的函数调用
+    function get_url(method) {
+        var url_map = {
+            "display:logout": "{% url 'display:logout' %}",
+            "display:getPage_signin": "{% url 'display:getPage_signin' %}",
 
-    $("#bt_logout").attr("href", url_logout);
-    $("#bt_login").attr("href", url_login);
-</script>
-<script>
-    String.prototype.Trim = function () {
-        return this.replace(/(^\s*)|(\s*$)/g, "");
+            "display:get_all_countries": "{% url 'display:get_all_countries' %}",
+            "display:get_all_categories": "{% url 'display:get_all_categories' %}",
+
+            "display:get_manage_log": "{% url 'display:get_manage_log' %}",
+
+            "display:search": "{% url 'display:search' %}",
+            "display:super_search": "{% url 'display:super_search' %}",
+
+            "display:delete_record": "{% url 'display:delete_record' %}",
+            "display:edit_record": "{% url 'display:edit_record' %}",
+            "display:add_record": "{% url 'display:add_record' %}",
+            "display:export_record": "{% url 'display:export_record' %}",
+
+            "display:get_types": "{% url 'display:get_types' %}",
+            "display:get_brands": "{% url 'display:get_brands' %}",
+            "display:get_models": "{% url 'display:get_models' %}",
+
+            "display:get_srcweb_list": "{% url 'display:get_srcweb_list' %}",
+            "display:get_updrcd_list": "{% url 'display:get_updrcd_list' %}",
+            "display:adjust_upd_circle": "{% url 'display:adjust_upd_circle' %}",
+            "display:update_immediately": "{% url 'display:update_immediately' %}",
+
+            "display:get_capacity": "{% url 'display:get_capacity' %}",
+            "display:get_brands_model": "{% url 'display:get_brands_model' %}",
+            "display:get_brands_fingerprint": "{% url 'display:get_brands_fingerprint' %}",
+        };
+
+        return url_map[method];
     }
 </script>
 </body>

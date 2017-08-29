@@ -1,7 +1,18 @@
 /**
  * Created by wycheng on 7/25/17.
  */
-<!--初始化翻页组件和分类tab组件，并为之注册点击事件-->
+
+// 添加功能的编辑框加载完就里面初始化里面的下拉框数据
+$("div#add_editor_fingerprint").ready(function () {
+    init_select2_add_editor();
+});
+
+// 搜索结果的分类tab加载完成就执行函数按当前的结果分类来调整active
+$("ul#nav_result_cat").ready(function () {
+    adjust_active();
+});
+
+// 整个文档加载完后执行的动作
 $(document).ready(
     function () {
         // 注册点击分类tab的事件
@@ -75,13 +86,13 @@ function append_tr(father, row, relevancy_sign) {
         var th = document.createElement(unit);
         th.dataset.relevancy = relevancy_sign[i];
         if (relevancy_sign[i] != "none" && row.id !== -1) {// 关联字段且非标题行加带有onclick的a标签
-            var text = '"' + val_list[i] +'"';
-            var category = '"' + relevancy_sign[i] +'"';
+            var text = '"' + val_list[i] + '"';
+            var category = '"' + relevancy_sign[i] + '"';
 
             // 加上点击搜索函数，和悬停显示关联记录
-            th.innerHTML = "<a href='#' data-toggle='tooltip' title='"+ row.detail_list[i] +"' " +
+            th.innerHTML = "<a href='#' data-toggle='tooltip' title='" + row.detail_list[i] + "' " +
                 "onclick='relevancy_click(" + text + "," + category + ")'>" + val_list[i] + "</a>";
-        }else {
+        } else {
             th.innerHTML = val_list[i];
         }
         tr.appendChild(th);
@@ -147,6 +158,28 @@ function show_intable(result_json) {
     check_all_click();
 }
 
+// 从主搜索页跳转到该页，调整class = nav-tabs的ul的active
+function adjust_active() {
+    $('#nav_result_cat').children().removeClass('active');
+    var cat = $('#searchcat').val();
+    switch (cat) {
+        case 'category' :
+            $('#cat_category').addClass('active');
+            break;
+        case 'type' :
+            $('#cat_type').addClass('active');
+            break;
+        case 'brand' :
+            $('#cat_brand').addClass('active');
+            break;
+        case 'model' :
+            $('#cat_model').addClass('active');
+            break;
+        case 'fingerprint' :
+            $('#cat_fingerprint').addClass('active');
+            break;
+    }
+}
 // 注册点击分类tab的事件,将对应的分类作为参数放到隐藏的input里
 function cat_tab_click() {
     $('.cat').click(function () {
@@ -436,6 +469,350 @@ function bt_edit_click() {
                 alert("没有选中任何项");
             }
         }
+    });
+}
+// 初始化添加功能编辑面板的类别与国家下拉框选项数据
+function init_select2_add_editor() {
+    // 初始化国家列表
+    var selectpicker_brand_country = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
+    selectpicker_brand_country.empty();
+
+    var url = get_url("display:get_all_countries");
+    $.get(url,
+        function (data, status) {
+            if (status === 'success') {
+                var result_json = eval('(' + data + ')');
+                // post to get_all_countries
+                for (x in result_json) {
+                    var optgroup = $('<optgroup label="' + x + '"></optgroup>');
+                    var countries = result_json[x];
+                    for (country_ind in countries) {
+                        var en_name = countries[country_ind].en_name;
+                        var cn_name = countries[country_ind].cn_name;
+                        var opt = $('<option value="' + en_name + '">' + cn_name + '</option>');
+                        optgroup.append(opt);
+                    }
+
+                    selectpicker_brand_country.append(optgroup);
+                }
+            } else {
+                Messenger().post("请求失败...");
+            }
+        });
+
+    // 初始化类别列表
+    var selectpicker_brand_category = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'category']");
+    selectpicker_brand_category.empty();
+
+    var selectpicker_model_category = $("form[name = 'add_editor_model'] select.selectpicker[name = 'category']");
+    selectpicker_model_category.empty();
+
+    var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'category']");
+    selectpicker_fingerprint_category.empty();
+
+    var selectpicker_type_category = $("form[name = 'add_editor_type'] select.selectpicker[name = 'category']");
+    selectpicker_type_category.empty();
+
+    url = get_url("display:get_all_categories");
+    $.get(url,
+        function (data, status) {
+            if (status === 'success') {
+                var result_json = eval('(' + data + ')');
+                for (cat_ind in result_json) {
+                    var id = result_json[cat_ind].id;
+                    var name = result_json[cat_ind].name;
+
+                    var opt_0 = $('<option value="' + id + '">' + name + '</option>');
+                    var opt_1 = $('<option value="' + id + '">' + name + '</option>');
+                    var opt_2 = $('<option value="' + id + '">' + name + '</option>');
+                    var opt_3 = $('<option value="' + id + '">' + name + '</option>');
+
+                    selectpicker_brand_category.append(opt_0);
+                    selectpicker_model_category.append(opt_1);
+                    selectpicker_fingerprint_category.append(opt_2);
+                    selectpicker_type_category.append(opt_3);
+                }
+            } else {
+                Messenger().post("请求失败...");
+            }
+        });
+
+    // 将其他下拉框设为disabled
+    var sp_type = $("form select.selectpicker[name = 'type']");
+    var sp_brand = $("form select.selectpicker[name = 'brand']");
+    var sp_model = $("form select.selectpicker[name = 'model']");
+    sp_type.prop("disabled", true);
+    sp_brand.prop("disabled", true);
+    sp_model.prop("disabled", true);
+    sp_type.selectpicker("refresh");
+    sp_brand.selectpicker("refresh");
+    sp_model.selectpicker("refresh");
+}
+
+// post to get search_results
+function get_results(search_text, search_category, page_index) {
+    var url = get_url("display:search");
+
+    if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1) {
+        url = get_url("display:super_search");
+
+        var res_json = {};
+        var kv_pairs = search_text.split("&&");
+        for (var i = 0; i < kv_pairs.length; ++i) {
+            var pair = kv_pairs[i].split("=");
+            res_json[pair[0]] = pair[1];
+        }
+
+        search_text = JSON.stringify(res_json);
+    }
+    $.post(url,
+        {
+            'search_text': search_text,
+            'search_category': search_category,
+            'page_index': page_index
+        },
+        function (data, status) {
+            if (status === 'success') {
+                Messenger().post('success!,参数：' + search_text + "," + search_category + "," + page_index);
+                // 记录上次搜索成功的关键词，以便下次搜索输入框为空时，作为默认关键词提交
+                $('input#searchtext_last').val(search_text);
+                var result_json = eval('(' + data + ')');
+                show_intable(result_json);
+                // 因为show_intable函数可能改变总页码，所以需要再次调整页码显示
+                var input_page_total = $("input#page_total");
+                var input_page_index = $("input[name='page_index']");
+                adjust_pages(input_page_total, input_page_index, get_results_post);
+            } else {
+                // 显示错误信息到页面
+                Messenger().post('请求失败了……');
+            }
+        });
+}
+// post to delete
+function delete_row(ids_list, delete_category) {
+    var url = get_url("display:delete_record");
+    $.post(url,
+        {
+            'id_list': ids_list,
+            'delete_category': delete_category
+        },
+        function (data, status) {
+            if (status === 'success') {
+                var result_json = eval('(' + data + ')');
+
+                var failure_id_list = result_json.failure;
+                var suc_len = ids_list.length - failure_id_list.length;
+                //
+                Messenger().post("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
+                // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
+
+            } else {
+                // 显示错误信息到页面
+                Messenger().post('请求失败了……');
+            }
+        });
+}
+// post to edit
+function edit_row(row_list, delete_category) {
+    var url = get_url("display:edit_record");
+
+    $.post(url,
+        {
+            'list_len': row_list.length,
+            'row_list': row_list,
+            'delete_category': delete_category
+        },
+        function (data, status) {
+            if (status === 'success') {
+                Messenger().post('修改成功了');
+                var result_json = eval('(' + data + ')');
+                var list_success = result_json.sucess;
+                var ind;
+                // 将修改成功的内容回显
+                for (ind in list_success) {
+                    var id = list_success[ind][0];
+                    var row_fields = $("input[type = 'checkbox'][value = " + id + "]").parent().siblings();
+                    row_fields.each(function (index, element) {
+                        $(this).html(list_success[ind][index + 1]);
+                    });
+                }
+            }
+            else {
+                // 显示错误信息到页面
+                Messenger().post('请求失败了……');
+            }
+        }
+    );
+}
+
+// post to add_record
+function add_record(add_category, record) {
+    var url = get_url("display:add_record");
+    Messenger().post(record);
+    $.post(url,
+        {
+            'add_category': add_category,
+            'record': record
+        }, function (data, status) {
+            if (status === 'success') {
+                Messenger().post("添加请求发送成功!");
+            } else {
+                Messenger().post("添加请求失败...");
+            }
+        });
+}
+
+// 给类别、类型、型号、指纹下拉框添加选择事件，联动
+function select_changed() {
+    // 类别列表
+    var sp_category = $("form select.selectpicker[name = 'category']");
+
+    sp_category.on("changed.bs.select", function () {
+        var cat_id = $(this).selectpicker('val'); //返回选中值
+        var sp_type = $(this).parents("form").find("select.selectpicker[name = 'type']");
+
+        if (sp_type.length === 0) return;
+
+        var url = get_url("display:get_types");
+        $.post(url,
+            {"category_id": cat_id},
+            function (data, status) {
+                if (status === 'success') {
+                    sp_type.empty();
+
+                    var result_json = eval('(' + data + ')');
+                    for (model_ind in result_json) {
+                        var id = result_json[model_ind].id;
+                        var name = result_json[model_ind].name;
+
+                        var opt = $('<option value="' + id + '">' + name + '</option>');
+
+                        sp_type.append(opt);
+                    }
+                    sp_type.prop("disabled", false);
+                    sp_brand.empty();
+                    sp_brand.prop("disabled", true);
+                    sp_model.empty();
+                    sp_model.prop("disabled", true);
+                    sp_type.selectpicker("render");
+                    sp_type.selectpicker("refresh");
+                    sp_brand.selectpicker("refresh");
+                    sp_model.selectpicker("refresh");
+                } else {
+                    Messenger().post("请求失败...");
+                }
+            });
+    });
+
+    // 类型列表
+    var sp_type = $("form select.selectpicker[name = 'type'][multiple != true]");
+
+    sp_type.on("changed.bs.select", function () {
+        var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
+        var type_id = $(this).selectpicker('val'); //返回选中值
+        var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
+
+        if (sp_brand.length === 0) return;
+
+        var url = get_url("display:get_brands");
+        $.post(url,
+            {
+                "type_id": type_id,
+                "category_id": cat_id
+            },
+            function (data, status) {
+                if (status === 'success') {
+                    sp_brand.empty();
+
+                    var result_json = eval('(' + data + ')');
+                    for (brand_ind in result_json) {
+                        var id = result_json[brand_ind].id;
+                        var name = result_json[brand_ind].name;
+
+                        var opt = $('<option value="' + id + '">' + name + '</option>');
+
+                        sp_brand.append(opt);
+                    }
+
+                    sp_brand.prop("disabled", false);
+                    sp_model.empty();
+                    sp_model.prop("disabled", true);
+                    sp_brand.selectpicker("render");
+                    sp_model.selectpicker("render");
+                    sp_brand.selectpicker("refresh");
+                    sp_model.selectpicker("refresh");
+                } else {
+                    Messenger().post("请求失败...");
+                }
+            });
+    });
+
+    // 品牌列表
+    var sp_brand = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'brand']");
+
+    sp_brand.on("changed.bs.select", function () {
+        var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
+        var type_id = $(this).parents("form").find("select.selectpicker[name = 'type']").selectpicker("val"); //返回选中值
+        var brand_id = $(this).selectpicker('val'); //返回选中值
+
+        var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
+
+        if (sp_model.length === 0) return;
+
+        var url = get_url("display:get_models");
+        $.post(url,
+            {
+                "type_id": type_id,
+                "category_id": cat_id,
+                "brand_id": brand_id
+            },
+            function (data, status) {
+                if (status === 'success') {
+                    sp_model.empty();
+//                            sp_model.append($('<option value="-1">请选择</option>'));
+
+                    var result_json = eval('(' + data + ')');
+                    for (model_ind in result_json) {
+                        var id = result_json[model_ind].id;
+                        var name = result_json[model_ind].name;
+
+                        var opt = $('<option value="' + id + '">' + name + '</option>');
+
+                        sp_model.append(opt);
+                    }
+                    sp_model.selectpicker("render");
+
+                    sp_model.prop("disabled", false);
+                    sp_model.selectpicker("refresh");
+                } else {
+                    Messenger().post("请求失败...");
+                }
+            });
+    });
+}
+
+// 给导出按钮增加点击事件
+function bt_export_click() {
+    var btn_export = $("button#btn_export");
+
+    btn_export.on("click", function () {
+        var search_text = $("input[name='search_text']").val();
+        var search_category = $("input[name='search_category']").val();
+
+        if (search_text.indexOf("=") !== -1 || search_text.indexOf("&&") !== -1) {
+
+            var res_json = {};
+            var kv_pairs = search_text.split("&&");
+            for (var i = 0; i < kv_pairs.length; ++i) {
+                var pair = kv_pairs[i].split("=");
+                res_json[pair[0]] = pair[1];
+            }
+
+            search_text = JSON.stringify(res_json);
+        }
+
+        var export_url = get_url("display:export_record") + "?search_text=" + search_text + "&search_category=" + search_category;
+        window.open(export_url);
     });
 }
 

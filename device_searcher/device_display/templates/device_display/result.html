@@ -325,82 +325,9 @@
             </div>
         </form>
     </div>
-    <!--初始化添加功能编辑面板的类别与国家下拉框选项数据-->
+
     <script>
-        // 初始化国家列表
-        var selectpicker_brand_country = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'country']");
-        selectpicker_brand_country.empty();
 
-        var url = "{% url 'display:get_all_countries' %}";
-        $.get(url,
-            function (data,status) {
-                if (status === 'success') {
-                    var result_json = eval('(' + data + ')');
-                    // post to get_all_countries
-                    for (x in result_json){
-                        var optgroup = $('<optgroup label="' + x + '"></optgroup>');
-                        var countries = result_json[x];
-                        for (country_ind in countries){
-                            var en_name = countries[country_ind].en_name;
-                            var cn_name = countries[country_ind].cn_name;
-                            var opt = $('<option value="' + en_name + '">' + cn_name + '</option>');
-                            optgroup.append(opt);
-                        }
-
-                        selectpicker_brand_country.append(optgroup);
-                    }
-                } else {
-                    Messenger().post("请求失败...");
-                }
-            });
-
-        // 初始化类别列表
-        var selectpicker_brand_category = $("form[name = 'add_editor_brand'] select.selectpicker[name = 'category']");
-        selectpicker_brand_category.empty();
-
-        var selectpicker_model_category = $("form[name = 'add_editor_model'] select.selectpicker[name = 'category']");
-        selectpicker_model_category.empty();
-
-        var selectpicker_fingerprint_category = $("form[name = 'add_editor_fingerprint'] select.selectpicker[name = 'category']");
-        selectpicker_fingerprint_category.empty();
-
-        var selectpicker_type_category = $("form[name = 'add_editor_type'] select.selectpicker[name = 'category']");
-        selectpicker_type_category.empty();
-
-        url = "{% url 'display:get_all_categories' %}";
-        $.get(url,
-            function (data,status) {
-                if (status === 'success') {
-                    var result_json = eval('(' + data + ')');
-                    for (cat_ind in result_json){
-                        var id = result_json[cat_ind].id;
-                        var name = result_json[cat_ind].name;
-
-                        var opt_0 = $('<option value="' + id + '">' + name + '</option>');
-                        var opt_1 = $('<option value="' + id + '">' + name + '</option>');
-                        var opt_2 = $('<option value="' + id + '">' + name + '</option>');
-                        var opt_3 = $('<option value="' + id + '">' + name + '</option>');
-
-                        selectpicker_brand_category.append(opt_0);
-                        selectpicker_model_category.append(opt_1);
-                        selectpicker_fingerprint_category.append(opt_2);
-                        selectpicker_type_category.append(opt_3);
-                    }
-                } else {
-                    Messenger().post("请求失败...");
-                }
-            });
-
-        // 将其他下拉框设为disabled
-        var sp_type = $("form select.selectpicker[name = 'type']");
-        var sp_brand = $("form select.selectpicker[name = 'brand']");
-        var sp_model = $("form select.selectpicker[name = 'model']");
-        sp_type.prop("disabled",true);
-        sp_brand.prop("disabled",true);
-        sp_model.prop("disabled",true);
-        sp_type.selectpicker("refresh");
-        sp_brand.selectpicker("refresh");
-        sp_model.selectpicker("refresh");
     </script>
     <div class="row results_content">
         {% include "device_display/table_selfdefined.html" %}

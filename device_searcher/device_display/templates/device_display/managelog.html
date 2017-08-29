@@ -1,59 +1,17 @@
 <!--@author wychengpublic-->
 {% extends "device_display/home.html" %}
+{% load static %}
 
 {% block main_container %}
-
-<input type="hidden" name="input_page_total" value="{{ page_total }}">
+<!--使用自定义的翻页组件必须的两个隐藏input，用于存储当前的页码和页码总数-->
 <input type="hidden" name="input_page_index" value="{{ page_index }}">
+<input type="hidden" name="input_page_total" value="{{ page_total }}">
 
+<!--包含显示日志的table-->
 {% include "device_display/log_table.html" %}
-
+<!--包含翻页组件-->
 {% include "device_display/pagination.html" %}
 
-<script>
-    function after_click_page() {
-        var page_index = $("input[name= 'input_page_index']").val();
-        get_manage_logs(page_index);
-    }
-    //设置导航栏的元素active切换
-    $(document).ready(
-        function () {
-            $("li.nav_li").attr("class", "nav_li");
-            $("li#nav_log").addClass("active");
-
-            var input_page_total = $("input[name= 'input_page_total']");
-            var input_page_index = $("input[name= 'input_page_index']");
-
-            get_manage_logs(input_page_index.val());
-
-            adjust_pages(input_page_total,input_page_index,after_click_page);
-        }
-    );
-
-    function get_manage_logs(page_index) {
-        var tbody = $("table tbody");
-        var url_get_logs = "{% url 'display:get_manage_log' %}";
-        $.get(url_get_logs,
-            {"page_index": page_index},
-        function (data, status) {
-            if(status === "success"){
-                tbody.empty();
-                var result_json = eval('(' + data + ')');
-                for (log_ind in result_json){
-                    var log = $('<tr>' +
-                        '<td>' + result_json[log_ind].opt_time + '</td>' +
-                        '<td>' + result_json[log_ind].opt_user + '</td>' +
-                        '<td>' + result_json[log_ind].opt_brief + '<a href="#" data-toggle="tooltip" title="'+ result_json[log_ind].opt_detail +'">（查看详情请悬停在我上面）</a></td>' +
-                    '</tr>');
-
-                    tbody.append(log);
-                }
-            }else {
-                Messenger().post("获取log请求失败了");
-            }
-        });
-
-    }
-</script>
+<script src="{% static 'display/self_defined/js/managelog.js' %}"></script>
 {% endblock %}
 
