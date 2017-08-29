@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f4e88f-0542-43a3-b7d7-4617d80f5e37" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/managelog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/statistics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/index.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/home.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" afterPath="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/log_table.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/log_table.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/managelog.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/managelog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/statistics.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/statistics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html" afterPath="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/device_searcher/device_display/urls.py" afterPath="$PROJECT_DIR$/device_searcher/device_display/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,16 +75,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="update_crawl.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_crawl.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="7" lean-forward="false" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pagination.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/pagination.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -140,6 +117,52 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="search_result.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_editors.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="302" column="10" lean-forward="true" selection-start-line="302" selection-start-column="10" selection-end-line="302" selection-end-column="10" />
+              <folding>
+                <element signature="n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#div#3;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#div#4;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="update_upload.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,11 +173,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search_result.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="705" column="7" lean-forward="true" selection-start-line="705" selection-start-column="7" selection-end-line="705" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+                <marker date="1504001221545" expanded="true" signature="14459:14488" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="178" column="67" lean-forward="true" selection-start-line="178" selection-start-column="67" selection-end-line="178" selection-end-column="67" />
+            <state relative-caret-position="80">
+              <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding>
                 <element signature="e#1559#1757#0" expanded="false" />
                 <element signature="n#script#3;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -168,8 +204,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -228,7 +264,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/css_self/signin.css" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/login.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/self_defined/css/offcanvas.css" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/framework/css/bootstrap.min.css" />
@@ -267,9 +302,7 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/manageloge.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/managelog.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/log_table.html" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/urls.py" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search.js" />
@@ -277,8 +310,11 @@
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/update_upload.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/update.js" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/statistics.js" />
-        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" />
         <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/statistics.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html" />
+        <option value="$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js" />
       </list>
     </option>
   </component>
@@ -855,11 +891,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/img/logo_google.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/img/bg.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1077,53 +1108,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="238" column="35" lean-forward="false" selection-start-line="238" selection-start-column="13" selection-end-line="238" selection-end-column="35" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#5;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#5;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#5;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/signin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-202">
           <caret line="16" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="804" column="51" lean-forward="true" selection-start-line="804" selection-start-column="51" selection-end-line="804" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-            <marker date="1503996189433" expanded="true" signature="14459:14488" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1240,11 +1228,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="178" column="67" lean-forward="true" selection-start-line="178" selection-start-column="67" selection-end-line="178" selection-end-column="67" />
+        <state relative-caret-position="80">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding>
             <element signature="e#1559#1757#0" expanded="false" />
             <element signature="n#script#3;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/search_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/templates/device_display/add_editors.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="302" column="10" lean-forward="true" selection-start-line="302" selection-start-column="10" selection-end-line="302" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#4;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device_searcher/device_display/static/display/self_defined/js/search_result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="705" column="7" lean-forward="true" selection-start-line="705" selection-start-column="7" selection-end-line="705" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <marker date="1504001221545" expanded="true" signature="14459:14488" ph="..." />
           </folding>
         </state>
       </provider>

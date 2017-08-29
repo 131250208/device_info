@@ -1,0 +1,303 @@
+    <div id="add_editor_category" class="row collapse">
+        <form role="form" name="add_editor_category" novalidate >
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>类别</label>
+                        <input type="text" class="form-control" name="category">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>类别中文名称</label>
+                        <input type="text" class="form-control" name="category_cn_name">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>类别英文名称(必填)</label>
+                        <input type="text" class="form-control" name="category_en_name" ng-model="en_name"
+                               pattern="[^\u2E80-\u9FFF ]+" required>
+                        <span style="color:red"
+                              ng-show="add_editor_category.category_en_name.$dirty && add_editor_category.category_en_name.$invalid">
+                            <span ng-show="add_editor_category.category_en_name.$invalid">类别英文名称不得含有中文字符。</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>相关描述</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_category.category_en_name.$invalid">确定添加
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="add_editor_type" class="row collapse">
+        <form role="form" name="add_editor_type" novalidate >
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>类型</label>
+                        <input type="text" class="form-control" name="type">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>类型中文名称</label>
+                        <input type="text" class="form-control" name="type_cn_name">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>类型英文名称(必填)</label>
+                        <input type="text" class="form-control" name="type_en_name" ng-model="type_en_name"
+                               pattern="[^\u2E80-\u9FFF ]*" required>
+                        <span style="color:red"
+                              ng-show="add_editor_type.type_en_name.$dirty && add_editor_type.type_en_name.$invalid">
+                            <span ng-show="add_editor_type.type_en_name.$invalid">类型英文名称为必填项且不得含有中文字符。</span>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>所属类别</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="category" title="请选择..."
+                                data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>相关描述</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_type.type_en_name.$invalid ||
+                    add_editor_type.category_en_name.$invalid">确定添加
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="add_editor_brand" class="row collapse">
+        <form role="form" name="add_editor_brand" novalidate >
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>品牌中文名称</label>
+                        <input type="text" class="form-control" name="brand_cn_name">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>品牌英文名称(必填)</label>
+                        <input type="text" class="form-control" required pattern="[^\u2E80-\u9FFF ]+"
+                               name="brand_en_name" ng-model="brand_en_name">
+                        <span style="color:red"
+                              ng-show="add_editor_brand.brand_en_name.$dirty && add_editor_brand.brand_en_name.$invalid">
+                            <span ng-show="add_editor_brand.brand_en_name.$invalid">品牌英文名称不能为空且不得含有中文字符。</span>
+                        </span>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>品牌链接</label>
+                        <input type="text" class="form-control" name="brand_link">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>所在国家</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="country" title="请选择..."
+                                data-live-search="true">
+                            <option value="sdf">jskdfljs</option>
+                            <option value="ttre">weed</option>
+                            <option value="bbbbb">wfhyj</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>对应类别</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                data-width="98%" data-first-option="false" required
+                                name="category" title="请选择..."
+                                data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>现有商品类型</label>
+                        <select data-size="7" class="selectpicker form-control" multiple
+                                data-width="98%" data-first-option="false" required
+                                name="type" title="请选择..."
+                                data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>相关描述</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="add_editor_brand.brand_en_name.$invalid">
+                        确定添加
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="add_editor_model" class="row collapse">
+        <form role="form" name="add_editor_model" novalidate >
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>型号(必填)</label>
+                        <input type="text" class="form-control" required name="model" ng-model="model">
+                        <span style="color:red"
+                              ng-show="add_editor_model.model.$dirty && add_editor_model.model.$invalid">
+                            <span ng-show="add_editor_model.model.$error.required">型号不能为空。</span>
+                        </span>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>相关链接</label>
+                        <input type="text" class="form-control" name="model_link">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>对应类别</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="category" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                            <button type="button" class="btn btn-sm">test</button>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>对应类型</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="type" disabled="true" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>对应品牌</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="brand" disabled="true" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>相关描述</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary"
+                            ng-disabled="add_editor_model.model.$error.required">确定添加
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="add_editor_fingerprint" class="row collapse">
+        <form role="form" name="add_editor_fingerprint" novalidate >
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>准确度</label>
+                        <input type="text" class="form-control" pattern="^([0-9]|[0-9]{2}|100)$" name="accuracy" ng-model="accuracy">
+                        <span style="color:red"
+                              ng-show="add_editor_fingerprint.accuracy.$dirty && add_editor_fingerprint.accuracy.$invalid">
+                            <span ng-show="add_editor_fingerprint.accuracy.$invalid">精确度必须为1-100的整数。</span>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>匹配方式（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="match_type" ng-model="match_type" title="请选择..."
+                                data-width="98%" data-first-option="false" required>
+                            <option value="0">模糊匹配</option>
+                            <option value="1">精确匹配</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>协议</label>
+                        <input type="text" class="form-control" name="protocol">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>对应类别（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="category" ng-model="category" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>对应类型（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="type" disabled ng-model="type" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>对应品牌（必选）</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="brand" disabled ng-model="brand" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>对应型号</label>
+                        <select data-size="7" class="selectpicker form-control"
+                                name="model" disabled ng-model="model" title="请选择..."
+                                data-width="98%" data-first-option="false" required
+                                data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>server</label>
+                        <input type="text" class="form-control" name="server">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>www_authenticate</label>
+                        <input type="text" class="form-control" name="www_authenticate">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>title</label>
+                        <input type="text" class="form-control" name="title">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>其它信息</label>
+                        <input type="text" class="form-control" name="others">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2 col-sm-offset-10" style="text-align: right;padding-right: 15px;padding-top: 15px">
+                    <button type="button" class="confirm_add btn btn-primary" ng-disabled="
+                     add_editor_fingerprint.accuracy.$invalid||add_editor_fingerprint.brand.$pristine
+                     ||add_editor_fingerprint.match_type.$pristine">确定添加</button>
+                </div>
+            </div>
+        </form>
+    </div>

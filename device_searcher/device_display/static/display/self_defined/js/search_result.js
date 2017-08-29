@@ -670,6 +670,7 @@ function select_changed() {
     sp_category.on("changed.bs.select", function () {
         var cat_id = $(this).selectpicker('val'); //返回选中值
         var sp_type = $(this).parents("form").find("select.selectpicker[name = 'type']");
+        var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
 
         if (sp_type.length === 0) return;
 
@@ -711,6 +712,7 @@ function select_changed() {
         var cat_id = $(this).parents("form").find("select.selectpicker[name = 'category']").selectpicker("val"); //返回选中值
         var type_id = $(this).selectpicker('val'); //返回选中值
         var sp_brand = $(this).parents("form").find("select.selectpicker[name = 'brand']");
+        var sp_model = $(this).parents("form").find("select.selectpicker[name = 'model']");
 
         if (sp_brand.length === 0) return;
 
