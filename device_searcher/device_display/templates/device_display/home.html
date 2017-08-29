@@ -22,6 +22,11 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'display/self_defined/css/home.css' %}" rel="stylesheet">
+
+    <!--提示消息插件的css文件-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
+
     {% block css %}
     {% endblock %}
 
@@ -147,6 +152,10 @@
 <script src="{% static 'display/others/js/ie10-viewport-bug-workaround.js' %}"></script>
 <!-- Custom js for this template -->
 <script src="{% static 'display/self_defined/js/home.js' %}"></script>
+
+<!--提示消息插件的js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger-theme-future.min.js"></script>
 
 <!--将登录和退出前的页面url当作参数传递，以便登录和退出完成后回到原来的页面-->
 <script>

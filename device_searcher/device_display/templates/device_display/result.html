@@ -350,7 +350,7 @@
                         selectpicker_brand_country.append(optgroup);
                     }
                 } else {
-                    alert("请求失败...");
+                    Messenger().post("请求失败...");
                 }
             });
 
@@ -387,7 +387,7 @@
                         selectpicker_type_category.append(opt_3);
                     }
                 } else {
-                    alert("请求失败...");
+                    Messenger().post("请求失败...");
                 }
             });
 

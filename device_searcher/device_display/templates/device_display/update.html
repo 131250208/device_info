@@ -33,7 +33,7 @@
 
             var nav_text = $("input#nav_text").val();
             if (nav_text === "updfile_success") {
-                alert("文件导入完毕");
+                Messenger().post("文件导入完毕");
                 $('a[href = "#panel_upload"]').click();
             }
 
@@ -53,7 +53,7 @@
                         // 给源网站下拉框添加选择变更事件
                         on_adjust_circle();
                     } else {
-                        alert("获取源网站列表请求失败了");
+                        Messenger().post("获取源网站列表请求失败了");
                     }
                 });
 
@@ -75,7 +75,7 @@
                                 result_json[rcd_ind].type_num, result_json[rcd_ind].brand_num, result_json[rcd_ind].model_num);
                         }
                     } else {
-                        alert("获取更新日志列表请求失败了");
+                        Messenger().post("获取更新日志列表请求失败了");
                     }
                 });
 
@@ -159,9 +159,9 @@
                 },
                 function (data, status) {
                     if (status === "success") {
-                        alert("调整周期请求成功");
+                        Messenger().post("调整周期请求成功");
                     } else {
-                        alert("调整周期请求失败");
+                        Messenger().post("调整周期请求失败");
                     }
                 });
         });
@@ -186,9 +186,9 @@
                 {"website_id_list": JSON.stringify(id_list)},
                 function (data, status) {
                     if (status === "success") {
-                        alert("立即更新请求成功");
+                        Messenger().post("立即更新请求成功");
                     } else {
-                        alert("立即更新请求失败");
+                        Messenger().post("立即更新请求失败");
                     }
                 });
         });
@@ -205,9 +205,9 @@
     //                {"upd_id_list_str": JSON.stringify(rcd_id_list)},
     //                function (data, status) {
     //                    if (status === "success") {
-    //                        alert("更新回退请求成功");
+    //                        Messenger().post("更新回退请求成功");
     //                    } else {
-    //                        alert("更新回退请求失败");
+    //                        Messenger().post("更新回退请求失败");
     //                    }
     //                });
     //        });

@@ -84,7 +84,7 @@
             },
             function (data, status) {
                 if (status === 'success') {
-                    alert('success!,参数：' + search_text + "," + search_category + "," + page_index);
+                    Messenger().post('success!,参数：' + search_text + "," + search_category + "," + page_index);
                     // 记录上次搜索成功的关键词，以便下次搜索输入框为空时，作为默认关键词提交
                     $('input#searchtext_last').val(search_text);
                     var result_json = eval('(' + data + ')');
@@ -95,7 +95,7 @@
                     adjust_pages(input_page_total, input_page_index, get_results_post);
                 } else {
                     // 显示错误信息到页面
-                    alert('请求失败了……');
+                    Messenger().post('请求失败了……');
                 }
             });
     }
@@ -114,12 +114,12 @@
                     var failure_id_list = result_json.failure;
                     var suc_len = ids_list.length - failure_id_list.length;
                     //
-                    alert("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
+                    Messenger().post("删除成功：" + suc_len + " " + " 删除失败：" + failure_id_list.length + failure_id_list);
                     // 更新当前页（重新取一遍当前页数的数据，并将失败的条目标红几秒钟fade
 
                 } else {
                     // 显示错误信息到页面
-                    alert('请求失败了……');
+                    Messenger().post('请求失败了……');
                 }
             });
     }
@@ -135,7 +135,7 @@
             },
             function (data, status) {
                 if (status === 'success') {
-                    alert('修改成功了');
+                    Messenger().post('修改成功了');
                     var result_json = eval('(' + data + ')');
                     var list_success = result_json.sucess;
                     var ind;
@@ -150,7 +150,7 @@
                 }
                 else {
                     // 显示错误信息到页面
-                    alert('请求失败了……');
+                    Messenger().post('请求失败了……');
                 }
             }
         );
@@ -159,16 +159,16 @@
     // post to add_record
     function add_record(add_category, record) {
         var url = "{% url 'display:add_record' %}";
-        alert(record);
+        Messenger().post(record);
         $.post(url,
             {
                 'add_category': add_category,
                 'record': record
             }, function (data, status) {
                 if (status === 'success') {
-                    alert("添加请求发送成功!");
+                    Messenger().post("添加请求发送成功!");
                 } else {
-                    alert("添加请求失败...");
+                    Messenger().post("添加请求失败...");
                 }
             });
     }
@@ -210,7 +210,7 @@
                         sp_brand.selectpicker("refresh");
                         sp_model.selectpicker("refresh");
                     } else {
-                        alert("请求失败...");
+                        Messenger().post("请求失败...");
                     }
                 });
         });
@@ -253,7 +253,7 @@
                         sp_brand.selectpicker("refresh");
                         sp_model.selectpicker("refresh");
                     } else {
-                        alert("请求失败...");
+                        Messenger().post("请求失败...");
                     }
                 });
         });
@@ -296,7 +296,7 @@
                         sp_model.prop("disabled", false);
                         sp_model.selectpicker("refresh");
                     } else {
-                        alert("请求失败...");
+                        Messenger().post("请求失败...");
                     }
                 });
         });
